@@ -1,0 +1,235 @@
+#include "mainwindow.h"
+#include "./ui_mainwindow.h"
+#include "addproduct.h"
+
+#include <QString>
+#include <QDebug>
+#include <QMessageBox>
+#include <QInputDialog>
+#include <QCloseEvent>
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+
+    ui->tbw_display->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
+    on_act_showAll_triggered();
+
+    // connect(ui->tbw_display, &QTableWidget::itemChanged, this, &MainWindow::onCheckboxChanged);
+    ui->btn_confirm->hide();
+    ui->btn_cancel->hide();
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+//cơ chế lưu dữ liệu
+void MainWindow::closeEvent(QCloseEvent* event)
+{
+    if(QMessageBox::question(this, "Confirm", "Bạn thật sự muốn thoát ứng dụng?") == QMessageBox::Yes)
+    {
+        // App::GetInstance().Save();
+    }
+    else
+    {
+        event->ignore();
+    }
+}
+
+//------------------------hiển thị danh sách sản phẩm cho trước-----------------------------
+void MainWindow::Display(std::map<std::string, std::shared_ptr<Product>> list, const std::vector<int> hideCols)
+{
+    ui->tbw_display->clearContents();
+    int numRows = list.size();
+    ui->tbw_display->setRowCount(numRows);
+
+    int row = 0;
+    for(const auto& pair : list)
+    {
+        int col = 0;
+        QTableWidgetItem *checkItem = new QTableWidgetItem();
+        checkItem->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled); // cho phép tích
+        checkItem->setCheckState(Qt::Unchecked);  // mặc định chưa được tích
+
+        ui->tbw_display->setItem(row, col++, checkItem);
+        ui->tbw_display->setItem(row, col++, new QTableWidgetItem(pair.first.c_str()));
+        ui->tbw_display->setItem(row, col++, new QTableWidgetItem(pair.second->GetName().c_str()));
+        ui->tbw_display->setItem(row, col++, new QTableWidgetItem(pair.second->GetBrand().c_str()));
+        ui->tbw_display->setItem(row, col++, new QTableWidgetItem(QString::number(pair.second->GetQuantity())));
+        ui->tbw_display->setItem(row, col++, new QTableWidgetItem(QString::number(pair.second->GetPrice())));
+        ui->tbw_display->setItem(row, col++, new QTableWidgetItem(pair.second->GetExtraData1().c_str()));
+        ui->tbw_display->setItem(row, col++, new QTableWidgetItem(QString::number(pair.second->GetExtraData2())));
+        ui->tbw_display->setItem(row, col++, new QTableWidgetItem(QString::number(pair.second->GetExtraData3())));
+        row++;
+    }
+
+    for(const auto col : hideCols)
+    {
+        ui->tbw_display->setColumnHidden(col, true);
+    }
+}
+
+//--------------------xử lí các nút trên MenuBar---------------------------------------
+//---------Menu->Add Product---------------
+void MainWindow::on_act_add_2_triggered()
+{
+    AddProduct* ap = new AddProduct();
+    ap->setAttribute(Qt::WA_DeleteOnClose); // Tự động delete khi đóng
+
+    connect(ap, &AddProduct::productAdded, this, &MainWindow::on_act_showAll_triggered);
+
+    ap->show();
+}
+
+//------------Menu->Search Product---------------
+void MainWindow::on_act_search_triggered()
+{
+    bool ok;
+    QString ID = QInputDialog::getText(this, "Nhập Id sản phẩm", "ID: ", QLineEdit::Normal, "", &ok);
+    if (!ok || ID.isEmpty()) {
+        return;
+    }
+
+    std::map<std::string, std::shared_ptr<Product>> list = App::GetInstance().GetProductById(ID.toStdString());
+    if (list.empty()) {
+        QMessageBox::information(this, "Thông báo", "Không tìm thấy sản phẩm với ID: " + ID);
+        return;
+    }
+
+    std::vector<int> hideCols;
+    //todo giau cot
+    switch(list.begin()->second->GetType())
+    {
+        case ProductType::Electric:
+            hideCols = {0};
+            break;
+        case ProductType::Water:
+            hideCols = {0, 8};
+            break;
+        default:
+            hideCols = {0, 6, 7, 8};
+            break;
+    }
+
+    Display(list, hideCols);
+}
+
+// //--------------Menu->Remove-------------
+// void MainWindow::on_act_remove_triggered()
+// {
+//     ui->tbw_display->setColumnHidden(0, false);
+//     ui->btn_confirm->show();
+//     ui->btn_cancel->show();
+// }
+
+// void MainWindow::on_btn_confirm_clicked()
+// {
+//     if(checked.empty())
+//     {
+//         QMessageBox::information(this, "Thông báo", "Không có sản phẩm nào được chọn!");
+//         return;
+//     }
+
+//     if(QMessageBox::question(this, "Xác nhận", "Bạn có chắc muốn xóa " + QString::number(checked.size()))
+//         == QMessageBox::Yes)
+//     {
+//         for(const auto& id : checked)
+//         {
+//             App::GetInstance().RemoveProduct(id);
+//         }
+
+//         checked.clear();
+
+//         std::vector<int> hideCols = {6, 7, 8};
+//         Display(App::GetInstance().GetProductById(""), hideCols);
+//     }
+// }
+
+// void MainWindow::on_btn_cancel_clicked()
+// {
+//     // Bỏ chọn tất cả checkbox
+//     for(int row = 0; row < ui->tbw_display->rowCount(); ++row) {
+//         QTableWidgetItem *item = ui->tbw_display->item(row, 0);
+//         if(item) {
+//             item->setCheckState(Qt::Unchecked);
+//         }
+//     }
+
+//     // Xóa danh sách đã chọn
+//     checked.clear();
+
+//     std::vector<int> hideCols = {6, 7, 8};
+//     Display(App::GetInstance().GetProductById(""), hideCols);
+// }
+
+//----------------Show->All-----------------
+void MainWindow::on_act_showAll_triggered()
+{
+    std::vector<int> hideCols = {0, 6, 7, 8};
+    Display(App::GetInstance().GetProductById(""), hideCols);
+
+    ui->btn_confirm->hide();
+    ui->btn_cancel->hide();
+}
+
+//--------------Show->Type->Electric-----------
+void MainWindow::on_act_showElec_triggered()
+{
+    std::vector<int> hideCols = {0};
+    ui->tbw_display->model()->setHeaderData(6, Qt::Horizontal, "Tiêu chuẩn an toàn");
+    ui->tbw_display->model()->setHeaderData(7, Qt::Horizontal, "Oát");
+    ui->tbw_display->model()->setHeaderData(8, Qt::Horizontal, "Vôn");
+
+    Display(App::GetInstance().GetProductById("E"), hideCols);
+
+    ui->btn_confirm->hide();
+    ui->btn_cancel->hide();
+}
+
+//--------------Show->Type->Water----------------
+void MainWindow::on_act_showWater_triggered()
+{
+    std::vector<int> hideCols = {0, 8};
+    ui->tbw_display->model()->setHeaderData(6, Qt::Horizontal, "Chất Liệu");
+    ui->tbw_display->model()->setHeaderData(7, Qt::Horizontal, "Mức chịu nhiệt");
+
+    Display(App::GetInstance().GetProductById("W"), hideCols);
+
+    ui->btn_confirm->hide();
+    ui->btn_cancel->hide();
+}
+
+//--------------Show->Type->Other----------------
+void MainWindow::on_act_showOther_triggered()
+{
+    std::vector<int> hideCols = {{0, 6, 7, 8}};
+    Display(App::GetInstance().GetProductById("O"), hideCols);
+
+    ui->btn_confirm->hide();
+    ui->btn_cancel->hide();
+}
+
+// //---------------Modify Logic---------------------
+// void MainWindow::onCheckboxChanged(QTableWidgetItem *item)
+// {
+//     if(item->column() == 0)
+//     {
+//         bool isChecked = (item->checkState() == Qt::Checked);
+//         int row = item->row();
+//         QString productId = ui->tbw_display->item(row, 1)->text();
+//         std::string stdId = productId.toStdString();
+
+//         auto it = std::find(checked.begin(), checked.end(), stdId);
+
+//         if(isChecked && it == checked.end()) {
+//             checked.push_back(stdId);
+//         }
+//         else if(!isChecked && it != checked.end()) {
+//             checked.erase(it);
+//         }
+//     }
+// }
