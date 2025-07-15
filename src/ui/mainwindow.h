@@ -4,7 +4,6 @@
 #include "app.h"
 
 #include <QMainWindow>
-#include <QTableWidgetItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,28 +19,26 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void Display(std::map<std::string, std::shared_ptr<Product>> list, const std::vector<int> hideCols);
-
-protected:
-    void closeEvent(QCloseEvent* event);
-
 private slots:
-    void on_act_add_2_triggered();
-    void on_act_search_triggered();
-    // void on_act_remove_triggered();
-    // void on_tbw_display_doubleclicked(int row, int col)
+    void on_btn_menu_clicked();
 
-    void on_act_showAll_triggered();
-    void on_act_showElec_triggered();
-    void on_act_showWater_triggered();
-    void on_act_showOther_triggered();
+    void on_btn_addPage_clicked();
+    void on_cbb_type_activated(int index);
+    void on_btn_addProduct_clicked();
 
-    // void onCheckboxChanged(QTableWidgetItem *item);
-    // void on_btn_confirm_clicked();
-    // void on_btn_cancel_clicked();
+    void on_btn_removePage_clicked();
+
+    void on_btn_showPage_clicked();
+    
+    void on_cbb_type_2_activated(int index);
+
+    void Display(std::map<std::string, std::shared_ptr<Product>> list);
+    
+    void on_le_search_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
+    bool sidebarStatus;
     std::vector<std::string> checked;
 };
 #endif // MAINWINDOW_H

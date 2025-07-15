@@ -10,14 +10,15 @@ target_link_libraries(app PRIVATE
 
 target_include_directories(app PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../core/product
-    ${CMAKE_CURRENT_SOURCE_DIR}/../core/productFactory
-    ${CMAKE_CURRENT_SOURCE_DIR}/../core/database
+        ${CMAKE_CURRENT_SOURCE_DIR}/../core/productFactory
+        ${CMAKE_CURRENT_SOURCE_DIR}/../core/database
 )
 
 #####################################
 
 add_executable(${PROJECT_NAME} WIN32
     main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/../ui/resources.qrc
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE

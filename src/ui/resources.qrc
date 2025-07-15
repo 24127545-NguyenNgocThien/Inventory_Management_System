@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/icon/prefix1">
+        <file alias="menu">icons8-menu-50.png</file>
+        <file alias="add">icons8-add-50.png</file>
+        <file alias="display">icons8-display-50.png</file>
+        <file alias="import">icons8-import-50.png</file>
+        <file alias="log">icons8-log-50.png</file>
+        <file alias="sell">icons8-money-50.png</file>
+        <file alias="notify">icons8-notifications-50.png</file>
+        <file alias="redo">icons8-redo-50.png</file>
+        <file alias="remove">icons8-remove-50.png</file>
+        <file alias="undo">icons8-undo-50.png</file>
+        <file alias="search">icons8-search-96.png</file>
+    </qresource>
+</RCC>

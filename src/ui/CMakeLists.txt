@@ -2,9 +2,7 @@ add_library(ui STATIC
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
-    addproduct.h
-    addproduct.cpp
-    addproduct.ui
+    resources.qrc
 )
 
 target_link_libraries(ui PRIVATE

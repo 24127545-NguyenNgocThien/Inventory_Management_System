@@ -26,9 +26,9 @@ public:
 
     int GetNumberProduct();
 
-    bool isProductExists(ProductType type, const std::string& name, const std::string& brand);
-    bool AddProduct(ProductType type, const std::string name,const std::string brand,
-                    const int& quantity, const double& price, const std::string& extra1 =""
+    bool isProductExists(ProductType type, const QString& name, const QString& brand);
+    bool AddProduct(ProductType type, const QString name,const QString brand,
+                    const int& quantity, const double& price, const QString& extra1 =""
                     , const double& extra2 = 0, const double& extra3 = 0);
     bool RemoveProduct(const std::string& ID);
     bool ModifyProduct(std::shared_ptr<Product> product);
@@ -36,7 +36,7 @@ public:
     void Undo(); // chỉ áp dụng với 3 thao tác add, remove, modify
     void Redo(); // chỉ áp dụng với 3 thao tác add, remove, modify
 
-    std::map<std::string, std::shared_ptr<Product>> GetProductById(const std::string& id);
+    std::map<std::string, std::shared_ptr<Product>> GetProductById(const std::string& ID);
     std::shared_ptr<Product> GetProductBySTT(int stt); //lấy phần tử theo số thứ tự đc lưu trong map
 
     void Save();

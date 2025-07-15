@@ -4,9 +4,9 @@
 
 //---------------------Creator-----------------
 std::shared_ptr<Product> ProductFactory::CreateProduct(ProductType type,
-                        const std::string name, const std::string brand,
+                        const QString name, const QString brand,
                         const std::string id, const int& quantity,
-                        const double& price, const std::string& extra1,
+                        const double& price, const QString& extra1,
                         const double& extra2, const double& extra3)
 {
     switch(type)

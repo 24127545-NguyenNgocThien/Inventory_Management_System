@@ -1,8 +1,8 @@
 #include "app.h"
 #include "productFactory.h"
 
-#include <sstream>
 #include <QDebug>
+#include <QString>
 
 //----------------LOGIC TẠO INSTANCE DUY NHẤT-------------------
 std::unique_ptr<App> App::instance;
@@ -28,13 +28,13 @@ int App::GetNumberProduct()
 
 //----------------------------LOGIC THÊM SẢN PHẨM ----------------------------
 //check sản phẩm đã tồn tại chx
-bool App::isProductExists(ProductType type, const std::string& name, const std::string& brand)
+bool App::isProductExists(ProductType type, const QString& name, const QString& brand)
 {
     for (const auto& pair : manager)
     {
         if (pair.second->GetType() == type &&
-            QString::fromStdString(pair.second->GetName()) == name &&
-            QString::fromStdString(pair.second->GetBrand()) == brand)
+            pair.second->GetName() == name &&
+            pair.second->GetBrand() == brand)
         {
             return true;
         }
@@ -44,12 +44,12 @@ bool App::isProductExists(ProductType type, const std::string& name, const std::
 
 //khai báo ban đầu cho các hàm hỗ trợ việc tạo ra newID không trùng lặp
 std::string getFirstLetters(const std::string& input);
-std::string CreateId(ProductType type, std::string name, std::string brand,
+std::string CreateId(ProductType type, QString name, QString brand,
                      const std::map<std::string, std::shared_ptr<Product>>& manager);
 
 //hàm thêm mới
-bool App::AddProduct(ProductType type, const std::string name,const std::string brand,
-                    const int& quantity, const double& price, const std::string& extra1
+bool App::AddProduct(ProductType type, const QString name,const QString brand,
+                    const int& quantity, const double& price, const QString& extra1
                     , const double& extra2, const double& extra3)
 {
     // Kiểm tra trùng thông tin trước
@@ -81,18 +81,18 @@ bool App::RemoveProduct(const std::string& ID)
 
 
 //-----------------------------HÀM LẤY SẢN PHẨM THEO ID / STT----------------------
-std::map<std::string, std::shared_ptr<Product>> App::GetProductById(const std::string& id)
+std::map<std::string, std::shared_ptr<Product>> App::GetProductById(const std::string& ID)
 {
-    if(id == "")
+    if(ID == "")
     {
         return manager;
     }
 
     std::map<std::string, std::shared_ptr<Product>> ret;
 
-    auto it = manager.lower_bound(id);
+    auto it = manager.lower_bound(ID);
 
-    while(it != manager.end() && !it->first.compare(0, id.length(), id))
+    while(it != manager.end() && !it->first.compare(0, ID.length(), ID))
     {
         ret.insert(*it);
         it++;
@@ -120,23 +120,40 @@ std::shared_ptr<Product> App::GetProductBySTT(int stt)
 }
 
 //CÁC HÀM HỖ TRỢ ĐÃ KHAI BÁO Ở TRÊN
-std::string getFirstLetters(const std::string& input)
+QString removeDiacritics(const QString &text)
 {
-    std::istringstream iss(input);
-    std::string word;
-    std::string result;
-    while (iss >> word)
+    QString normalized = text.normalized(QString::NormalizationForm_D); // Tách dấu ra khỏi chữ cái
+    QString result;
+
+    for (const QChar &ch : normalized)
     {
-        if (!word.empty())
-        {
-            result += toupper(word[0]);
+        if (ch.category() != QChar::Mark_NonSpacing)
+        { // Loại bỏ ký tự dấu (Unicode)
+            result.append(ch);
         }
     }
 
+    // Thay thế các ký tự đặc biệt (nếu cần)
+    result.replace("đ", "d").replace("Đ", "D");
     return result;
 }
 
-std::string CreateId(ProductType type, std::string name, std::string brand,
+std::string getFirstLetters(const QString& input)
+{
+    QString noAccentText = removeDiacritics(input); // Bỏ dấu trước
+    QStringList words = noAccentText.split(" ", Qt::SkipEmptyParts);
+    QString result;
+
+    for (const QString &word : words) {
+        if (!word.isEmpty()) {
+            result += word.at(0).toUpper(); // Lấy chữ cái đầu và viết hoa
+        }
+    }
+
+    return result.toStdString();
+}
+
+std::string CreateId(ProductType type, QString name, QString brand,
                     const std::map<std::string, std::shared_ptr<Product>>& manager)
 {
     std::string baseId;
