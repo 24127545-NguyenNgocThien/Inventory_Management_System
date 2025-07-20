@@ -5,6 +5,7 @@ add_library(dataLib STATIC
 
 target_link_libraries(dataLib PUBLIC
     productLib
+    productFactoryLib
 )
 
 target_include_directories(dataLib PUBLIC

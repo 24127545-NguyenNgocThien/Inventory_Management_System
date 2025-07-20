@@ -20,8 +20,6 @@ public:
     MainWindow(Database& data, QWidget *parent = nullptr);
     ~MainWindow();
 
-    void Display(std::map<std::string, std::shared_ptr<Product>> list);
-
 private slots:
 
     //thao tác với menubar (ẩn/hiện/chuyển trang)
@@ -58,5 +56,11 @@ private:
     Database* db;
     bool sidebarStatus;
     std::vector<std::string> productIds;
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
+    bool MaybeSave();
+
+    void Display(std::map<std::string, std::shared_ptr<Product>> list);
 };
 #endif // MAINWINDOW_H

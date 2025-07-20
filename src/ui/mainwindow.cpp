@@ -5,6 +5,7 @@
 #include "deletecommand.h"
 #include "editcommand.h"
 #include <QMessageBox>
+#include <QCloseEvent>
 
 MainWindow::MainWindow(Database& data, QWidget *parent)
     : QMainWindow(parent)
@@ -13,7 +14,9 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
     , db(&data)
     , sidebarStatus(true)
 {
+    db->Load();
     ui->setupUi(this);
+    setWindowTitle("MainWindow[*]");
     ui->sidebar->setHidden(sidebarStatus);
     ui->stackedWidget->setCurrentIndex(0);
     ui->tbw->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
@@ -27,6 +30,30 @@ MainWindow::~MainWindow()
 }
 
 //===============================================================
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (isWindowModified()) {
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(
+            this,
+            "Xác nhận",
+            "Bạn có muốn lưu thay đổi?",
+            QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel
+            );
+
+        if (reply == QMessageBox::Save) {
+            if (!db->Save()) {  // Hàm lưu của bạn
+                event->ignore();  // Không đóng nếu lưu thất bại
+                return;
+            }
+        }
+        else if (reply == QMessageBox::Cancel) {
+            event->ignore();  // Không đóng
+            return;
+        }
+    }
+    event->accept();  // Cho phép đóng
+}
 
 void MainWindow::Display(std::map<std::string, std::shared_ptr<Product>> list)
 {
@@ -181,6 +208,8 @@ void MainWindow::on_btn_addProduct_clicked()
     ui->le_extra1->clear();
     ui->le_extra2->clear();
     ui->le_extra3->clear();
+
+    setWindowModified(true);
 }
 
 //==================================================================
@@ -207,6 +236,8 @@ void MainWindow::on_btn_confirm_clicked()
 
         on_cbb_type_2_activated(0);
     }
+
+    setWindowModified(true);
 }
 
 
@@ -365,6 +396,7 @@ void MainWindow::on_btn_modify_clicked()
     }
 
     delete cmd;
+    setWindowModified(true);
 }
 
 

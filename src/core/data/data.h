@@ -5,12 +5,16 @@
 #include <map>
 #include <memory>
 #include <mutex>
+#include <QFile>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QDebug>
 
 class Database
 {
 private:
     std::map<std::string, std::shared_ptr<Product>> productsList;
-    const char* filePath;
+    const char* fileName;
 
     static std::unique_ptr<Database> instance;
     static std::mutex mtx;
@@ -23,7 +27,7 @@ public:
     static Database& GetInstance();
     ~Database() {};
 
-    void Save();
+    bool Save();
     void Load();
 
     int GetNumberProduct();
