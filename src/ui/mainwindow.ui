@@ -21,113 +21,13 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <widget class="QWidget" name="sidebar" native="true">
-      <property name="styleSheet">
-       <string notr="true">QWidget
-{
-	background-color: rgb(0, 0, 172);
-}</string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QPushButton" name="btn_addPage">
-         <property name="styleSheet">
-          <string notr="true">QPushButton
-{
-	font: 700 italic 14pt &quot;Times New Roman&quot;;
-	color: white;
-	border: none;
-}</string>
-         </property>
-         <property name="text">
-          <string>Add</string>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btn_removePage">
-         <property name="styleSheet">
-          <string notr="true">QPushButton
-{
-	font: 700 italic 14pt &quot;Times New Roman&quot;;
-	color: white;
-	border: none;
-}</string>
-         </property>
-         <property name="text">
-          <string>Remove</string>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btn_showPage">
-         <property name="styleSheet">
-          <string notr="true">QPushButton
-{
-	font: 700 italic 14pt &quot;Times New Roman&quot;;
-	color: white;
-	border: none;
-}</string>
-         </property>
-         <property name="text">
-          <string>Display</string>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="btn_menu">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton
-{
-	border: none;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>30</width>
-        <height>30</height>
-       </size>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="1" rowspan="2">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="styleSheet">
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_0">
        <layout class="QGridLayout" name="gridLayout_3">
@@ -259,6 +159,9 @@
             <bold>true</bold>
            </font>
           </property>
+          <property name="focusPolicy">
+           <enum>Qt::FocusPolicy::StrongFocus</enum>
+          </property>
           <property name="styleSheet">
            <string notr="true">QLineEdit
 {
@@ -272,6 +175,15 @@
         </item>
         <item row="10" column="1" colspan="2">
          <widget class="QPushButton" name="btn_addProduct">
+          <property name="focusPolicy">
+           <enum>Qt::FocusPolicy::ClickFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton:hover
+{
+	background-color: rgb(0, 124, 0);
+}</string>
+          </property>
           <property name="text">
            <string>Thêm Sản Phẩm</string>
           </property>
@@ -550,6 +462,9 @@
         </item>
         <item row="2" column="2">
          <widget class="QComboBox" name="cbb_type">
+          <property name="focusPolicy">
+           <enum>Qt::FocusPolicy::WheelFocus</enum>
+          </property>
           <property name="styleSheet">
            <string notr="true"/>
           </property>
@@ -808,6 +723,9 @@
             </item>
             <item>
              <widget class="QLineEdit" name="le_search">
+              <property name="focusPolicy">
+               <enum>Qt::FocusPolicy::ClickFocus</enum>
+              </property>
               <property name="styleSheet">
                <string notr="true">QLineEdit
 {
@@ -837,10 +755,13 @@
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QPushButton" name="btn_confirm">
+            <property name="focusPolicy">
+             <enum>Qt::FocusPolicy::ClickFocus</enum>
+            </property>
             <property name="styleSheet">
-             <string notr="true">QPushButton
+             <string notr="true">QPushButton:hover
 {
-
+	background-color: rgb(0, 124, 0);
 }</string>
             </property>
             <property name="text">
@@ -850,6 +771,15 @@
           </item>
           <item>
            <widget class="QPushButton" name="btn_cancel">
+            <property name="focusPolicy">
+             <enum>Qt::FocusPolicy::ClickFocus</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton:hover
+{
+	background-color: rgb(170, 0, 0);
+}</string>
+            </property>
             <property name="text">
              <string>Cancel</string>
             </property>
@@ -894,8 +824,266 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page">
+      <widget class="QWidget" name="page_3">
        <layout class="QGridLayout" name="gridLayout_4">
+        <item row="3" column="1" colspan="2">
+         <widget class="QLabel" name="label_4">
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel
+{
+	color: rgb(0, 0, 0);
+}</string>
+          </property>
+          <property name="text">
+           <string>PRODUCT DETAILS</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignmentFlag::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="2">
+         <widget class="QLineEdit" name="le_extra3_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit
+{
+	color: rgb(40, 145, 141);
+	border: none;
+	background-color: transparent;
+	border-bottom: 3px solid rgb(5, 30, 98);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="2">
+         <widget class="QLineEdit" name="le_extra1_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit
+{
+	color: rgb(40, 145, 141);
+	border: none;
+	background-color: transparent;
+	border-bottom: 3px solid rgb(5, 30, 98);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="4" column="0">
+         <spacer name="horizontalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="8" column="2">
+         <widget class="QLineEdit" name="le_quantity_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit
+{
+	color: rgb(40, 145, 141);
+	border: none;
+	background-color: transparent;
+	border-bottom: 3px solid rgb(5, 30, 98);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="2">
+         <widget class="QLineEdit" name="le_price_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit
+{
+	color: rgb(40, 145, 141);
+	border: none;
+	background-color: transparent;
+	border-bottom: 3px solid rgb(5, 30, 98);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="2">
+         <widget class="QLineEdit" name="le_brand_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit
+{
+	color: rgb(40, 145, 141);
+	border: none;
+	background-color: transparent;
+	border-bottom: 3px solid rgb(5, 30, 98);
+}</string>
+          </property>
+         </widget>
+        </item>
+        <item row="12" column="1">
+         <widget class="QLabel" name="lbl_extra3_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>14</pointsize>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	font: 14pt &quot;Times New Roman&quot;;
+	color: rgb(170, 0, 0);
+}</string>
+          </property>
+          <property name="text">
+           <string>Vôn :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="15" column="1">
+         <spacer name="verticalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Orientation::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="4" column="3">
+         <spacer name="horizontalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="11" column="1">
+         <widget class="QLabel" name="lbl_extra2_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>14</pointsize>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	font: 14pt &quot;Times New Roman&quot;;
+	color: rgb(170, 0, 0);
+}</string>
+          </property>
+          <property name="text">
+           <string>Extra2 :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QLabel" name="lbl_name_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>14</pointsize>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	font: 14pt &quot;Times New Roman&quot;;
+	color: rgb(170, 0, 0);
+}</string>
+          </property>
+          <property name="text">
+           <string>Tên Sản Phẩm :          </string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLabel" name="lbl_type_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>14</pointsize>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	font: 14pt &quot;Times New Roman&quot;;
+	color: rgb(170, 0, 0);
+}</string>
+          </property>
+          <property name="text">
+           <string>Loại :</string>
+          </property>
+         </widget>
+        </item>
         <item row="6" column="2">
          <widget class="QLineEdit" name="le_name_2">
           <property name="font">
@@ -925,8 +1113,38 @@
           </property>
          </widget>
         </item>
+        <item row="9" column="1">
+         <widget class="QLabel" name="lbl_price_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>14</pointsize>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	font: 14pt &quot;Times New Roman&quot;;
+	color: rgb(170, 0, 0);
+}</string>
+          </property>
+          <property name="text">
+           <string>Đơn giá :</string>
+          </property>
+         </widget>
+        </item>
         <item row="14" column="1">
          <widget class="QPushButton" name="btn_outModify">
+          <property name="focusPolicy">
+           <enum>Qt::FocusPolicy::ClickFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton:hover
+{
+	background-color: rgb(170, 0, 0);
+}</string>
+          </property>
           <property name="text">
            <string>Cancel</string>
           </property>
@@ -973,67 +1191,6 @@
           </property>
          </widget>
         </item>
-        <item row="7" column="2">
-         <widget class="QLineEdit" name="le_brand_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="12" column="2">
-         <widget class="QLineEdit" name="le_extra3_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="10" column="1">
-         <widget class="QLabel" name="lbl_extra1_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Extra1 :</string>
-          </property>
-         </widget>
-        </item>
         <item row="4" column="1">
          <widget class="QLabel" name="lbl_type_3">
           <property name="font">
@@ -1052,296 +1209,6 @@
           </property>
           <property name="text">
            <string>Id :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <spacer name="horizontalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="3" column="1" colspan="2">
-         <widget class="QLabel" name="label_4">
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel
-{
-	color: rgb(0, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>PRODUCT DETAILS</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="2">
-         <widget class="QComboBox" name="cbb_type_3">
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <item>
-           <property name="text">
-            <string>Electric</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Water</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Other</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item row="12" column="1">
-         <widget class="QLabel" name="lbl_extra3_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Vôn :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="1">
-         <widget class="QLabel" name="lbl_name_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Tên Sản Phẩm :          </string>
-          </property>
-         </widget>
-        </item>
-        <item row="10" column="2">
-         <widget class="QLineEdit" name="le_extra1_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="2">
-         <widget class="QLineEdit" name="le_quantity_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <spacer name="verticalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="4" column="3">
-         <spacer name="horizontalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="15" column="1">
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="5" column="1">
-         <widget class="QLabel" name="lbl_type_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Loại :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="2">
-         <widget class="QLineEdit" name="le_id_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="placeholderText">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="11" column="1">
-         <widget class="QLabel" name="lbl_extra2_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Extra2 :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="2">
-         <widget class="QLineEdit" name="le_price_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="1">
-         <widget class="QLabel" name="lbl_price_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Đơn giá :</string>
           </property>
          </widget>
         </item>
@@ -1368,9 +1235,96 @@
         </item>
         <item row="14" column="2">
          <widget class="QPushButton" name="btn_modify">
+          <property name="focusPolicy">
+           <enum>Qt::FocusPolicy::ClickFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton:hover
+{
+	background-color: rgb(0, 124, 0);
+}</string>
+          </property>
           <property name="text">
            <string>Modify</string>
           </property>
+         </widget>
+        </item>
+        <item row="4" column="2">
+         <widget class="QLineEdit" name="le_id_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>12</pointsize>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::FocusPolicy::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit
+{
+	color: rgb(40, 145, 141);
+	border: none;
+	background-color: transparent;
+	border-bottom: 3px solid rgb(5, 30, 98);
+}</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="placeholderText">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="1">
+         <widget class="QLabel" name="lbl_extra1_2">
+          <property name="font">
+           <font>
+            <family>Times New Roman</family>
+            <pointsize>14</pointsize>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	font: 14pt &quot;Times New Roman&quot;;
+	color: rgb(170, 0, 0);
+}</string>
+          </property>
+          <property name="text">
+           <string>Extra1 :</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="2">
+         <widget class="QComboBox" name="cbb_type_3">
+          <property name="focusPolicy">
+           <enum>Qt::FocusPolicy::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <item>
+           <property name="text">
+            <string>Electric</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Water</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Other</string>
+           </property>
+          </item>
          </widget>
         </item>
        </layout>
@@ -1393,9 +1347,199 @@
       </property>
      </spacer>
     </item>
+    <item row="0" column="0" rowspan="2">
+     <widget class="QWidget" name="sidebar" native="true">
+      <property name="focusPolicy">
+       <enum>Qt::FocusPolicy::ClickFocus</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget
+{
+	background-color: rgb(0, 0, 172);
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="btn_addPage">
+         <property name="font">
+          <font>
+           <family>Times New Roman</family>
+           <pointsize>15</pointsize>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::NoFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+	border: none;
+}
+QPushButton::pressed
+{
+	color: rgb(0, 173, 0);
+}</string>
+         </property>
+         <property name="text">
+          <string>Add</string>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_removePage">
+         <property name="font">
+          <font>
+           <family>Times New Roman</family>
+           <pointsize>15</pointsize>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::ClickFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+	border: none;
+}
+QPushButton::pressed
+{
+	color: rgb(0, 173, 0);
+}</string>
+         </property>
+         <property name="text">
+          <string>Remove</string>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_showPage">
+         <property name="font">
+          <font>
+           <family>Times New Roman</family>
+           <pointsize>15</pointsize>
+           <italic>true</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::ClickFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton
+{
+	border: none;
+}
+QPushButton::pressed
+{
+	color: rgb(0, 173, 0);
+}</string>
+         </property>
+         <property name="text">
+          <string>Display</string>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="font">
+    <font>
+     <italic>true</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QMenuBar
+{
+	background-color: rgb(65, 65, 65);
+}
+QMenuBar::item
+{
+	background-color: transparent;
+	color: white;
+}
+QMenuBar::item::selected
+{
+	background-color: rgb(212, 212, 212);
+	color: white;
+}
+QMenuBar::item::pressed
+{
+	background-color: rgb(229, 57, 34);
+	color: white;
+}</string>
+   </property>
+  </widget>
  </widget>
+ <tabstops>
+  <tabstop>cbb_type</tabstop>
+  <tabstop>le_name</tabstop>
+  <tabstop>le_brand</tabstop>
+  <tabstop>le_quantity</tabstop>
+  <tabstop>le_price</tabstop>
+  <tabstop>le_extra1</tabstop>
+  <tabstop>le_extra2</tabstop>
+  <tabstop>le_extra3</tabstop>
+  <tabstop>le_name_2</tabstop>
+  <tabstop>le_brand_2</tabstop>
+  <tabstop>le_quantity_2</tabstop>
+  <tabstop>le_price_2</tabstop>
+  <tabstop>le_extra1_2</tabstop>
+  <tabstop>le_extra2_2</tabstop>
+  <tabstop>le_extra3_2</tabstop>
+  <tabstop>le_search</tabstop>
+  <tabstop>btn_confirm</tabstop>
+  <tabstop>btn_cancel</tabstop>
+  <tabstop>cbb_type_2</tabstop>
+  <tabstop>cbb_type_3</tabstop>
+  <tabstop>btn_outModify</tabstop>
+  <tabstop>btn_removePage</tabstop>
+  <tabstop>btn_addProduct</tabstop>
+  <tabstop>btn_showPage</tabstop>
+  <tabstop>le_id_2</tabstop>
+  <tabstop>btn_addPage</tabstop>
+  <tabstop>tbw</tabstop>
+  <tabstop>btn_modify</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

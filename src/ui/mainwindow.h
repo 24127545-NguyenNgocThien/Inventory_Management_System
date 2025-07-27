@@ -22,8 +22,12 @@ public:
 
 private slots:
 
-    //thao tác với menubar (ẩn/hiện/chuyển trang)
-    void on_btn_menu_clicked();
+    void ActionUndo();
+    void ActionRedo();
+    void ActionMenu();
+
+    //thao tác với sideBar (ẩn/hiện/chuyển trang)
+    // void on_btn_menu_clicked();
     void on_btn_addPage_clicked();
     void on_btn_removePage_clicked();
     void on_btn_showPage_clicked();

@@ -12,10 +12,11 @@ private:
 
 public:
     CommandManager();
+    ~CommandManager();
 
     bool ExecuteCommand(Command* cmd);
-    void Undo();
-    void Redo();
+    bool Undo();
+    bool Redo();
 };
 
 #endif // COMMANDMANAGER_H

@@ -20,7 +20,21 @@ bool CommandManager::ExecuteCommand(Command* cmd)
     return false;
 }
 
-void CommandManager::Undo()
+CommandManager::~CommandManager()
+{
+    while(!undoStack.empty())
+    {
+        delete undoStack.top();
+        undoStack.pop();
+    }
+    while(!redoStack.empty())
+    {
+        delete redoStack.top();
+        redoStack.pop();
+    }
+}
+
+bool CommandManager::Undo()
 {
     if(!undoStack.empty())
     {
@@ -30,11 +44,12 @@ void CommandManager::Undo()
 
         redoStack.push(cmd);
 
-        delete cmd;
+        return true;
     }
+    return false;
 }
 
-void CommandManager::Redo()
+bool CommandManager::Redo()
 {
     if(!redoStack.empty())
     {
@@ -44,6 +59,7 @@ void CommandManager::Redo()
 
         undoStack.push(cmd);
 
-        delete cmd;
+        return true;
     }
+    return false;
 }

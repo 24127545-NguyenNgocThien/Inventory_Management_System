@@ -18,6 +18,20 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
     ui->setupUi(this);
     setWindowTitle("MainWindow[*]");
     ui->sidebar->setHidden(sidebarStatus);
+
+    QAction* act_undo = new QAction("Undo", this);
+    connect(act_undo, SIGNAL(triggered(bool)), this, SLOT(ActionUndo()));
+    act_undo->setShortcut(QKeySequence::Undo);
+    QAction* act_redo = new QAction("Redo", this);
+    connect(act_redo, SIGNAL(triggered(bool)), this, SLOT(ActionRedo()));
+    act_undo->setShortcut(QKeySequence::Redo);
+    QAction* act_menu = new QAction("Menu", this);
+    connect(act_menu, SIGNAL(triggered(bool)), this, SLOT(ActionMenu()));
+    act_menu->setShortcut(QKeySequence("Ctrl+M"));
+    ui->menuBar->addAction(act_undo);
+    ui->menuBar->addAction(act_redo);
+    ui->menuBar->addAction(act_menu);
+
     ui->stackedWidget->setCurrentIndex(0);
     ui->tbw->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
     ui->tbw->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
@@ -42,7 +56,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
             );
 
         if (reply == QMessageBox::Save) {
-            if (!db->Save()) {  // Hàm lưu của bạn
+            if (!db->Save()) {
                 event->ignore();  // Không đóng nếu lưu thất bại
                 return;
             }
@@ -78,14 +92,31 @@ void MainWindow::Display(std::map<std::string, std::shared_ptr<Product>> list)
         row++;
     }
 }
-
 //===============================================================
-void MainWindow::on_btn_menu_clicked()
+
+void MainWindow::ActionUndo()
+{
+    if(cmdManager->Undo())
+    {
+        //hiện bảng log
+    }
+}
+
+void MainWindow::ActionRedo()
+{
+    if(cmdManager->Redo())
+    {
+        //hiện bảng log
+    }
+}
+
+void MainWindow::ActionMenu()
 {
     sidebarStatus = !sidebarStatus;
     ui->sidebar->setHidden(sidebarStatus);
 }
 
+//===============================================================
 
 void MainWindow::on_btn_addPage_clicked()
 {
@@ -200,7 +231,7 @@ void MainWindow::on_btn_addProduct_clicked()
                                  "xem sản phẩm đã tồn tại trước đó chưa?");
     }
 
-    delete cmd;
+    // delete cmd;
     ui->le_name->clear();
     ui->le_brand->clear();
     ui->le_quantity->clear();
@@ -230,7 +261,7 @@ void MainWindow::on_btn_confirm_clicked()
         {
             auto cmd = new DeleteCommand(ID);
             cmdManager->ExecuteCommand(cmd);
-            delete cmd;
+            // delete cmd;
         }
         productIds.clear();
 
@@ -361,7 +392,6 @@ void MainWindow::on_tbw_itemDoubleClicked(QTableWidgetItem *item)
         ui->le_brand_2->setText(product[ID]->GetBrand());
         ui->le_quantity_2->setText(QString::number(product[ID]->GetQuantity()));
         ui->le_price_2->setText(QString::number(product[ID]->GetPrice()));
-        ui->btn_menu->hide();
         ui->sidebar->hide();
     }
 }
@@ -395,7 +425,7 @@ void MainWindow::on_btn_modify_clicked()
         QMessageBox::information(this, "Thông báo", "Không thể sửa đổi thông tin sản phẩm này");
     }
 
-    delete cmd;
+    // delete cmd;
     setWindowModified(true);
 }
 
@@ -403,6 +433,4 @@ void MainWindow::on_btn_modify_clicked()
 void MainWindow::on_btn_outModify_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
-    ui->btn_menu->show();
 }
-
