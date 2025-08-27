@@ -88,7 +88,8 @@ void MainWindow::Display(std::map<std::string, std::shared_ptr<Product>> list)
         ui->tbw->setItem(row, col++, new QTableWidgetItem(pair.second->GetName()));
         ui->tbw->setItem(row, col++, new QTableWidgetItem(pair.second->GetBrand()));
         ui->tbw->setItem(row, col++, new QTableWidgetItem(QString::number(pair.second->GetQuantity())));
-        ui->tbw->setItem(row, col, new QTableWidgetItem(QString::number(pair.second->GetPrice())));
+        ui->tbw->setItem(row, col, new QTableWidgetItem(QString::number(pair.second->GetSalePrice())));
+        ui->tbw->setItem(row, col, new QTableWidgetItem(QString::number(pair.second->GetImportPrice())));
         row++;
     }
 }
@@ -210,7 +211,7 @@ void MainWindow::on_btn_addProduct_clicked()
     productInfo.name = ui->le_name->text();
     productInfo.brand = ui->le_brand->text();
     productInfo.quantity = ui->le_quantity->text().toInt();
-    productInfo.price = ui->le_price->text().toDouble();
+    productInfo.salePrice = ui->le_price->text().toDouble();
     if(!ui->le_extra1->text().isEmpty())
         productInfo.extra1 = ui->le_extra1->text();
     if(!ui->le_extra2->text().isEmpty())
@@ -391,7 +392,7 @@ void MainWindow::on_tbw_itemDoubleClicked(QTableWidgetItem *item)
         ui->le_name_2->setText(product[ID]->GetName());
         ui->le_brand_2->setText(product[ID]->GetBrand());
         ui->le_quantity_2->setText(QString::number(product[ID]->GetQuantity()));
-        ui->le_price_2->setText(QString::number(product[ID]->GetPrice()));
+        ui->le_price_2->setText(QString::number(product[ID]->GetSalePrice()));
         ui->sidebar->hide();
     }
 }
@@ -406,7 +407,7 @@ void MainWindow::on_btn_modify_clicked()
     newInfo.name = ui->le_name_2->text();
     newInfo.brand = ui->le_brand_2->text();
     newInfo.quantity = ui->le_quantity_2->text().toInt();
-    newInfo.price = ui->le_price_2->text().toDouble();
+    newInfo.salePrice = ui->le_price_2->text().toDouble();
     if(!ui->le_extra1_2->text().isEmpty())
         newInfo.extra1 = ui->le_extra1_2->text();
     if(!ui->le_extra2_2->text().isEmpty())

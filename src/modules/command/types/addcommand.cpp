@@ -14,7 +14,7 @@ bool AddCommand::Execute()
 {
     auto product = ProductFactory::CreateProduct(type, productInfo);
 
-    if(product->GetQuantity() < 0 || product->GetPrice() <= 0)
+    if(product->GetQuantity() < 0 || product->GetSalePrice() <= 0 || product->GetImportPrice() <= 0)
     {
         return false;
     }

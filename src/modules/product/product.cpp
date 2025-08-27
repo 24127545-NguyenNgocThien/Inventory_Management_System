@@ -3,7 +3,8 @@
 
 Product::Product(const ProductParam& productInfo)
     : name(productInfo.name), brand(productInfo.brand), id(productInfo.id),
-      quantity(productInfo.quantity), price(productInfo.price)
+    quantity(productInfo.quantity), importPrice(productInfo.importPrice),
+    salePrice(productInfo.salePrice)
 {}
 
 QString Product::GetName()
@@ -26,9 +27,14 @@ int Product::GetQuantity()
     return quantity;
 }
 
-double Product::GetPrice()
+double Product::GetSalePrice()
 {
-    return price;
+    return salePrice;
+}
+
+double Product::GetImportPrice()
+{
+    return importPrice;
 }
 
 void Product::SetName(const QString& name)
@@ -50,7 +56,12 @@ void Product::SetQuantity(int quantity)
     this->quantity = quantity;
 }
 
-void Product::SetPrice(double price)
+void Product::SetSalePrice(double price)
 {
-    this->price = price;
+    this->salePrice = price;
+}
+
+void Product::SetImportPrice(double price)
+{
+    this->importPrice = price;
 }

@@ -9,12 +9,15 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QDebug>
+#include "invoice.h"
 
 class Database
 {
 private:
     std::map<std::string, std::shared_ptr<Product>> productsList;
     const char* fileName;
+    QString invoiceFileName;      // NEW
+    std::vector<Invoice> invoices; // NEW
 
     static std::unique_ptr<Database> instance;
     static std::mutex mtx;
@@ -35,7 +38,12 @@ public:
     void AddProduct(std::shared_ptr<Product> product);
     void DeleteProduct(const std::string& id);
     void EditProduct(std::shared_ptr<Product> oldProduct, const ProductParam& newInfo);
-    std::map<std::string, std::shared_ptr<Product>> GetProduct(const std::string& id);
+    std::map<std::string, std::shared_ptr<Product>> GetProduct(const std::string& id) const;
+
+    bool SaveInvoices(); // NEW
+    void LoadInvoices(); // NEW
+    void AddInvoice(const Invoice& inv);         // NEW
+    const std::vector<Invoice>& GetInvoices() const; // NEW
 };
 
 #endif // DATA_H

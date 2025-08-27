@@ -4,6 +4,7 @@
 
 #include <QString>
 #include <QStringList>
+#include <QDateTime>
 #include <string>
 #include "product.h"
 #include <map>
@@ -51,7 +52,7 @@ inline std::string getFirstLetters(const QString& input)
 
 
 
-//========================hàm tạo id=========================
+//========================hàm tạo id sản phẩm=========================
 inline std::string CreateId(ProductType type, QString name, QString brand,
                             const std::map<std::string, std::shared_ptr<Product>>& list)
 {
@@ -88,6 +89,16 @@ inline ProductType DetermineType(int index)
     case 3: return ProductType::Other;
     default: return ProductType::None;
     }
+}
+
+
+//==================hàm tạo id hóa đơn===========================
+static std::string GenerateInvoiceId()
+{
+    // VD: INV-YYYYMMDD-hhmmsszzz
+    QDateTime now = QDateTime::currentDateTime();
+    return QString("INV-%1")
+        .arg(now.toString("yyyyMMdd-hhmmsszzz")).toStdString();
 }
 
 #endif // OTHERUTILS_H

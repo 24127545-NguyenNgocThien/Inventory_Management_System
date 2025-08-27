@@ -10,4 +10,5 @@ target_link_libraries(commandLib PUBLIC
 
 target_include_directories(commandLib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/../invoice
 )

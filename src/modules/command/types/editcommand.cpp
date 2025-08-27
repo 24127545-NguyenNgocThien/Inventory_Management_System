@@ -15,7 +15,7 @@ EditCommand::EditCommand(const std::string& proId, const ProductParam& info)
 
 bool EditCommand::Execute()
 {
-    if(newInfo.quantity < 0 || newInfo.price <= 0)
+    if(newInfo.quantity < 0 || newInfo.salePrice <= 0 || newInfo.importPrice <= 0)
     {
         return false;
     }

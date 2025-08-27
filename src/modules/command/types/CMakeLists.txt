@@ -7,6 +7,12 @@ add_library(commandTypesLib STATIC
 
     editcommand.h
     editcommand.cpp
+
+    importCommand.h
+    importCommand.cpp
+
+    exportCommand.h
+    exportCommand.cpp
 )
 
 target_link_libraries(commandTypesLib PRIVATE
@@ -20,4 +26,5 @@ target_include_directories(commandTypesLib PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/../../product/factory
     ${CMAKE_CURRENT_SOURCE_DIR}/../../../utils/other
     ${CMAKE_CURRENT_SOURCE_DIR}/../../../core/data
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../invoice
 )

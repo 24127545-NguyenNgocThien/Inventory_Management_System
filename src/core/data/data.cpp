@@ -1,11 +1,14 @@
 #include "data.h"
 #include <QJsonArray>
 #include "productfactory.h"
+#include <QFileInfo>
 
 std::unique_ptr<Database> Database::instance;
 std::mutex Database::mtx;
 
-Database::Database() : fileName("inventory.json")
+Database::Database()
+    : fileName("inventory.json")
+    , invoiceFileName("invoices.json")
 {}
 
 Database& Database::GetInstance()
@@ -31,7 +34,8 @@ bool Database::Save()
         product["name"] = pair.second->GetName();
         product["brand"] = pair.second->GetBrand();
         product["quantity"] = pair.second->GetQuantity();
-        product["price"] = pair.second->GetPrice();
+        product["salePrice"] = pair.second->GetSalePrice();
+        product["importPrice"] = pair.second->GetImportPrice();
         if(!pair.second->GetExtraData1().isEmpty())
             product["extra1"] = pair.second->GetExtraData1();
         if(!std::isnan(pair.second->GetExtraData2()))
@@ -98,7 +102,8 @@ void Database::Load()
         info.name = product["name"].toString();
         info.brand = product["brand"].toString();
         info.quantity = product["quantity"].toInt();
-        info.price = product["price"].toDouble();
+        info.salePrice = product["salePrice"].toDouble();
+        info.importPrice = product["importPrice"].toDouble();
         if (product.contains("extra1"))
             info.extra1 = product["extra1"].toString();
         if (product.contains("extra2"))
@@ -153,8 +158,11 @@ void Database::EditProduct(std::shared_ptr<Product> oldProduct, const ProductPar
         oldProduct->SetBrand(newInfo.brand);
     if(oldProduct->GetQuantity() != newInfo.quantity)
         oldProduct->SetQuantity(newInfo.quantity);
-    if(oldProduct->GetPrice() != newInfo.price)
-        oldProduct->SetPrice(newInfo.price);
+    if(oldProduct->GetSalePrice() != newInfo.salePrice)
+        oldProduct->SetSalePrice(newInfo.salePrice);
+    if (oldProduct->GetImportPrice() != newInfo.importPrice)
+        oldProduct->SetImportPrice(newInfo.importPrice);
+
 
     if(oldProduct->GetExtraData1() != newInfo.extra1)
         oldProduct->SetExtraData1(newInfo.extra1);
@@ -164,7 +172,7 @@ void Database::EditProduct(std::shared_ptr<Product> oldProduct, const ProductPar
         oldProduct->SetExtraData3(newInfo.extra3);
 }
 
-std::map<std::string, std::shared_ptr<Product>> Database::GetProduct(const std::string& id)
+std::map<std::string, std::shared_ptr<Product>> Database::GetProduct(const std::string& id) const
 {
     if(id.empty())
     {
@@ -185,4 +193,59 @@ std::map<std::string, std::shared_ptr<Product>> Database::GetProduct(const std::
     }
 
     return ret;
+}
+
+bool Database::SaveInvoices()
+{
+    QJsonObject root;
+    QJsonArray arr;
+    for(const auto& inv : invoices)
+        arr.append(inv.ToJson());
+    root["invoice list"] = arr;
+
+    QFile file(invoiceFileName);
+    if(!file.open(QIODevice::WriteOnly))
+    {
+        qWarning() << "Không thể mở file:" << invoiceFileName; return false;
+    }
+    file.write(QJsonDocument(root).toJson(QJsonDocument::Indented));
+    file.close();
+    return true;
+}
+
+void Database::LoadInvoices()
+{
+    QFileInfo fi(invoiceFileName);
+    if(!fi.exists()) return;
+
+    QFile file(invoiceFileName);
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        qWarning() << "Không thể mở file:" << invoiceFileName; return;
+    }
+    QByteArray data = file.readAll();
+    file.close();
+
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    if(doc.isNull() || !doc.isObject()) return;
+
+    QJsonObject root = doc.object();
+    if(!root.contains("invoice list") || !root["invoice list"].isArray()) return;
+
+    invoices.clear();
+    QJsonArray arr = root["invoice list"].toArray();
+    for(const auto& v : arr)
+    {
+        if(v.isObject()) invoices.push_back(Invoice::FromJson(v.toObject()));
+    }
+}
+
+void Database::AddInvoice(const Invoice& inv)
+{
+    invoices.push_back(inv);
+}
+
+const std::vector<Invoice>& Database::GetInvoices() const
+{
+    return invoices;
 }
