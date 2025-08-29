@@ -2,7 +2,10 @@ add_library(uiLib STATIC
     mainwindow.h
     mainwindow.cpp
     mainwindow.ui
-    productDialog.h productDialog.cpp
+    productDialog.h
+    productDialog.cpp
+    selectionDialog.h
+    selectionDialog.cpp
 )
 
 target_link_libraries(uiLib PRIVATE
