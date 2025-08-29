@@ -9,9 +9,10 @@
 #include "importCommand.h"
 #include "invoice.h"
 #include "invoiceService.h"
-#include <QMessageBox>
 #include <QCloseEvent>
 #include <QLabel>
+#include "notify.h"
+
 
 MainWindow::MainWindow(Database& data, QWidget *parent)
     : QMainWindow(parent)
@@ -65,31 +66,18 @@ MainWindow::~MainWindow()
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     if (isWindowModified()) {
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(
-            this,
-            "Xác nhận",
-            "Bạn có muốn lưu thay đổi?",
-            QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel
-            );
-
-        if (reply == QMessageBox::Save) {
+        if (Notify::Confirm(this, "Bạn có muốn lưu thay đổi?", "Xác nhận")) {
             if (!db->Save() || !db->SaveInvoices()) {
                 event->ignore();  // Không đóng nếu lưu thất bại
                 return;
             }
-        }
-        else if (reply == QMessageBox::Cancel) {
-            event->ignore();  // Không đóng
+        } else {
+            event->ignore();  // Không đóng nếu người dùng chọn No
             return;
         }
     }
     event->accept();  // Cho phép đóng
 }
-
-
-
-
 
 //=======================Helper: thêm dòng vào bảng====================================
 void MainWindow::addRow(QTableWidget* table, QList<QString> data)
@@ -212,19 +200,13 @@ void MainWindow::on_btnAdd_clicked()
 
         Command* cmd = new AddCommand(type, productInfo);
         if (cmdManager->ExecuteCommand(cmd)) {
-            QMessageBox::information(this, "Thành công", "Thêm sản phẩm thành công! "
-                                                         "Hãy làm mới trang");
-
-            // Bổ sung: Cập nhật lại bảng sản phẩm sau khi thêm thành công
+            Notify::Info(this, "Thêm sản phẩm thành công! Hãy làm mới trang", "Thành công");
             fillOutProductTable();
-
-            setWindowModified(true); // NEW: Đánh dấu cửa sổ đã thay đổi
-            //updateStatusBar(); // NEW: Cập nhật trạng thái thanh trạng thái
-
+            setWindowModified(true);
         } else {
-            QMessageBox::warning(this, "Thất bại", "Thêm sản phẩm thất bại\n"
-                                                   "hãy kiểm tra lại thông tin sản phẩm hoặc\n"
-                                                   "xem sản phẩm đã tồn tại trước đó chưa?");
+            Notify::Warning(this, "Thêm sản phẩm thất bại.\n"
+                                  "Hãy kiểm tra lại thông tin sản phẩm hoặc\n"
+                                  "xem sản phẩm đã tồn tại trước đó chưa?", "Thất bại");
         }
     }
 }
@@ -233,7 +215,11 @@ void MainWindow::on_btnDelete_clicked()
 {
     auto selected = ui->tblProducts->currentRow();
     if (selected < 0) {
-        QMessageBox::warning(this, "Lỗi", "Hãy chọn sản phẩm để xóa!");
+        Notify::Warning(this, "Hãy chọn sản phẩm để xóa!", "Lỗi");
+        return;
+    }
+
+    if (!Notify::Confirm(this, "Bạn có chắc muốn xóa sản phẩm này?", "Xác nhận")) {
         return;
     }
 
@@ -243,8 +229,13 @@ void MainWindow::on_btnDelete_clicked()
 
     // Xoá sản phẩm
     Command* cmd = new DeleteCommand(id);
-    cmdManager->ExecuteCommand(cmd);
-    ui->tblProducts->removeRow(selected);
+    if (cmdManager->ExecuteCommand(cmd)) {
+        ui->tblProducts->removeRow(selected);
+        Notify::Info(this, "Xóa sản phẩm thành công!", "Thành công");
+        setWindowModified(true);
+    } else {
+        Notify::Error(this, "Không thể xóa sản phẩm!", "Lỗi");
+    }
 
 }
 
@@ -252,7 +243,7 @@ void MainWindow::on_btnEdit_clicked()
 {
     auto selected = ui->tblProducts->currentRow();
     if (selected < 0) {
-        QMessageBox::warning(this, "Lỗi", "Hãy chọn sản phẩm để sửa!");
+        Notify::Warning(this, "Hãy chọn sản phẩm để sửa!", "Lỗi");
         return;
     }
 
@@ -305,19 +296,13 @@ void MainWindow::on_btnEdit_clicked()
 
         Command* cmd = new EditCommand(id, productInfo);
         if (cmdManager->ExecuteCommand(cmd)) {
-            QMessageBox::information(this, "Thành công", "Chỉnh sửa sản phẩm thành công! "
-                                                         "Hãy làm mới trang");
-
-            // Bổ sung: Cập nhật lại bảng sản phẩm sau khi thêm thành công
+            Notify::Info(this, "Chỉnh sửa sản phẩm thành công! Hãy làm mới trang", "Thành công");
             fillOutProductTable();
-
-            setWindowModified(true); // NEW: Đánh dấu cửa sổ đã thay đổi
-            //updateStatusBar(); // NEW: Cập nhật trạng thái thanh trạng thái
-
+            setWindowModified(true);
         } else {
-            QMessageBox::warning(this, "Thất bại", "Chỉnh sửa sản phẩm thất bại\n"
-                                                   "hãy kiểm tra lại thông tin sản phẩm hoặc\n"
-                                                   "xem sản phẩm đã tồn tại trước đó chưa?");
+            Notify::Warning(this, "Chỉnh sửa sản phẩm thất bại.\n"
+                                  "Hãy kiểm tra lại thông tin sản phẩm hoặc\n"
+                                  "xem sản phẩm đã tồn tại trước đó chưa?", "Thất bại");
         }
     }
 }
@@ -327,25 +312,28 @@ void MainWindow::on_btnImport_clicked()
     SelectionDialog dlg(this);
     QList<SelectedProduct> all = buildProductListFromDb(db);
     dlg.loadData(all);
+
     if (dlg.exec() == QDialog::Accepted) {
         auto sel = dlg.getSelections();
+        bool allOk = true;
         for (const auto &p : sel) {
-            qDebug() << "Selected:" << p.id << p.name << "qty=" << p.quantity;\
+            qDebug() << "Selected:" << p.id << p.name << "qty=" << p.quantity;
             Command* cmd = new ImportCommand(p.id.toStdString(), p.quantity);
-            cmdManager->ExecuteCommand(cmd);
+            if (!cmdManager->ExecuteCommand(cmd)) {
+                allOk = false;
+            }
         }
 
-        // Bổ sung: Cập nhật lại bảng sản phẩm sau khi thêm thành công
-        fillOutProductTable();
+        if (allOk) {
+            Notify::Info(this, "Nhập kho thành công!", "Thành công");
+        } else {
+            Notify::Warning(this, "Một số sản phẩm không thể nhập kho!", "Cảnh báo");
+        }
 
-        setWindowModified(true); // NEW: Đánh dấu cửa sổ đã thay đổi
-        //updateStatusBar(); // NEW: Cập nhật trạng thái thanh trạng thái
+        fillOutProductTable();
+        setWindowModified(true);
     }
 }
-
-
-
-
 
 //============================Invoice Page=========================
 
@@ -411,7 +399,12 @@ void MainWindow::on_btnSave_2_clicked()
         item.quantity = item2->text().toInt();
         items.push_back(item);
     }
-    InvoiceService::CreateInvoice(items, cmdManager);
+
+    if (InvoiceService::CreateInvoice(items, cmdManager)) {
+        Notify::Info(this, "Lưu hóa đơn thành công!", "Thành công");
+    } else {
+        Notify::Error(this, "Lưu hóa đơn thất bại! Kiểm tra lại tồn kho.", "Lỗi");
+    }
 
     ui->tblFormInvoice->clearContents();
     ui->tblFormInvoice->setRowCount(0);

@@ -1,6 +1,0 @@
-[2025-08-29 12:21:50] [INFO] Khởi tạo AddCommand cho sản phẩm: 12  (brand: 123)
-[2025-08-29 12:21:50] [INFO] Đã thêm sản phẩm thành công: E111 (số lượng: 123, giá bán: 1230)
-[2025-08-29 12:22:01] [INFO] Khởi tạo DeleteCommand cho sản phẩm id=O111
-[2025-08-29 12:22:01] [INFO] Đã xóa sản phẩm thành công: O111 (name=1, brand=1)
-[2025-08-29 12:22:20] [INFO] Khởi tạo AddCommand cho sản phẩm: 123 (brand: 123)
-[2025-08-29 12:22:20] [INFO] Đã thêm sản phẩm thành công: W111 (số lượng: 123, giá bán: 1230)

@@ -16,6 +16,7 @@ target_link_libraries(uiLib PRIVATE
     dataLib
     invoiceLib
     reportLib
+    notifyLib
 )
 
 target_include_directories(uiLib PUBLIC
@@ -26,4 +27,5 @@ target_include_directories(uiLib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../modules/invoice
     ${CMAKE_CURRENT_SOURCE_DIR}/../modules/report
     ${CMAKE_CURRENT_SOURCE_DIR}/../utils/other
+    ${CMAKE_CURRENT_SOURCE_DIR}/../utils/notifyLib
 )
