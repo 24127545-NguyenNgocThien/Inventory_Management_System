@@ -84,11 +84,20 @@ inline ProductType DetermineType(int index)
 {
     switch(index)
     {
-    case 1: return ProductType::Electric;
-    case 2: return ProductType::Water;
-    case 3: return ProductType::Other;
+    case 0: return ProductType::Electric;
+    case 1: return ProductType::Water;
+    case 2: return ProductType::Other;
     default: return ProductType::None;
     }
+}
+
+inline int DetermineType(const std::string& id)
+{
+    if (id.empty()) return -1;
+
+    if (id[0] == 'E') return 0;
+    if (id[0] == 'W') return 1;
+    if (id[0] == 'O') return 2;
 }
 
 

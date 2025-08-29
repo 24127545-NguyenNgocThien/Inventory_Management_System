@@ -20,51 +20,35 @@ public:
     MainWindow(Database& data, QWidget *parent = nullptr);
     ~MainWindow();
 
+    void addProductRow(const std::string& id, const QString& name, const QString& brand,
+                       double importPrice, double salePrice, int quantity);
+
 private slots:
 
-    void ActionUndo();
-    void ActionRedo();
-    void ActionMenu();
+    void on_txtSearch_textChanged(const QString &arg1);
 
-    //thao tác với sideBar (ẩn/hiện/chuyển trang)
-    // void on_btn_menu_clicked();
-    void on_btn_addPage_clicked();
-    void on_btn_removePage_clicked();
-    void on_btn_showPage_clicked();
+    void on_btnAdd_clicked();
 
+    void on_btnDelete_clicked();
 
-    //hỗ trợ thêm sản phẩm
-    void on_cbb_type_activated(int index);
-    void on_btn_addProduct_clicked();
+    void on_btnEdit_clicked();
 
-    //xóa sản phẩm đc chọn
-    void on_btn_confirm_clicked();
-    void on_btn_cancel_clicked();
+    void on_btnAdd_2_clicked();
 
-    //thanh tìm kiếm
-    void on_le_search_textChanged(const QString &arg1);
+    void on_btnDelete_2_clicked();
 
-    //hỗ trợ show sp theo loại
-    void on_cbb_type_2_activated(int index);
-
-    //hỗ trợ chọn sp khi muốn delete / edit
-    void on_tbw_itemDoubleClicked(QTableWidgetItem *item);
-
-    //hỗ trợ edit thông tin sp
-    void on_btn_modify_clicked();
-    void on_btn_outModify_clicked();
+    void on_btnSave_2_clicked();
 
 private:
     Ui::MainWindow *ui;
-    CommandManager* cmdManager;
     Database* db;
-    bool sidebarStatus;
-    std::vector<std::string> productIds;
+    CommandManager* cmdManager;
+
+    void updateStatusBar();
 
 protected:
     void closeEvent(QCloseEvent *event) override;
     bool MaybeSave();
 
-    void Display(std::map<std::string, std::shared_ptr<Product>> list);
 };
 #endif // MAINWINDOW_H

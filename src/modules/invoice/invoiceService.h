@@ -9,8 +9,7 @@ class InvoiceService
 public:
     // Tạo hoá đơn: nếu có mặt hàng nào xuất kho thất bại (thiếu hàng) thì rollback.
     static bool CreateInvoice(const std::vector<InvoiceItem>& items,
-                              CommandManager& cmdManager,
-                              Invoice& outInvoice);
+                              CommandManager* cmdManager);
 };
 
 #endif // INVOICESERVICE_H

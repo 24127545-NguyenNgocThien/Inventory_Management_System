@@ -17,7 +17,7 @@ private:
     std::map<std::string, std::shared_ptr<Product>> productsList;
     const char* fileName;
     QString invoiceFileName;      // NEW
-    std::vector<Invoice> invoices; // NEW
+    std::vector<Invoice*> invoices; // NEW
 
     static std::unique_ptr<Database> instance;
     static std::mutex mtx;
@@ -42,8 +42,8 @@ public:
 
     bool SaveInvoices(); // NEW
     void LoadInvoices(); // NEW
-    void AddInvoice(const Invoice& inv);         // NEW
-    const std::vector<Invoice>& GetInvoices() const; // NEW
+    void AddInvoice(Invoice* inv);         // NEW
+    const std::vector<Invoice*>& GetInvoices() const; // NEW
 };
 
 #endif // DATA_H

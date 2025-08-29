@@ -200,7 +200,7 @@ bool Database::SaveInvoices()
     QJsonObject root;
     QJsonArray arr;
     for(const auto& inv : invoices)
-        arr.append(inv.ToJson());
+        arr.append(inv->ToJson());
     root["invoice list"] = arr;
 
     QFile file(invoiceFileName);
@@ -236,16 +236,16 @@ void Database::LoadInvoices()
     QJsonArray arr = root["invoice list"].toArray();
     for(const auto& v : arr)
     {
-        if(v.isObject()) invoices.push_back(Invoice::FromJson(v.toObject()));
+        if(v.isObject()) invoices.push_back(new Invoice(Invoice::FromJson(v.toObject())));
     }
 }
 
-void Database::AddInvoice(const Invoice& inv)
+void Database::AddInvoice(Invoice* inv)
 {
     invoices.push_back(inv);
 }
 
-const std::vector<Invoice>& Database::GetInvoices() const
+const std::vector<Invoice*>& Database::GetInvoices() const
 {
     return invoices;
 }

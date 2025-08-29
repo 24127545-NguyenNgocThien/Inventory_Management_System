@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1035</width>
+    <height>745</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,734 +16,451 @@
   <property name="styleSheet">
    <string notr="true">QMainWindow
 {
-	background-color: rgb(255, 255, 255);
+	
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1" rowspan="2">
+    <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
-      <widget class="QWidget" name="page_0">
+      <widget class="QWidget" name="productsPage">
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
-         <widget class="QLabel" name="label">
-          <property name="font">
-           <font>
-            <pointsize>70</pointsize>
-            <italic>true</italic>
-            <bold>true</bold>
-            <underline>false</underline>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel
-{
-	color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:0.166 rgba(255, 255, 0, 255), stop:0.333 rgba(0, 255, 0, 255), stop:0.5 rgba(0, 255, 255, 255), stop:0.666 rgba(0, 0, 255, 255), stop:0.833 rgba(255, 0, 255, 255), stop:1 rgba(255, 0, 0, 255));
-
-}</string>
-          </property>
-          <property name="text">
-           <string>WELCOME</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-          <property name="wordWrap">
-           <bool>false</bool>
-          </property>
-          <property name="openExternalLinks">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_1">
-       <layout class="QGridLayout" name="gridLayout_5">
-        <item row="8" column="2">
-         <widget class="QLineEdit" name="le_extra2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1" colspan="2">
-         <widget class="QLabel" name="label_2">
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel
-{
-	color: rgb(0, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>ADD NEW PRODUCT</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QLabel" name="lbl_brand">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Hãng Sản Xuất :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="1">
-         <widget class="QLabel" name="lbl_extra1">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Extra1 :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="2">
-         <widget class="QLineEdit" name="le_price">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="focusPolicy">
-           <enum>Qt::FocusPolicy::StrongFocus</enum>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="10" column="1" colspan="2">
-         <widget class="QPushButton" name="btn_addProduct">
-          <property name="focusPolicy">
-           <enum>Qt::FocusPolicy::ClickFocus</enum>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton:hover
-{
-	background-color: rgb(0, 124, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Thêm Sản Phẩm</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLabel" name="lbl_type">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Loại :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <spacer name="horizontalSpacer_6">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="8" column="1">
-         <widget class="QLabel" name="lbl_extra2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Extra2 :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="1">
-         <widget class="QLabel" name="lbl_quantity">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Số Lượng :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="2">
-         <widget class="QLineEdit" name="le_extra1">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QLabel" name="lbl_name">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Tên Sản Phẩm :          </string>
-          </property>
-         </widget>
-        </item>
-        <item row="11" column="1">
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="1">
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="6" column="1">
-         <widget class="QLabel" name="lbl_price">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Đơn giá :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="2">
-         <widget class="QLineEdit" name="le_brand">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="2">
-         <widget class="QLineEdit" name="le_extra3">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="1">
-         <widget class="QLabel" name="lbl_extra3">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Vôn :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="2">
-         <widget class="QLineEdit" name="le_quantity">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="2">
-         <widget class="QLineEdit" name="le_name">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="placeholderText">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="QComboBox" name="cbb_type">
-          <property name="focusPolicy">
-           <enum>Qt::FocusPolicy::WheelFocus</enum>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <property name="text">
-            <string>none</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Electric</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Water</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Other</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item row="4" column="3">
-         <spacer name="horizontalSpacer_7">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_2">
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="1" column="0" colspan="5">
-         <widget class="QTableWidget" name="tbw">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="contextMenuPolicy">
-           <enum>Qt::ContextMenuPolicy::DefaultContextMenu</enum>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QTableWidget
-{
-	color: black;
-	background-color: rgb(255, 255, 255);
-	gridline-color:3px solid rgb(0, 0, 127);
-	font: 12pt &quot;Times New Roman&quot;;
-	selection-color: rgb(0, 177, 0);
-}</string>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Shape::NoFrame</enum>
-          </property>
-          <property name="midLineWidth">
-           <number>1</number>
-          </property>
-          <property name="editTriggers">
-           <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-          </property>
-          <property name="selectionMode">
-           <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
-          </property>
-          <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-          </property>
-          <property name="gridStyle">
-           <enum>Qt::PenStyle::SolidLine</enum>
-          </property>
-          <column>
-           <property name="text">
-            <string>Chọn</string>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>0</red>
-             <green>0</green>
-             <blue>107</blue>
-            </color>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>ID</string>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>0</red>
-             <green>0</green>
-             <blue>107</blue>
-            </color>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Tên sản phẩm</string>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>0</red>
-             <green>0</green>
-             <blue>107</blue>
-            </color>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Nhãn hàng</string>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>0</red>
-             <green>0</green>
-             <blue>107</blue>
-            </color>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Số lượng</string>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>0</red>
-             <green>0</green>
-             <blue>107</blue>
-            </color>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Giá thành</string>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>0</red>
-             <green>0</green>
-             <blue>107</blue>
-            </color>
-           </property>
-          </column>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <spacer name="horizontalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="4">
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <widget class="QComboBox" name="cbb_type_2">
+           <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
-             <property name="text">
-              <string>All</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Electric</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Water</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Other</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QLabel" name="label_3">
-              <property name="minimumSize">
-               <size>
-                <width>25</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QLabel
-{
-
-}</string>
-              </property>
+             <widget class="QPushButton" name="btnAdd">
               <property name="text">
-               <string/>
+               <string> Thêm</string>
+              </property>
+              <property name="icon">
+               <iconset theme="QIcon::ThemeIcon::ListAdd"/>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="le_search">
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::ClickFocus</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QLineEdit
-{
-	color: rgb(0, 0, 255);
-	border: none;
-	background-color: transparent;
-	border-bottom:1px solid rgb(0, 0, 255);
-	font: 11pt &quot;Times New Roman&quot;;
-}</string>
-              </property>
-              <property name="inputMask">
-               <string notr="true"/>
-              </property>
+             <widget class="QPushButton" name="btnDelete">
               <property name="text">
-               <string notr="true"/>
+               <string> Xóa</string>
               </property>
-              <property name="maxLength">
-               <number>32767</number>
+              <property name="icon">
+               <iconset theme="QIcon::ThemeIcon::EditDelete"/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnEdit">
+              <property name="text">
+               <string> Chỉnh sửa</string>
+              </property>
+              <property name="icon">
+               <iconset theme="QIcon::ThemeIcon::MailMessageNew"/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnImport">
+              <property name="text">
+               <string> Nhập hàng</string>
+              </property>
+              <property name="icon">
+               <iconset theme="QIcon::ThemeIcon::WindowNew"/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="txtSearch"/>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="tblProducts">
+            <property name="editTriggers">
+             <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+            </property>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Mã</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Tên sản phẩm</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Hãng</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Giá nhập</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Giá bán</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Số lượng</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="invoicesPage">
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="1">
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab">
+           <attribute name="title">
+            <string>Tạo hóa đơn</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_6">
+            <item row="0" column="0">
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <widget class="QPushButton" name="btnAdd_2">
+                  <property name="text">
+                   <string> Xuất kho</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="QIcon::ThemeIcon::SystemLogOut"/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btnDelete_2">
+                  <property name="text">
+                   <string> Xóa</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="QIcon::ThemeIcon::EditDelete"/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btnSave_2">
+                  <property name="text">
+                   <string> Lưu</string>
+                  </property>
+                  <property name="icon">
+                   <iconset theme="QIcon::ThemeIcon::DocumentSave"/>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QTableWidget" name="tblFormInvoice">
+                <property name="editTriggers">
+                 <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+                </property>
+                <property name="selectionBehavior">
+                 <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+                </property>
+                <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                 <bool>false</bool>
+                </attribute>
+                <attribute name="horizontalHeaderStretchLastSection">
+                 <bool>false</bool>
+                </attribute>
+                <column>
+                 <property name="text">
+                  <string>Mã sản phẩm</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Đơn giá</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Số lượng</string>
+                 </property>
+                </column>
+                <column>
+                 <property name="text">
+                  <string>Thành tiền</string>
+                 </property>
+                </column>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_3">
+                <item>
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblTotal">
+                  <property name="text">
+                   <string>Total: 0đ</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_2">
+           <attribute name="title">
+            <string>Danh sách hóa đơn</string>
+           </attribute>
+           <layout class="QGridLayout" name="gridLayout_5">
+            <item row="0" column="0">
+             <widget class="QTableWidget" name="tblListInvoice">
+              <property name="editTriggers">
+               <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+              </property>
+              <attribute name="horizontalHeaderCascadingSectionResizes">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>false</bool>
+              </attribute>
+              <column>
+               <property name="text">
+                <string>Mã hóa đơn</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Ngày tạo</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Tổng tiền</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="reportPage">
+       <layout class="QVBoxLayout" name="verticalLayout_10">
+        <item>
+         <layout class="QVBoxLayout" name="mainLayout">
+          <property name="spacing">
+           <number>7</number>
+          </property>
+          <property name="sizeConstraint">
+           <enum>QLayout::SizeConstraint::SetMinAndMaxSize</enum>
+          </property>
+          <item>
+           <layout class="QHBoxLayout" name="filterLayout">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Từ ngày: </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDateEdit" name="dateFrom"/>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Đến ngày: </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDateEdit" name="dateTo"/>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="btnView">
+              <property name="text">
+               <string>Xem</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_3">
+              <item>
+               <widget class="QGroupBox" name="groupBox_2">
+                <property name="title">
+                 <string>Doanh thu</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <item>
+                  <widget class="QLabel" name="lblRevenue">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_5">
+                <property name="title">
+                 <string>Lợi nhuận</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_8">
+                 <item>
+                  <widget class="QLabel" name="lblProfit">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox">
+                <property name="title">
+                 <string>Số hóa đơn</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item>
+                  <widget class="QLabel" name="lblInvoices">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_3">
+                <property name="title">
+                 <string>Số lượng bán ra</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QLabel" name="lblQuantity">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_4">
+                <property name="title">
+                 <string>Best selling</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <item>
+                  <widget class="QLabel" name="lblBestSeller">
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>TextLabel</string>
               </property>
              </widget>
             </item>
@@ -751,717 +468,8 @@
           </item>
          </layout>
         </item>
-        <item row="0" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QPushButton" name="btn_confirm">
-            <property name="focusPolicy">
-             <enum>Qt::FocusPolicy::ClickFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton:hover
-{
-	background-color: rgb(0, 124, 0);
-}</string>
-            </property>
-            <property name="text">
-             <string>Confirm</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btn_cancel">
-            <property name="focusPolicy">
-             <enum>Qt::FocusPolicy::ClickFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton:hover
-{
-	background-color: rgb(170, 0, 0);
-}</string>
-            </property>
-            <property name="text">
-             <string>Cancel</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="0" column="2">
-         <widget class="QLabel" name="lbl_title">
-          <property name="font">
-           <font>
-            <pointsize>23</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel
-{
-	color: rgb(0, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Title</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_3">
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="3" column="1" colspan="2">
-         <widget class="QLabel" name="label_4">
-          <property name="font">
-           <font>
-            <pointsize>16</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel
-{
-	color: rgb(0, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>PRODUCT DETAILS</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignmentFlag::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="12" column="2">
-         <widget class="QLineEdit" name="le_extra3_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="10" column="2">
-         <widget class="QLineEdit" name="le_extra1_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <spacer name="verticalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="4" column="0">
-         <spacer name="horizontalSpacer_4">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="8" column="2">
-         <widget class="QLineEdit" name="le_quantity_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="2">
-         <widget class="QLineEdit" name="le_price_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="2">
-         <widget class="QLineEdit" name="le_brand_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="12" column="1">
-         <widget class="QLabel" name="lbl_extra3_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Vôn :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="15" column="1">
-         <spacer name="verticalSpacer_3">
-          <property name="orientation">
-           <enum>Qt::Orientation::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="4" column="3">
-         <spacer name="horizontalSpacer_5">
-          <property name="orientation">
-           <enum>Qt::Orientation::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="11" column="1">
-         <widget class="QLabel" name="lbl_extra2_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Extra2 :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="1">
-         <widget class="QLabel" name="lbl_name_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Tên Sản Phẩm :          </string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="1">
-         <widget class="QLabel" name="lbl_type_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Loại :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="2">
-         <widget class="QLineEdit" name="le_name_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="readOnly">
-           <bool>false</bool>
-          </property>
-          <property name="placeholderText">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="1">
-         <widget class="QLabel" name="lbl_price_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Đơn giá :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="14" column="1">
-         <widget class="QPushButton" name="btn_outModify">
-          <property name="focusPolicy">
-           <enum>Qt::FocusPolicy::ClickFocus</enum>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton:hover
-{
-	background-color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Cancel</string>
-          </property>
-         </widget>
-        </item>
-        <item row="11" column="2">
-         <widget class="QLineEdit" name="le_extra2_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-         </widget>
-        </item>
-        <item row="8" column="1">
-         <widget class="QLabel" name="lbl_quantity_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Số Lượng :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="1">
-         <widget class="QLabel" name="lbl_type_3">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Id :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="7" column="1">
-         <widget class="QLabel" name="lbl_brand_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Hãng Sản Xuất :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="14" column="2">
-         <widget class="QPushButton" name="btn_modify">
-          <property name="focusPolicy">
-           <enum>Qt::FocusPolicy::ClickFocus</enum>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton:hover
-{
-	background-color: rgb(0, 124, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Modify</string>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="2">
-         <widget class="QLineEdit" name="le_id_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>12</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="focusPolicy">
-           <enum>Qt::FocusPolicy::NoFocus</enum>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLineEdit
-{
-	color: rgb(40, 145, 141);
-	border: none;
-	background-color: transparent;
-	border-bottom: 3px solid rgb(5, 30, 98);
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-          <property name="placeholderText">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="10" column="1">
-         <widget class="QLabel" name="lbl_extra1_2">
-          <property name="font">
-           <font>
-            <family>Times New Roman</family>
-            <pointsize>14</pointsize>
-            <italic>false</italic>
-            <bold>false</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel{
-	font: 14pt &quot;Times New Roman&quot;;
-	color: rgb(170, 0, 0);
-}</string>
-          </property>
-          <property name="text">
-           <string>Extra1 :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="2">
-         <widget class="QComboBox" name="cbb_type_3">
-          <property name="focusPolicy">
-           <enum>Qt::FocusPolicy::NoFocus</enum>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <item>
-           <property name="text">
-            <string>Electric</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Water</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Other</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <spacer name="horizontalSpacer_3">
-      <property name="orientation">
-       <enum>Qt::Orientation::Horizontal</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Policy::Maximum</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="0" column="0" rowspan="2">
-     <widget class="QWidget" name="sidebar" native="true">
-      <property name="focusPolicy">
-       <enum>Qt::FocusPolicy::ClickFocus</enum>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QWidget
-{
-	background-color: rgb(0, 0, 172);
-}</string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QPushButton" name="btn_addPage">
-         <property name="font">
-          <font>
-           <family>Times New Roman</family>
-           <pointsize>15</pointsize>
-           <italic>true</italic>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::FocusPolicy::NoFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton
-{
-	border: none;
-}
-QPushButton::pressed
-{
-	color: rgb(0, 173, 0);
-}</string>
-         </property>
-         <property name="text">
-          <string>Add</string>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btn_removePage">
-         <property name="font">
-          <font>
-           <family>Times New Roman</family>
-           <pointsize>15</pointsize>
-           <italic>true</italic>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::FocusPolicy::ClickFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton
-{
-	border: none;
-}
-QPushButton::pressed
-{
-	color: rgb(0, 173, 0);
-}</string>
-         </property>
-         <property name="text">
-          <string>Remove</string>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btn_showPage">
-         <property name="font">
-          <font>
-           <family>Times New Roman</family>
-           <pointsize>15</pointsize>
-           <italic>true</italic>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::FocusPolicy::ClickFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton
-{
-	border: none;
-}
-QPushButton::pressed
-{
-	color: rgb(0, 173, 0);
-}</string>
-         </property>
-         <property name="text">
-          <string>Display</string>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>30</width>
-           <height>30</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </widget>
     </item>
    </layout>
@@ -1471,75 +479,175 @@ QPushButton::pressed
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1035</width>
      <height>25</height>
     </rect>
    </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="font">
-    <font>
-     <italic>true</italic>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QMenuBar
-{
-	background-color: rgb(65, 65, 65);
-}
-QMenuBar::item
-{
-	background-color: transparent;
-	color: white;
-}
-QMenuBar::item::selected
-{
-	background-color: rgb(212, 212, 212);
-	color: white;
-}
-QMenuBar::item::pressed
-{
-	background-color: rgb(229, 57, 34);
-	color: white;
-}</string>
-   </property>
+   <widget class="QMenu" name="menuUndo">
+    <property name="title">
+     <string>Undo</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuRedo">
+    <property name="title">
+     <string>Redo</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuProduct">
+    <property name="title">
+     <string>Product</string>
+    </property>
+    <addaction name="actionAdd_product"/>
+    <addaction name="actionDelete_product"/>
+    <addaction name="actionModify_product"/>
+   </widget>
+   <widget class="QMenu" name="menuInvoice">
+    <property name="title">
+     <string>Invoice</string>
+    </property>
+    <addaction name="actionNew_invoice"/>
+    <addaction name="actionView_invoices"/>
+   </widget>
+   <widget class="QMenu" name="menuReport">
+    <property name="title">
+     <string>Report</string>
+    </property>
+    <addaction name="actionRevenue"/>
+    <addaction name="actionBest_selling_product"/>
+   </widget>
+   <addaction name="menuUndo"/>
+   <addaction name="menuRedo"/>
+   <addaction name="menuProduct"/>
+   <addaction name="menuInvoice"/>
+   <addaction name="menuReport"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>15</width>
+     <height>15</height>
+    </size>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonStyle::ToolButtonTextBesideIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAdd"/>
+   <addaction name="actionDelete"/>
+   <addaction name="actionInvoice"/>
+   <addaction name="actionReport"/>
+  </widget>
+  <widget class="QDockWidget" name="sidebarDock_2">
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <property name="focusPolicy">
+     <enum>Qt::FocusPolicy::NoFocus</enum>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QListWidget" name="listWidget">
+       <property name="spacing">
+        <number>5</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>Quản lý sản phẩm</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Hóa đơn</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Báo cáo</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionAdd_product">
+   <property name="text">
+    <string>Add product</string>
+   </property>
+  </action>
+  <action name="actionDelete_product">
+   <property name="text">
+    <string>Delete product</string>
+   </property>
+  </action>
+  <action name="actionModify_product">
+   <property name="text">
+    <string>Modify product</string>
+   </property>
+  </action>
+  <action name="actionNew_invoice">
+   <property name="text">
+    <string>New invoice</string>
+   </property>
+  </action>
+  <action name="actionView_invoices">
+   <property name="text">
+    <string>View invoices</string>
+   </property>
+  </action>
+  <action name="actionRevenue">
+   <property name="text">
+    <string>Revenue</string>
+   </property>
+  </action>
+  <action name="actionBest_selling_product">
+   <property name="text">
+    <string>Best-selling product</string>
+   </property>
+  </action>
+  <action name="actionAdd">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::ListAdd"/>
+   </property>
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </action>
+  <action name="actionDelete">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::EditClear"/>
+   </property>
+   <property name="text">
+    <string>Delete</string>
+   </property>
+  </action>
+  <action name="actionInvoice">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+   </property>
+   <property name="text">
+    <string>Invoice</string>
+   </property>
+  </action>
+  <action name="actionReport">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::DocumentOpen"/>
+   </property>
+   <property name="text">
+    <string>Report</string>
+   </property>
+  </action>
  </widget>
- <tabstops>
-  <tabstop>cbb_type</tabstop>
-  <tabstop>le_name</tabstop>
-  <tabstop>le_brand</tabstop>
-  <tabstop>le_quantity</tabstop>
-  <tabstop>le_price</tabstop>
-  <tabstop>le_extra1</tabstop>
-  <tabstop>le_extra2</tabstop>
-  <tabstop>le_extra3</tabstop>
-  <tabstop>le_name_2</tabstop>
-  <tabstop>le_brand_2</tabstop>
-  <tabstop>le_quantity_2</tabstop>
-  <tabstop>le_price_2</tabstop>
-  <tabstop>le_extra1_2</tabstop>
-  <tabstop>le_extra2_2</tabstop>
-  <tabstop>le_extra3_2</tabstop>
-  <tabstop>le_search</tabstop>
-  <tabstop>btn_confirm</tabstop>
-  <tabstop>btn_cancel</tabstop>
-  <tabstop>cbb_type_2</tabstop>
-  <tabstop>cbb_type_3</tabstop>
-  <tabstop>btn_outModify</tabstop>
-  <tabstop>btn_removePage</tabstop>
-  <tabstop>btn_addProduct</tabstop>
-  <tabstop>btn_showPage</tabstop>
-  <tabstop>le_id_2</tabstop>
-  <tabstop>btn_addPage</tabstop>
-  <tabstop>tbw</tabstop>
-  <tabstop>btn_modify</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>
