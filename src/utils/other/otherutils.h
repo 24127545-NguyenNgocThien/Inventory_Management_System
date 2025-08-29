@@ -98,6 +98,8 @@ inline int DetermineType(const std::string& id)
     if (id[0] == 'E') return 0;
     if (id[0] == 'W') return 1;
     if (id[0] == 'O') return 2;
+
+    return -1; // giá trị rỗng/không hợp lệ
 }
 
 
