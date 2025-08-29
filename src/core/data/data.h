@@ -28,7 +28,7 @@ public:
     Database& operator = (const Database&) = delete;
 
     static Database& GetInstance();
-    ~Database() {};
+    ~Database();
 
     bool Save();
     void Load();

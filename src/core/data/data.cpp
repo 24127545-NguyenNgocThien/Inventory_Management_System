@@ -21,6 +21,15 @@ Database& Database::GetInstance()
     return *instance;
 }
 
+Database::~Database()
+{
+    for (auto invoice : invoices) {
+        delete invoice;
+    }
+    invoices.clear();
+}
+
+
 //=========================================================================
 
 bool Database::Save()

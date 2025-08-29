@@ -1,10 +1,12 @@
 #include "mainwindow.h"
 #include "productDialog.h"
+#include "selectionDialog.h"
 #include "./ui_mainwindow.h"
 #include "otherutils.h"
 #include "addcommand.h"
 #include "deletecommand.h"
 #include "editcommand.h"
+#include "importCommand.h"
 #include "invoice.h"
 #include "invoiceService.h"
 #include <QMessageBox>
@@ -45,20 +47,8 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
     ui->tblFormInvoice->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tblListInvoice->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-    auto list = db->GetProduct("");
-    for (auto pair : list)
-    {
-        addProductRow(pair.second->GetId(),
-                      pair.second->GetName(),
-                      pair.second->GetBrand(),
-                      pair.second->GetImportPrice(),
-                      pair.second->GetSalePrice(),
-                      pair.second->GetQuantity()
-                      );
-    }
-    addProductRow("SP001", "Bóng đèn", "Điện quang", 12000, 15000, 50);
-    addProductRow("SP002", "Ổ cắm điện", "Điện quang", 50000, 55000, 20);
-    addProductRow("SP003", "Công tắc", "Điện quang",  10000, 12000, 100);
+    fillOutProductTable();
+    fillOutInvoiceTable();
 }
 
 MainWindow::~MainWindow()
@@ -66,6 +56,10 @@ MainWindow::~MainWindow()
     delete ui;
     delete cmdManager;
 }
+
+
+
+
 
 //===============================================================
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -93,20 +87,89 @@ void MainWindow::closeEvent(QCloseEvent *event)
     event->accept();  // Cho phép đóng
 }
 
-//=======================Helper: thêm dòng vào bảng====================================
-void MainWindow::addProductRow(const std::string& id, const QString& name, const QString& brand,
-                               double importPrice, double salePrice, int quantity)
-{
-    int row = ui->tblProducts->rowCount();
-    ui->tblProducts->insertRow(row);
 
-    ui->tblProducts->setItem(row, 0, new QTableWidgetItem(QString::fromStdString(id)));
-    ui->tblProducts->setItem(row, 1, new QTableWidgetItem(name));
-    ui->tblProducts->setItem(row, 2, new QTableWidgetItem(brand));
-    ui->tblProducts->setItem(row, 3, new QTableWidgetItem(QString::number(importPrice)));
-    ui->tblProducts->setItem(row, 4, new QTableWidgetItem(QString::number(salePrice)));
-    ui->tblProducts->setItem(row, 5, new QTableWidgetItem(QString::number(quantity)));
+
+
+
+//=======================Helper: thêm dòng vào bảng====================================
+void MainWindow::addRow(QTableWidget* table, QList<QString> data)
+{
+    int row = table->rowCount();
+    table->insertRow(row);
+
+    for (int i = 0; i < table->columnCount(); ++i)
+    {
+        table->setItem(row, i, new QTableWidgetItem(data[i]));
+    }
 }
+
+void MainWindow::fillOutInvoiceTable()
+{
+    ui->tblListInvoice->setRowCount(0);
+
+    auto invoices = db->GetInvoices();
+    for (auto invoice : invoices) {
+        QList<QString> data = {
+            QString::fromStdString(invoice->GetId()),
+            invoice->GetCreatedAt().toString("dd/MM/yyyy"),
+            QString::number(invoice->Total()),
+        };
+        addRow(ui->tblListInvoice, data);
+    }
+}
+
+void MainWindow::fillOutProductTable()
+{
+    ui->tblProducts->setRowCount(0);
+
+    auto list = db->GetProduct("");
+    for (auto pair : list)
+    {
+        QList<QString> data = {
+            QString::fromStdString(pair.second->GetId()),
+            pair.second->GetName(),
+            pair.second->GetBrand(),
+            QString::number(pair.second->GetImportPrice()),
+            QString::number(pair.second->GetSalePrice()),
+            QString::number(pair.second->GetQuantity())
+        };
+        addRow(ui->tblProducts, data);
+    }
+}
+
+
+
+
+
+// chuyển dữ liệu từ db->GetProduct("") sang QList<SelectedProduct>
+QList<SelectedProduct> buildProductListFromDb(Database* db) {
+    QList<SelectedProduct> list;
+    auto map = db->GetProduct(""); // giả sử trả map<string, Product*>
+    for (auto &pair : map) {
+        auto prod = pair.second;
+        SelectedProduct s;
+        // Giả sử bạn có các hàm tương ứng trong Product:
+        s.id = QString::fromStdString(prod->GetId());
+        s.name = prod->GetName();
+        s.brand = prod->GetBrand();
+        s.importPrice = prod->GetImportPrice();
+        s.salePrice = prod->GetSalePrice();
+        s.stock = prod->GetQuantity();
+        // xác định type từ id hoặc prod->GetType() nếu có
+        // ví dụ DetermineType trả 0=Điện,1=Nước,2=Khác
+        int t = DetermineType(prod->GetId());
+        if (t == 0) s.type = "Điện";
+        else if (t == 1) s.type = "Nước";
+        else s.type = "Khác";
+
+        list.append(s);
+    }
+    return list;
+}
+
+
+
+
 
 //===================Products Page================================
 
@@ -153,20 +216,7 @@ void MainWindow::on_btnAdd_clicked()
                                                          "Hãy làm mới trang");
 
             // Bổ sung: Cập nhật lại bảng sản phẩm sau khi thêm thành công
-            // Xóa tất cả các dòng hiện có
-            ui->tblProducts->setRowCount(0); // NEW
-            // Tải lại dữ liệu từ database và hiển thị
-            auto list = db->GetProduct(""); // NEW
-            for (auto pair : list) // NEW
-            { // NEW
-                addProductRow(pair.second->GetId(), // NEW
-                              pair.second->GetName(), // NEW
-                              pair.second->GetBrand(), // NEW
-                              pair.second->GetImportPrice(), // NEW
-                              pair.second->GetSalePrice(), // NEW
-                              pair.second->GetQuantity() // NEW
-                              ); // NEW
-            } // NEW
+            fillOutProductTable();
 
             setWindowModified(true); // NEW: Đánh dấu cửa sổ đã thay đổi
             //updateStatusBar(); // NEW: Cập nhật trạng thái thanh trạng thái
@@ -178,7 +228,6 @@ void MainWindow::on_btnAdd_clicked()
         }
     }
 }
-
 
 void MainWindow::on_btnDelete_clicked()
 {
@@ -199,7 +248,6 @@ void MainWindow::on_btnDelete_clicked()
 
 }
 
-
 void MainWindow::on_btnEdit_clicked()
 {
     auto selected = ui->tblProducts->currentRow();
@@ -214,28 +262,28 @@ void MainWindow::on_btnEdit_clicked()
     auto product = db->GetProduct(id);
 
     ProductDialog dialog(this);
-    int category = DetermineType(product[0]->GetId());
+    int category = DetermineType(product[id]->GetId());
     QMap<QString,QString> extras;
     if(category == 0)
     {
         extras = {
-            {"extra1", QString(product[0]->GetExtraData1())},
-            {"extra2", QString::number(product[0]->GetExtraData2())},
-            {"extra3", QString::number(product[0]->GetExtraData3())}
+            {"extra1", QString(product[id]->GetExtraData1())},
+            {"extra2", QString::number(product[id]->GetExtraData2())},
+            {"extra3", QString::number(product[id]->GetExtraData3())}
         };
     }
     else if(category == 1)
     {
         extras = {
-            {"extra1", QString(product[0]->GetExtraData1())},
-            {"extra2", QString::number(product[0]->GetExtraData2())}
+            {"extra1", QString(product[id]->GetExtraData1())},
+            {"extra2", QString::number(product[id]->GetExtraData2())}
         };
     }
-    dialog.setProductData(product[0]->GetName(),
-                          product[0]->GetBrand(),
-                          product[0]->GetImportPrice(),
-                          product[0]->GetSalePrice(),
-                          product[0]->GetQuantity(),
+    dialog.setProductData(product[id]->GetName(),
+                          product[id]->GetBrand(),
+                          product[id]->GetImportPrice(),
+                          product[id]->GetSalePrice(),
+                          product[id]->GetQuantity(),
                           category,
                           extras,
                           true);
@@ -261,20 +309,7 @@ void MainWindow::on_btnEdit_clicked()
                                                          "Hãy làm mới trang");
 
             // Bổ sung: Cập nhật lại bảng sản phẩm sau khi thêm thành công
-            // Xóa tất cả các dòng hiện có
-            ui->tblProducts->setRowCount(0); // NEW
-            // Tải lại dữ liệu từ database và hiển thị
-            auto list = db->GetProduct(""); // NEW
-            for (auto pair : list) // NEW
-            { // NEW
-                addProductRow(pair.second->GetId(), // NEW
-                              pair.second->GetName(), // NEW
-                              pair.second->GetBrand(), // NEW
-                              pair.second->GetImportPrice(), // NEW
-                              pair.second->GetSalePrice(), // NEW
-                              pair.second->GetQuantity() // NEW
-                              ); // NEW
-            } // NEW
+            fillOutProductTable();
 
             setWindowModified(true); // NEW: Đánh dấu cửa sổ đã thay đổi
             //updateStatusBar(); // NEW: Cập nhật trạng thái thanh trạng thái
@@ -286,6 +321,31 @@ void MainWindow::on_btnEdit_clicked()
         }
     }
 }
+
+void MainWindow::on_btnImport_clicked()
+{
+    SelectionDialog dlg(this);
+    QList<SelectedProduct> all = buildProductListFromDb(db);
+    dlg.loadData(all);
+    if (dlg.exec() == QDialog::Accepted) {
+        auto sel = dlg.getSelections();
+        for (const auto &p : sel) {
+            qDebug() << "Selected:" << p.id << p.name << "qty=" << p.quantity;\
+            Command* cmd = new ImportCommand(p.id.toStdString(), p.quantity);
+            cmdManager->ExecuteCommand(cmd);
+        }
+
+        // Bổ sung: Cập nhật lại bảng sản phẩm sau khi thêm thành công
+        fillOutProductTable();
+
+        setWindowModified(true); // NEW: Đánh dấu cửa sổ đã thay đổi
+        //updateStatusBar(); // NEW: Cập nhật trạng thái thanh trạng thái
+    }
+}
+
+
+
+
 
 //============================Invoice Page=========================
 
@@ -301,15 +361,30 @@ void calculateTotal(QTableWidget* table, QLabel* lbl)
     lbl->setText(content);
 }
 
-void MainWindow::on_btnAdd_2_clicked()
+void MainWindow::on_btnExport_2_clicked()
 {
-    int row = ui->tblFormInvoice->rowCount();
-    ui->tblFormInvoice->insertRow(row);
-    // TODO: thêm combobox sản phẩm, spinbox số lượng, tính thành tiền
+    SelectionDialog dlg(this);
+    QList<SelectedProduct> all = buildProductListFromDb(db);
+    dlg.loadData(all);
+    if (dlg.exec() == QDialog::Accepted) {
+        auto sel = dlg.getSelections();
+        for (const auto &p : sel) {
+            qDebug() << "Selected:" << p.id << p.name << "qty=" << p.quantity;
+            QList<QString> data = {
+                p.id,
+                QString::number(p.salePrice),
+                QString::number(p.quantity),
+                QString::number(p.salePrice * p.quantity)
+            };
+            addRow(ui->tblFormInvoice, data);
+        }
+
+        setWindowModified(true); // NEW: Đánh dấu cửa sổ đã thay đổi
+        //updateStatusBar(); // NEW: Cập nhật trạng thái thanh trạng thái
+    }
 
     calculateTotal(ui->tblFormInvoice, ui->lblTotal);
 }
-
 
 void MainWindow::on_btnDelete_2_clicked()
 {
@@ -320,7 +395,6 @@ void MainWindow::on_btnDelete_2_clicked()
 
     calculateTotal(ui->tblFormInvoice, ui->lblTotal);
 }
-
 
 void MainWindow::on_btnSave_2_clicked()
 {
@@ -341,5 +415,9 @@ void MainWindow::on_btnSave_2_clicked()
 
     ui->tblFormInvoice->clearContents();
     ui->tblFormInvoice->setRowCount(0);
+    fillOutProductTable();
+    fillOutInvoiceTable();
 }
+
+
 
