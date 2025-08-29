@@ -6,6 +6,8 @@ add_library(uiLib STATIC
     productDialog.cpp
     selectionDialog.h
     selectionDialog.cpp
+    invoiceDialog.h
+    invoiceDialog.cpp
 )
 
 target_link_libraries(uiLib PRIVATE
@@ -17,6 +19,7 @@ target_link_libraries(uiLib PRIVATE
     invoiceLib
     reportLib
     notifyLib
+    commandTypesLib
 )
 
 target_include_directories(uiLib PUBLIC
@@ -28,4 +31,5 @@ target_include_directories(uiLib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../modules/report
     ${CMAKE_CURRENT_SOURCE_DIR}/../utils/other
     ${CMAKE_CURRENT_SOURCE_DIR}/../utils/notifyLib
+    ${CMAKE_CURRENT_SOURCE_DIR}/../modules/command/types
 )

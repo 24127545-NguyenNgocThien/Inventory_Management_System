@@ -1,0 +1,24 @@
+{
+    "product list": [
+        {
+            "brand": "1",
+            "extra1": "12",
+            "extra2": 12,
+            "id": "W112",
+            "importPrice": 10,
+            "name": "1",
+            "quantity": 15,
+            "salePrice": 10
+        },
+        {
+            "brand": "2",
+            "extra1": "2",
+            "extra2": 2,
+            "id": "W221",
+            "importPrice": 20,
+            "name": "2",
+            "quantity": 25,
+            "salePrice": 20
+        }
+    ]
+}

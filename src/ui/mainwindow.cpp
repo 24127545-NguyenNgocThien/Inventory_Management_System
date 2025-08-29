@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "productDialog.h"
 #include "selectionDialog.h"
+#include "invoiceDialog.h"
 #include "./ui_mainwindow.h"
 #include "otherutils.h"
 #include "addcommand.h"
@@ -59,7 +60,10 @@ MainWindow::~MainWindow()
 }
 
 
-
+void MainWindow::refreshTables(){
+    fillOutProductTable();
+    fillOutInvoiceTable();
+}
 
 
 //===============================================================
@@ -418,3 +422,17 @@ void MainWindow::on_btnSave_2_clicked()
     fillOutProductTable();
     fillOutInvoiceTable();
 }
+
+void MainWindow::on_tblListInvoice_cellDoubleClicked(int row, int column)
+{
+    if(row < 0 || row >= (int)db->GetInvoices().size()) return;
+
+    Invoice* inv = db->GetInvoices()[row];
+    auto dlg = new InvoiceDialog(inv, this);
+
+    connect(dlg, &InvoiceDialog::invoiceReturned, this, &MainWindow::refreshTables);
+
+    dlg->setAttribute(Qt::WA_DeleteOnClose);
+    dlg->exec();
+}
+

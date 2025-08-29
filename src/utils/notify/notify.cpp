@@ -28,6 +28,6 @@ void Notify::LowStockAlert(QWidget* parent, const QString& productName, int quan
     if(quantity <= threshold)
     {
         QString msg = QString("Sản phẩm \"%1\" hiện chỉ còn %2 trong kho.\nHãy xem xét bổ sung.").arg(productName).arg(quantity);
-        QMessageBox::warning(parent, "Cảnh báo tồn kho thấp", msg);
+        QMessageBox::warning(parent, "Thông báo", msg);
     }
 }

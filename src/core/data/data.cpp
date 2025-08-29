@@ -258,3 +258,33 @@ const std::vector<Invoice*>& Database::GetInvoices() const
 {
     return invoices;
 }
+
+bool Database::ReturnInvoice(const std::string& invoiceId)
+{
+    // Tìm hóa đơn
+    auto it = std::find_if(invoices.begin(), invoices.end(),
+                           [&invoiceId](Invoice* inv){ return inv->GetId() == invoiceId; });
+    if(it == invoices.end()) return false; // Không tìm thấy
+
+    Invoice* inv = *it;
+    // Hoàn trả từng sản phẩm
+    for(const auto& item : inv->GetItems())
+    {
+        auto prodMap = GetProduct(item.productId);
+        if(!prodMap.empty())
+        {
+            auto prod = prodMap[item.productId];
+            prod->SetQuantity(prod->GetQuantity() + item.quantity);
+        }
+    }
+
+    // Xóa hóa đơn khỏi danh sách
+    invoices.erase(it);
+    delete inv;
+
+    // Lưu dữ liệu
+    Save();
+    SaveInvoices();
+
+    return true;
+}
