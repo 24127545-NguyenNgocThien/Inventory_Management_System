@@ -12,6 +12,8 @@
 #include <QCloseEvent>
 #include <QLabel>
 #include "notify.h"
+#include <QPalette>
+#include <QStyleFactory>
 
 
 MainWindow::MainWindow(Database& data, QWidget *parent)
@@ -24,6 +26,43 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
     db->LoadInvoices();
     ui->setupUi(this);
     setWindowTitle("MainWindow[*]");
+    qApp->setStyle(QStyleFactory::create("Fusion"));
+    ui->tblProducts->setAlternatingRowColors(true);
+    ui->tblFormInvoice->setAlternatingRowColors(true);
+    ui->tblListInvoice->setAlternatingRowColors(true);
+
+    // Liên kết các acion trên menubar
+    connect(ui->actionUndo, &QAction::triggered, [this]() {
+        cmdManager->Undo();
+    });
+    ui->actionUndo->setShortcut(QKeySequence::Undo);
+    connect(ui->actionRedo, &QAction::triggered, [this]() {
+        cmdManager->Redo();
+    });
+    ui->actionRedo->setShortcut(QKeySequence::Redo);
+    connect(ui->actionAdd_product, &QAction::triggered, [this]() {
+        on_btnAdd_clicked();
+    });
+    connect(ui->actionDelete_product, &QAction::triggered, [this]() {
+        ui->stackedWidget->setCurrentIndex(0);
+        on_btnDelete_clicked();
+    });
+    connect(ui->actionModify_product, &QAction::triggered, [this]() {
+        ui->stackedWidget->setCurrentIndex(0);
+        on_btnEdit_clicked();
+    });
+    connect(ui->actionImport_product, &QAction::triggered, [this]() {
+        on_btnImport_clicked();
+    });
+    connect(ui->actionNew_invoice, &QAction::triggered, [this]() {
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->tabWidget->setCurrentIndex(0);
+        on_btnExport_2_clicked();
+    });
+    connect(ui->actionView_invoices, &QAction::triggered, [this]() {
+        ui->stackedWidget->setCurrentIndex(1);
+        ui->tabWidget->setCurrentIndex(1);
+    });
 
     // Tạo và thêm label mới
     QLabel *statusLabel = new QLabel("Trạng thái: Sẵn sàng", this);
@@ -71,9 +110,6 @@ void MainWindow::closeEvent(QCloseEvent *event)
                 event->ignore();  // Không đóng nếu lưu thất bại
                 return;
             }
-        } else {
-            event->ignore();  // Không đóng nếu người dùng chọn No
-            return;
         }
     }
     event->accept();  // Cho phép đóng
@@ -104,6 +140,10 @@ void MainWindow::fillOutInvoiceTable()
         };
         addRow(ui->tblListInvoice, data);
     }
+
+    QLabel *lblCount = new QLabel(this);
+    lblCount->setText(QString("Có %1 loại sản phẩm trong kho").arg(db->GetNumberProduct()));
+    ui->statusBar->addPermanentWidget(lblCount);
 }
 
 void MainWindow::fillOutProductTable()
@@ -412,6 +452,9 @@ void MainWindow::on_btnSave_2_clicked()
     } else {
         Notify::Error(this, "Lưu hóa đơn thất bại! Kiểm tra lại tồn kho.", "Lỗi");
     }
+
+    setWindowModified(true); // NEW: Đánh dấu cửa sổ đã thay đổi
+    //updateStatusBar(); // NEW: Cập nhật trạng thái thanh trạng thái
 
     ui->tblFormInvoice->clearContents();
     ui->tblFormInvoice->setRowCount(0);
