@@ -214,28 +214,28 @@ void MainWindow::on_btnEdit_clicked()
     auto product = db->GetProduct(id);
 
     ProductDialog dialog(this);
-    int category = DetermineType(product[0]->GetId());
+    int category = DetermineType(product[id]->GetId());
     QMap<QString,QString> extras;
     if(category == 0)
     {
         extras = {
-            {"extra1", QString(product[0]->GetExtraData1())},
-            {"extra2", QString::number(product[0]->GetExtraData2())},
-            {"extra3", QString::number(product[0]->GetExtraData3())}
+            {"extra1", QString(product[id]->GetExtraData1())},
+            {"extra2", QString::number(product[id]->GetExtraData2())},
+            {"extra3", QString::number(product[id]->GetExtraData3())}
         };
     }
     else if(category == 1)
     {
         extras = {
-            {"extra1", QString(product[0]->GetExtraData1())},
-            {"extra2", QString::number(product[0]->GetExtraData2())}
+            {"extra1", QString(product[id]->GetExtraData1())},
+            {"extra2", QString::number(product[id]->GetExtraData2())}
         };
     }
-    dialog.setProductData(product[0]->GetName(),
-                          product[0]->GetBrand(),
-                          product[0]->GetImportPrice(),
-                          product[0]->GetSalePrice(),
-                          product[0]->GetQuantity(),
+    dialog.setProductData(product[id]->GetName(),
+                          product[id]->GetBrand(),
+                          product[id]->GetImportPrice(),
+                          product[id]->GetSalePrice(),
+                          product[id]->GetQuantity(),
                           category,
                           extras,
                           true);
