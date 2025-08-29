@@ -19,6 +19,9 @@ public:
 
     // Hiển thị hộp thoại xác nhận (Yes/No)
     static bool Confirm(QWidget* parent, const QString& message, const QString& title = "Xác nhận");
+
+    // Thông báo tồn kho thấp
+    static void LowStockAlert(QWidget* parent, const QString& productName, int quantity, int threshold = 5);
 };
 
 #endif // NOTIFY_H

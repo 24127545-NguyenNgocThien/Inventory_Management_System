@@ -402,6 +402,13 @@ void MainWindow::on_btnSave_2_clicked()
 
     if (InvoiceService::CreateInvoice(items, cmdManager)) {
         Notify::Info(this, "Lưu hóa đơn thành công!", "Thành công");
+
+        int threshold = 5; // Ngưỡng cảnh báo
+        for (auto &item : items) {
+            int qtyLeft = db->GetProduct(item.productId)[item.productId]->GetQuantity();
+            QString name = db->GetProduct(item.productId)[item.productId]->GetName();
+            Notify::LowStockAlert(this, name, qtyLeft, threshold);
+        }
     } else {
         Notify::Error(this, "Lưu hóa đơn thất bại! Kiểm tra lại tồn kho.", "Lỗi");
     }
@@ -411,6 +418,3 @@ void MainWindow::on_btnSave_2_clicked()
     fillOutProductTable();
     fillOutInvoiceTable();
 }
-
-
-
