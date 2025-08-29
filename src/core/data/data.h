@@ -44,6 +44,8 @@ public:
     void LoadInvoices(); // NEW
     void AddInvoice(Invoice* inv);         // NEW
     const std::vector<Invoice*>& GetInvoices() const; // NEW
+    bool ReturnInvoice(const std::string& invoiceId);
+
 };
 
 #endif // DATA_H

@@ -18,6 +18,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(Database& data, QWidget *parent = nullptr);
+    void refreshTables();
     ~MainWindow();
 
 private slots:
@@ -32,7 +33,7 @@ private slots:
     void on_btnDelete_2_clicked();
     void on_btnSave_2_clicked();
 
-
+    void on_tblListInvoice_cellDoubleClicked(int row, int column);
 private:
     Ui::MainWindow *ui;
     Database* db;
