@@ -19,7 +19,7 @@ public:
     static double ProfitTotal(const std::vector<Invoice>& invoices);
 
     // Sản phẩm bán chạy nhất (trả về <productId, quantitySold>)
-    static std::pair<std::string,int> BestSellingProduct(const std::vector<Invoice>& invoices);
+    static std::pair<std::string,int> BestSellingProduct(const std::vector<Invoice*>& invoices);
 };
 
 #endif // REPORT_H

@@ -15,7 +15,16 @@
 #include "notify.h"
 #include <QPalette>
 #include <QStyleFactory>
-
+#include "report.h"
+#include <QtCharts/QChart>
+#include <QtCharts/QChartView>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarCategoryAxis>
+#include <QtCharts/QValueAxis>
+#include <QtCharts/QLineSeries>
+#include <QLegendMarker>
+#include <QPen>
 
 MainWindow::MainWindow(Database& data, QWidget *parent)
     : QMainWindow(parent)
@@ -26,6 +35,22 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
     db->Load();
     db->LoadInvoices();
     ui->setupUi(this);
+
+    // Đặt ngày mặc định = 6 tháng gần nhất
+    QDate today = QDate::currentDate();
+    QDate sixMonthsAgo = today.addMonths(-6);
+    ui->dateFrom->setDate(sixMonthsAgo);
+    ui->dateTo->setDate(today);
+
+    ui->lblRevenue->setText("0 đ");
+    ui->lblProfit->setText("0 đ");
+    ui->lblInvoices->setText("0");
+    ui->lblQuantity->setText("0");
+    ui->lblBestSeller->setText("Không có dữ liệu");
+
+    // Gọi ngay để vẽ chart ban đầu
+    on_btnView_clicked();
+
     setWindowTitle("MainWindow[*]");
     qApp->setStyle(QStyleFactory::create("Fusion"));
     ui->tblProducts->setAlternatingRowColors(true);
@@ -379,6 +404,262 @@ void MainWindow::on_btnImport_clicked()
     }
 }
 
+void MainWindow::on_btnView_clicked()
+{
+
+    auto& db = Database::GetInstance();
+
+    QDate from = ui->dateFrom->date();
+    QDate to   = ui->dateTo->date();
+    if (to < from) std::swap(from, to);
+
+    auto invoices = db.GetInvoicesInRange(from, to); // vector<Invoice*>
+
+    if (invoices.empty()) {
+        // ---- Chart rỗng với baseline ----
+        QChart* chart = new QChart();
+        chart->setTitle("Doanh thu và Lợi nhuận theo thời gian (Không có dữ liệu)");
+        chart->legend()->setAlignment(Qt::AlignTop);
+
+        // Trục X (trống)
+        QBarCategoryAxis* axisX = new QBarCategoryAxis();
+        axisX->setTitleText("Thời gian");
+        chart->addAxis(axisX, Qt::AlignBottom);
+
+        // Trục Y (chia mốc 100, có số 0)
+        QValueAxis* axisY = new QValueAxis();
+        axisY->setRange(-100, 100);
+        axisY->setTickCount(5);
+        axisY->setLabelFormat("%d");
+        axisY->setTitleText("Số tiền (đ)");
+        chart->addAxis(axisY, Qt::AlignLeft);
+
+        // Vẽ baseline y = 0
+        QLineSeries* zeroLine = new QLineSeries();
+        zeroLine->append(-0.5, 0);
+        zeroLine->append(0.5, 0);
+
+        QPen zeroPen(Qt::gray);
+        zeroPen.setWidthF(1.0);
+        zeroLine->setPen(zeroPen);
+
+        chart->addSeries(zeroLine);
+        zeroLine->attachAxis(axisX);
+        zeroLine->attachAxis(axisY);
+
+        chart->legend()->markers(zeroLine).first()->setVisible(false);
+
+        // Clear chart cũ
+        QLayoutItem* item;
+        while ((item = ui->chartLayout->takeAt(0)) != nullptr) {
+            delete item->widget();
+            delete item;
+        }
+
+        ui->lblRevenue->setText("0 đ");
+        ui->lblProfit->setText("0 đ");
+        ui->lblInvoices->setText("0");
+        ui->lblQuantity->setText("0");
+        ui->lblBestSeller->setText("Không có dữ liệu");
+
+        QChartView* chartView = new QChartView(chart);
+        chartView->setRenderHint(QPainter::Antialiasing);
+        ui->chartLayout->addWidget(chartView);
+        return;
+    }
+
+    int totalDays = from.daysTo(to);
+
+    // ---- Chuẩn bị dữ liệu ----
+    QStringList categories;
+    QBarSet* revenueSet = new QBarSet("Doanh thu");
+    QBarSet* profitSet  = new QBarSet("Lợi nhuận");
+
+    revenueSet->setColor(Qt::blue);   // màu xanh cho doanh thu
+    profitSet->setColor(Qt::red);     // màu đỏ cho lợi nhuận
+
+    if (from.addYears(3) < to) {
+        // ====== GỘP THEO NĂM ======
+        QMap<int, double> revenueByYear, profitByYear;
+
+        for (auto inv : invoices) {
+            int year = inv->GetCreatedAt().date().year();
+            revenueByYear[year] += inv->Total();
+            for (auto& it : inv->GetItems()) {
+                auto prodMap = db.GetProduct(it.productId);
+                auto found = prodMap.find(it.productId);
+                if (found != prodMap.end() && found->second) {
+                    double importPrice = found->second->GetImportPrice();
+                    profitByYear[year] += (it.salePrice - importPrice) * it.quantity;
+                }
+            }
+        }
+
+        for (auto year : revenueByYear.keys()) {
+            *revenueSet << revenueByYear[year];
+            *profitSet  << profitByYear[year];
+            categories << QString::number(year);
+        }
+    }
+    else if (totalDays > 31) {
+        // ====== GỘP THEO THÁNG ======
+        QMap<QString, double> revenueByMonth, profitByMonth;
+
+        for (auto inv : invoices) {
+            QDate d = inv->GetCreatedAt().date();
+            QString key = QString("%1/%2").arg(d.month()).arg(d.year()); // "MM/YYYY"
+            revenueByMonth[key] += inv->Total();
+            for (auto& it : inv->GetItems()) {
+                auto prodMap = db.GetProduct(it.productId);
+                auto found = prodMap.find(it.productId);
+                if (found != prodMap.end() && found->second) {
+                    double importPrice = found->second->GetImportPrice();
+                    profitByMonth[key] += (it.salePrice - importPrice) * it.quantity;
+                }
+            }
+        }
+
+        for (auto key : revenueByMonth.keys()) {
+            *revenueSet << revenueByMonth[key];
+            *profitSet  << profitByMonth[key];
+            categories << key;
+        }
+    }
+    else {
+        // ====== CHI TIẾT THEO NGÀY ======
+        QMap<QDate, double> revenueByDay, profitByDay;
+        for (QDate d = from; d <= to; d = d.addDays(1)) {
+            revenueByDay[d] = 0.0;
+            profitByDay[d]  = 0.0;
+        }
+
+        for (auto inv : invoices) {
+            QDate d = inv->GetCreatedAt().date();
+            if (d < from || d > to) continue;
+            revenueByDay[d] += inv->Total();
+            for (auto& it : inv->GetItems()) {
+                auto prodMap = db.GetProduct(it.productId);
+                auto found = prodMap.find(it.productId);
+                if (found != prodMap.end() && found->second) {
+                    double importPrice = found->second->GetImportPrice();
+                    profitByDay[d] += (it.salePrice - importPrice) * it.quantity;
+                }
+            }
+        }
+
+        for (QDate d = from; d <= to; d = d.addDays(1)) {
+            *revenueSet << revenueByDay[d];
+            *profitSet  << profitByDay[d];
+            categories << d.toString("dd/MM");
+        }
+    }
+
+    // ---- Tạo chart ----
+    QBarSeries* series = new QBarSeries();
+    series->append(revenueSet);
+    series->append(profitSet);
+
+    QChart* chart = new QChart();
+    chart->addSeries(series);
+    chart->setTitle("Doanh thu và Lợi nhuận theo thời gian");
+    chart->legend()->setAlignment(Qt::AlignTop);
+
+    QBarCategoryAxis* axisX = new QBarCategoryAxis();
+    axisX->append(categories);
+    axisX->setTitleText("Thời gian");
+    chart->addAxis(axisX, Qt::AlignBottom);
+    series->attachAxis(axisX);
+
+    // ---- Trục Y theo dữ liệu ----
+    double minVal = 0, maxVal = 0;
+    bool first = true;
+
+    for (int i = 0; i < revenueSet->count(); i++) {
+        double r = (*revenueSet)[i];
+        double p = (*profitSet)[i];
+        if (first) { minVal = maxVal = r; first = false; }
+        minVal = std::min({minVal, r, p});
+        maxVal = std::max({maxVal, r, p});
+    }
+
+    // đảm bảo có 0
+    minVal = std::min(minVal, 0.0);
+    maxVal = std::max(maxVal, 0.0);
+
+    // chọn step
+    double range = maxVal - minVal;
+    double step = 50.0;  // bắt đầu từ 50
+    while ((range / step) > 12) step *= 2;  // tối đa ~12 tick
+
+    auto roundDown = [](double v, double step){ return std::floor(v / step) * step; };
+    auto roundUp   = [](double v, double step){ return std::ceil(v / step) * step; };
+
+    double yMin = roundDown(minVal, step);
+    double yMax = roundUp(maxVal, step);
+
+    // số tick = (range / step) + 1
+    int tickCount = static_cast<int>((yMax - yMin) / step) + 1;
+
+    QValueAxis* axisY = new QValueAxis();
+    axisY->setRange(yMin, yMax);
+    axisY->setTickInterval(step);
+    axisY->setTickCount(tickCount);
+    axisY->setLabelFormat("%.0f");
+    axisY->setTitleText("Số tiền (đ)");
+
+    chart->addAxis(axisY, Qt::AlignLeft);
+    series->attachAxis(axisY);
+
+    // ---- Thay chart cũ ----
+    QLayoutItem* item;
+    while ((item = ui->chartLayout->takeAt(0)) != nullptr) {
+        delete item->widget();
+        delete item;
+    }
+    QChartView* chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    ui->chartLayout->addWidget(chartView);
+
+    // ---- Cập nhật chỉ số bên trái ----
+    double totalRevenue = 0.0, totalProfit = 0.0;
+    int invoiceCount = static_cast<int>(invoices.size());
+    int totalQty = 0;
+
+    for (auto inv : invoices) {
+        totalRevenue += inv->Total();
+        for (auto& it : inv->GetItems()) {
+            totalQty += it.quantity;
+            auto prodMap = db.GetProduct(it.productId);
+            auto found = prodMap.find(it.productId);
+            if (found != prodMap.end() && found->second) {
+                double importPrice = found->second->GetImportPrice();
+                totalProfit += (it.salePrice - importPrice) * it.quantity;
+            }
+        }
+    }
+
+    QLocale vi(QLocale::Vietnamese, QLocale::Vietnam);
+    ui->lblRevenue->setText(vi.toString(totalRevenue, 'f', 0) + " đ");
+    ui->lblProfit->setText(vi.toString(totalProfit,  'f', 0) + " đ");
+    ui->lblInvoices->setText(QString::number(invoiceCount));
+    ui->lblQuantity->setText(QString::number(totalQty));
+
+    std::map<std::string,int> sold;
+    for (auto inv : invoices)
+        for (const auto& it : inv->GetItems())
+            sold[it.productId] += it.quantity;
+
+    std::pair<std::string,int> best{"", 0};
+    for (const auto& kv : sold)
+        if (kv.second > best.second) best = kv;
+
+    if (best.second > 0)
+        ui->lblBestSeller->setText(QString::fromStdString(best.first) +
+                                   " (" + QString::number(best.second) + ")");
+    else
+        ui->lblBestSeller->setText("Không có dữ liệu");
+}
+
 //============================Invoice Page=========================
 
 void calculateTotal(QTableWidget* table, QLabel* lbl)
@@ -446,14 +727,10 @@ void MainWindow::on_btnSave_2_clicked()
 
     if (InvoiceService::CreateInvoice(items, cmdManager)) {
         Notify::Info(this, "Lưu hóa đơn thành công!", "Thành công");
-
-        int threshold = 5; // Ngưỡng cảnh báo
-        for (auto &item : items) {
-            int qtyLeft = db->GetProduct(item.productId)[item.productId]->GetQuantity();
-            QString name = db->GetProduct(item.productId)[item.productId]->GetName();
-            Notify::LowStockAlert(this, name, qtyLeft, threshold);
-        }
-    } else {
+        Notify::LowStockAlert(this, db->GetProduct(""), 5);
+    }
+    else
+    {
         Notify::Error(this, "Lưu hóa đơn thất bại! Kiểm tra lại tồn kho.", "Lỗi");
     }
 
@@ -478,4 +755,3 @@ void MainWindow::on_tblListInvoice_cellDoubleClicked(int row, int column)
     dlg->setAttribute(Qt::WA_DeleteOnClose);
     dlg->exec();
 }
-

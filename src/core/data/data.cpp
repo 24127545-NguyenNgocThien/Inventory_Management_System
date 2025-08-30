@@ -288,3 +288,17 @@ bool Database::ReturnInvoice(const std::string& invoiceId)
 
     return true;
 }
+
+const std::vector<Invoice*> Database::GetInvoicesInRange(const QDate& from, const QDate& to) const
+{
+    std::vector<Invoice*> result;
+    for (auto inv : invoices)
+    {
+        QDate d = inv->GetCreatedAt().date();
+        if (d >= from && d <= to)
+        {
+            result.push_back(inv);
+        }
+    }
+    return result;
+}

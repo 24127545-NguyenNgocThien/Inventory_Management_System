@@ -27,7 +27,7 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="productsPage">
        <layout class="QGridLayout" name="gridLayout_3">
@@ -1099,11 +1099,7 @@ QLabel#titleLabel {
              </layout>
             </item>
             <item>
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-             </widget>
+            <layout class="QVBoxLayout" name="chartLayout"/>
             </item>
            </layout>
           </item>
