@@ -105,6 +105,7 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
         ui->sidebarDock_2->setVisible(!ui->sidebarDock_2->isVisible());
     });
     ui->toolBar->addAction(toggleAction);
+    toggleAction->setShortcut(QKeySequence(tr("Ctrl+M")));
 
     // ==== THÊM NÚT LOG ====
     QAction *logAction = new QAction("📄 Log", this);
@@ -112,6 +113,7 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
         showLogWindow();
     });
     ui->toolBar->addAction(logAction);
+    logAction->setShortcut(QKeySequence(tr("Ctrl+L")));
 
     // Khi chọn item trong sidebar → đổi trang
     connect(ui->listWidget, &QListWidget::currentRowChanged,
