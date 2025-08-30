@@ -42,6 +42,7 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
     db->LoadInvoices();
     ui->setupUi(this);
     ui->statusBar->addPermanentWidget(lblCount);
+    lblCount->setStyleSheet("color: white;");
 
     // Đặt ngày mặc định = 6 tháng gần nhất
     QDate today = QDate::currentDate();
@@ -95,6 +96,7 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
 
     // Tạo và thêm label mới
     QLabel *statusLabel = new QLabel("Trạng thái: Sẵn sàng", this);
+    statusLabel->setStyleSheet("color: white;");
     ui->statusBar->addWidget(statusLabel);
 
     // Tạo action thường
