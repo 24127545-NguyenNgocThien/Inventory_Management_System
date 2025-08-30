@@ -1,3 +1,0 @@
-C:/Users/PC/Inventory_Management_System/src/ui/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/uiLib.dir
-C:/Users/PC/Inventory_Management_System/src/ui/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-C:/Users/PC/Inventory_Management_System/src/ui/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir

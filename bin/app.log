@@ -1,3 +1,4 @@
+
 [2025-08-30 16:36:11] [INFO] Khởi tạo AddCommand cho sản phẩm: 1 (brand: 1)
 [2025-08-30 16:36:11] [INFO] Đã thêm sản phẩm thành công: E111 (số lượng: 10, giá bán: 100)
 [2025-08-30 16:36:26] [INFO] Khởi tạo AddCommand cho sản phẩm: 2 (brand: 2)
@@ -37,3 +38,4 @@
 [2025-08-30 19:28:10] [INFO] Xuất kho thành công: id=O331, trừ=5, còn lại=30
 [2025-08-30 19:28:10] [INFO] Khởi tạo ExportCommand: id=W221, amount=4
 [2025-08-30 19:28:10] [INFO] Xuất kho thành công: id=W221, trừ=4, còn lại=21
+

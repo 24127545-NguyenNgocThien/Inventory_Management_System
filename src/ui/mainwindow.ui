@@ -27,7 +27,7 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="productsPage">
        <layout class="QGridLayout" name="gridLayout_3">
@@ -287,7 +287,7 @@ QTabBar::tab:selected {
 }</string>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab">
            <attribute name="title">
@@ -502,6 +502,19 @@ QScrollBar::handle:horizontal:hover {
                 </item>
                 <item>
                  <widget class="QLabel" name="lblTotal">
+                  <property name="styleSheet">
+                   <string notr="true">QLabel {
+    color: #111827;         /* chữ đen xám đậm */
+    font: 10pt &quot;Segoe UI&quot;;
+    padding: 2px;
+}
+
+QLabel#titleLabel {
+    font: bold 12pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;         /* xanh đậm cho tiêu đề */
+}
+</string>
+                  </property>
                   <property name="text">
                    <string>Total: 0đ</string>
                   </property>
