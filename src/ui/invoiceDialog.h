@@ -1,4 +1,5 @@
-#pragma once
+#ifndef INVOICEDIALOG_H
+#define INVOICEDIALOG_H
 
 #include <QDialog>
 #include <QTableWidget>
@@ -33,3 +34,5 @@ private:
 
     void fillTable();
 };
+
+#endif // INVOICEDIALOG_H

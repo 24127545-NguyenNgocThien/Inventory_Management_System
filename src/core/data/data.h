@@ -44,6 +44,7 @@ public:
     void LoadInvoices(); // NEW
     void AddInvoice(Invoice* inv);         // NEW
     const std::vector<Invoice*>& GetInvoices() const; // NEW
+    const std::vector<Invoice*> GetInvoicesInRange(const QDate& from, const QDate& to) const;
     bool ReturnInvoice(const std::string& invoiceId);
 
 };

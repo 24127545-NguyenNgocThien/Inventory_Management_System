@@ -41,11 +41,11 @@ double Report::ProfitTotal(const std::vector<Invoice>& invoices)
     return profit;
 }
 
-std::pair<std::string,int> Report::BestSellingProduct(const std::vector<Invoice>& invoices)
+std::pair<std::string,int> Report::BestSellingProduct(const std::vector<Invoice*>& invoices)
 {
     std::map<std::string, int> sold;
     for (const auto& inv : invoices)
-        for (const auto& it : inv.GetItems())
+        for (const auto& it : inv->GetItems())
             sold[it.productId] += it.quantity;
 
     std::pair<std::string,int> best{"", 0};

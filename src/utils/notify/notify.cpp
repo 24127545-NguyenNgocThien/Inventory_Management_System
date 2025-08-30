@@ -23,11 +23,30 @@ bool Notify::Confirm(QWidget* parent, const QString& message, const QString& tit
     return (reply == QMessageBox::Yes);
 }
 
-void Notify::LowStockAlert(QWidget* parent, const QString& productName, int quantity, int threshold)
+void Notify::LowStockAlert(QWidget* parent, const std::map<std::string, std::shared_ptr<Product>>& products, int threshold)
 {
-    if(quantity <= threshold)
+    QStringList lowStockList;
+    for (const auto& [id, product] : products)
     {
-        QString msg = QString("Sản phẩm \"%1\" hiện chỉ còn %2 trong kho.\nHãy xem xét bổ sung.").arg(productName).arg(quantity);
-        QMessageBox::warning(parent, "Thông báo", msg);
+        if (product->GetQuantity() <= threshold)
+        {
+            QString line = QString("%1 (Còn: %2 vật phẩm)")
+                               .arg(product->GetName())
+                               .arg(product->GetQuantity());
+            lowStockList.append(line);
+        }
+    }
+
+    if (lowStockList.isEmpty()) return;
+
+    if (lowStockList.size() == 1)
+    {
+        QMessageBox::warning(parent, "Thông báo",
+                             QString("Sản phẩm còn ít hàng:\n\n%1").arg(lowStockList.first()));
+    }
+    else
+    {
+        QString message = "Các sản phẩm sau còn ít hàng:\n\n" + lowStockList.join("\n");
+        QMessageBox::warning(parent, "Thông báo", message);
     }
 }

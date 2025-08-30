@@ -28,6 +28,7 @@ private slots:
     void on_btnDelete_clicked();
     void on_btnEdit_clicked();
     void on_btnImport_clicked();
+    void on_btnView_clicked();
 
     void on_btnExport_2_clicked();
     void on_btnDelete_2_clicked();

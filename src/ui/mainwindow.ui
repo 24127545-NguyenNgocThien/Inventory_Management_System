@@ -14,17 +14,20 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow
-{
-	
+   <string notr="true">QMainWindow {
+    
+	background-color: rgb(148, 194, 255);
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="productsPage">
        <layout class="QGridLayout" name="gridLayout_3">
@@ -34,6 +37,21 @@
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
              <widget class="QPushButton" name="btnAdd">
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: #1e3a8a;  
+    color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #2563eb;  
+}
+QPushButton:pressed {
+    background-color: #1d4ed8;   
+}</string>
+              </property>
               <property name="text">
                <string> Thêm</string>
               </property>
@@ -44,6 +62,21 @@
             </item>
             <item>
              <widget class="QPushButton" name="btnDelete">
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: #1e3a8a;  
+    color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #2563eb;  
+}
+QPushButton:pressed {
+    background-color: #1d4ed8;   
+}</string>
+              </property>
               <property name="text">
                <string> Xóa</string>
               </property>
@@ -54,6 +87,21 @@
             </item>
             <item>
              <widget class="QPushButton" name="btnEdit">
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: #1e3a8a;  
+    color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #2563eb;  
+}
+QPushButton:pressed {
+    background-color: #1d4ed8;   
+}</string>
+              </property>
               <property name="text">
                <string> Chỉnh sửa</string>
               </property>
@@ -64,6 +112,21 @@
             </item>
             <item>
              <widget class="QPushButton" name="btnImport">
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: #1e3a8a;  
+    color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #2563eb;  
+}
+QPushButton:pressed {
+    background-color: #1d4ed8;   
+}</string>
+              </property>
               <property name="text">
                <string> Nhập hàng</string>
               </property>
@@ -74,6 +137,18 @@
             </item>
             <item>
              <widget class="QLineEdit" name="txtSearch">
+              <property name="styleSheet">
+               <string notr="true">QLineEdit {
+    border: 1px solid #1e3a8a;
+    border-radius: 4px;
+    padding: 4px;
+    background: white;
+	
+	color: rgb(0, 0, 0);
+    selection-background-color: #2563eb;
+    selection-color: white;
+}</string>
+              </property>
               <property name="placeholderText">
                <string>Tìm nhanh theo tên / id...</string>
               </property>
@@ -83,6 +158,67 @@
           </item>
           <item>
            <widget class="QTableWidget" name="tblProducts">
+            <property name="styleSheet">
+             <string notr="true">/* ----- QTableWidget / QTableView ----- */
+QTableWidget, QTableView {
+    background-color: #ffffff;        /* nền trắng */
+    alternate-background-color: rgb(163, 163, 163);  /* nền xen kẽ xám nhạt */
+    gridline-color: #d1d5db;          /* màu đường kẻ */
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    selection-background-color: #2563eb; /* khi chọn */
+    selection-color: #ffffff;         /* chữ trắng khi chọn */
+    color: #111827;                   /* chữ đen khi bình thường */
+    font: 10pt &quot;Segoe UI&quot;;
+}
+
+/* ----- Header ngang ----- */
+QHeaderView::section {
+    background-color: #1e3a8a;   /* xanh đậm */
+    color: white;
+    padding: 6px;
+    border: none;
+    font-weight: bold;
+}
+QHeaderView::section:horizontal {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+/* ----- Header dọc (nếu cần) ----- */
+QHeaderView::section:vertical {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+/* ----- Scrollbar trong bảng ----- */
+QScrollBar:vertical {
+    background: #f3f4f6;
+    width: 10px;
+    margin: 0px;
+}
+QScrollBar::handle:vertical {
+    background: #9ca3af;
+    border-radius: 5px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #2563eb;
+}
+
+QScrollBar:horizontal {
+    background: #f3f4f6;
+    height: 10px;
+    margin: 0px;
+}
+QScrollBar::handle:horizontal {
+    background: #9ca3af;
+    border-radius: 5px;
+}
+QScrollBar::handle:horizontal:hover {
+    background: #2563eb;
+}
+</string>
+            </property>
             <property name="editTriggers">
              <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
             </property>
@@ -132,6 +268,24 @@
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="1">
          <widget class="QTabWidget" name="tabWidget">
+          <property name="styleSheet">
+           <string notr="true">QTabWidget::pane {
+    border: 1px solid #1e3a8a;
+    background: white;
+    border-radius: 6px;
+}
+QTabBar::tab {
+    background: #e5e7eb;      /* xám nhạt */
+    color: #1e3a8a;
+    padding: 6px 12px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+QTabBar::tab:selected {
+    background: #1e3a8a;
+    color: white;
+}</string>
+          </property>
           <property name="currentIndex">
            <number>1</number>
           </property>
@@ -146,6 +300,21 @@
                <layout class="QHBoxLayout" name="horizontalLayout_2">
                 <item>
                  <widget class="QPushButton" name="btnExport_2">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+    background-color: #1e3a8a;  
+    color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #2563eb;  
+}
+QPushButton:pressed {
+    background-color: #1d4ed8;   
+}</string>
+                  </property>
                   <property name="text">
                    <string> Xuất kho</string>
                   </property>
@@ -156,6 +325,21 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="btnDelete_2">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+    background-color: #1e3a8a;  
+    color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #2563eb;  
+}
+QPushButton:pressed {
+    background-color: #1d4ed8;   
+}</string>
+                  </property>
                   <property name="text">
                    <string> Xóa</string>
                   </property>
@@ -166,6 +350,21 @@
                 </item>
                 <item>
                  <widget class="QPushButton" name="btnSave_2">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
+    background-color: #1e3a8a;  
+    color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #2563eb;  
+}
+QPushButton:pressed {
+    background-color: #1d4ed8;   
+}</string>
+                  </property>
                   <property name="text">
                    <string> Lưu</string>
                   </property>
@@ -191,6 +390,67 @@
               </item>
               <item>
                <widget class="QTableWidget" name="tblFormInvoice">
+                <property name="styleSheet">
+                 <string notr="true">/* ----- QTableWidget / QTableView ----- */
+QTableWidget, QTableView {
+    background-color: #ffffff;        /* nền trắng */
+    alternate-background-color: rgb(163, 163, 163);  /* nền xen kẽ xám nhạt */
+    gridline-color: #d1d5db;          /* màu đường kẻ */
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    selection-background-color: #2563eb; /* khi chọn */
+    selection-color: #ffffff;         /* chữ trắng khi chọn */
+    color: #111827;                   /* chữ đen khi bình thường */
+    font: 10pt &quot;Segoe UI&quot;;
+}
+
+/* ----- Header ngang ----- */
+QHeaderView::section {
+    background-color: #1e3a8a;   /* xanh đậm */
+    color: white;
+    padding: 6px;
+    border: none;
+    font-weight: bold;
+}
+QHeaderView::section:horizontal {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+/* ----- Header dọc (nếu cần) ----- */
+QHeaderView::section:vertical {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+/* ----- Scrollbar trong bảng ----- */
+QScrollBar:vertical {
+    background: #f3f4f6;
+    width: 10px;
+    margin: 0px;
+}
+QScrollBar::handle:vertical {
+    background: #9ca3af;
+    border-radius: 5px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #2563eb;
+}
+
+QScrollBar:horizontal {
+    background: #f3f4f6;
+    height: 10px;
+    margin: 0px;
+}
+QScrollBar::handle:horizontal {
+    background: #9ca3af;
+    border-radius: 5px;
+}
+QScrollBar::handle:horizontal:hover {
+    background: #2563eb;
+}
+</string>
+                </property>
                 <property name="editTriggers">
                  <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
                 </property>
@@ -260,6 +520,67 @@
            <layout class="QGridLayout" name="gridLayout_5">
             <item row="0" column="0">
              <widget class="QTableWidget" name="tblListInvoice">
+              <property name="styleSheet">
+               <string notr="true">/* ----- QTableWidget / QTableView ----- */
+QTableWidget, QTableView {
+    background-color: #ffffff;        /* nền trắng */
+    alternate-background-color: rgb(163, 163, 163);  /* nền xen kẽ xám nhạt */
+    gridline-color: #d1d5db;          /* màu đường kẻ */
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    selection-background-color: #2563eb; /* khi chọn */
+    selection-color: #ffffff;         /* chữ trắng khi chọn */
+    color: #111827;                   /* chữ đen khi bình thường */
+    font: 10pt &quot;Segoe UI&quot;;
+}
+
+/* ----- Header ngang ----- */
+QHeaderView::section {
+    background-color: #1e3a8a;   /* xanh đậm */
+    color: white;
+    padding: 6px;
+    border: none;
+    font-weight: bold;
+}
+QHeaderView::section:horizontal {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+/* ----- Header dọc (nếu cần) ----- */
+QHeaderView::section:vertical {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+/* ----- Scrollbar trong bảng ----- */
+QScrollBar:vertical {
+    background: #f3f4f6;
+    width: 10px;
+    margin: 0px;
+}
+QScrollBar::handle:vertical {
+    background: #9ca3af;
+    border-radius: 5px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #2563eb;
+}
+
+QScrollBar:horizontal {
+    background: #f3f4f6;
+    height: 10px;
+    margin: 0px;
+}
+QScrollBar::handle:horizontal {
+    background: #9ca3af;
+    border-radius: 5px;
+}
+QScrollBar::handle:horizontal:hover {
+    background: #2563eb;
+}
+</string>
+              </property>
               <property name="editTriggers">
                <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
               </property>
@@ -309,13 +630,88 @@
            <layout class="QHBoxLayout" name="filterLayout">
             <item>
              <widget class="QLabel" name="label">
+              <property name="font">
+               <font>
+                <family>Segoe UI</family>
+                <pointsize>13</pointsize>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: #111827;         /* chữ đen xám đậm */
+    font: 13pt &quot;Segoe UI&quot;;
+    padding: 2px;
+}
+
+QLabel#titleLabel {
+    font: bold 12pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;         /* xanh đậm cho tiêu đề */
+}
+</string>
+              </property>
               <property name="text">
                <string>Từ ngày: </string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QDateEdit" name="dateFrom"/>
+             <widget class="QDateEdit" name="dateFrom">
+              <property name="styleSheet">
+               <string notr="true">QDateEdit, QDateTimeEdit, QSpinBox {
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    padding: 2px 24px 2px 8px;   /* chừa chỗ bên phải cho nút mũi tên */
+    background: #ffffff;
+    color: #111827;
+    font: 10pt &quot;Segoe UI&quot;;
+    min-height: 26px;
+}
+
+/* Hover */
+QDateEdit:hover, QDateTimeEdit:hover, QSpinBox:hover {
+    border: 1px solid #2563eb;
+}
+
+/* Focus */
+QDateEdit:focus, QDateTimeEdit:focus, QSpinBox:focus {
+    border: 1px solid #2563eb;
+    background: #eff6ff;
+    outline: none;
+}
+
+/* Up/Down button */
+QSpinBox::up-button, QDateEdit::up-button, QDateTimeEdit::up-button,
+QSpinBox::down-button, QDateEdit::down-button, QDateTimeEdit::down-button {
+    subcontrol-origin: border;
+    width: 20px;
+    border: none;
+    background: transparent;
+}
+
+/* Hover effect cho button */
+QSpinBox::up-button:hover, QDateEdit::up-button:hover, QDateTimeEdit::up-button:hover,
+QSpinBox::down-button:hover, QDateEdit::down-button:hover, QDateTimeEdit::down-button:hover {
+    background: #e0e7ff;
+    border-radius: 3px;
+}
+
+/* Up Arrow */
+QSpinBox::up-arrow, QDateEdit::up-arrow, QDateTimeEdit::up-arrow {
+    width: 8px;
+    height: 8px;
+}
+
+/* Down Arrow */
+QSpinBox::down-arrow, QDateEdit::down-arrow, QDateTimeEdit::down-arrow {
+ image: none;
+    width: 8px;
+    height: 8px;
+} 
+</string>
+              </property>
+             </widget>
             </item>
             <item>
              <spacer name="horizontalSpacer_3">
@@ -332,13 +728,88 @@
             </item>
             <item>
              <widget class="QLabel" name="label_2">
+              <property name="font">
+               <font>
+                <family>Segoe UI</family>
+                <pointsize>13</pointsize>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    color: #111827;         /* chữ đen xám đậm */
+    font: 13pt &quot;Segoe UI&quot;;
+    padding: 2px;
+}
+
+QLabel#titleLabel {
+    font: bold 12pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;         /* xanh đậm cho tiêu đề */
+}
+</string>
+              </property>
               <property name="text">
                <string>Đến ngày: </string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QDateEdit" name="dateTo"/>
+             <widget class="QDateEdit" name="dateTo">
+              <property name="styleSheet">
+               <string notr="true">QDateEdit, QDateTimeEdit, QSpinBox {
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    padding: 2px 24px 2px 8px;   /* chừa chỗ bên phải cho nút mũi tên */
+    background: #ffffff;
+    color: #111827;
+    font: 10pt &quot;Segoe UI&quot;;
+    min-height: 26px;
+}
+
+/* Hover */
+QDateEdit:hover, QDateTimeEdit:hover, QSpinBox:hover {
+    border: 1px solid #2563eb;
+}
+
+/* Focus */
+QDateEdit:focus, QDateTimeEdit:focus, QSpinBox:focus {
+    border: 1px solid #2563eb;
+    background: #eff6ff;
+    outline: none;
+}
+
+/* Up/Down button */
+QSpinBox::up-button, QDateEdit::up-button, QDateTimeEdit::up-button,
+QSpinBox::down-button, QDateEdit::down-button, QDateTimeEdit::down-button {
+    subcontrol-origin: border;
+    width: 20px;
+    border: none;
+    background: transparent;
+}
+
+/* Hover effect cho button */
+QSpinBox::up-button:hover, QDateEdit::up-button:hover, QDateTimeEdit::up-button:hover,
+QSpinBox::down-button:hover, QDateEdit::down-button:hover, QDateTimeEdit::down-button:hover {
+    background: #e0e7ff;
+    border-radius: 3px;
+}
+
+/* Up Arrow */
+QSpinBox::up-arrow, QDateEdit::up-arrow, QDateTimeEdit::up-arrow {
+    width: 8px;
+    height: 8px;
+}
+
+/* Down Arrow */
+QSpinBox::down-arrow, QDateEdit::down-arrow, QDateTimeEdit::down-arrow {
+ image: none;
+    width: 8px;
+    height: 8px;
+} 
+</string>
+              </property>
+             </widget>
             </item>
             <item>
              <spacer name="horizontalSpacer_4">
@@ -355,6 +826,21 @@
             </item>
             <item>
              <widget class="QPushButton" name="btnView">
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: #1e3a8a;  
+    color: white;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #2563eb;  
+}
+QPushButton:pressed {
+    background-color: #1d4ed8;   
+}</string>
+              </property>
               <property name="text">
                <string>Xem</string>
               </property>
@@ -368,12 +854,43 @@
              <layout class="QVBoxLayout" name="verticalLayout_3">
               <item>
                <widget class="QGroupBox" name="groupBox_2">
+                <property name="styleSheet">
+                 <string notr="true">QGroupBox {
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    margin-top: 20px;       /* khoảng cách cho tiêu đề */
+    padding: 8px;
+    font: bold 10pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px;
+    color: #1e3a8a;
+}
+</string>
+                </property>
                 <property name="title">
                  <string>Doanh thu</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_4">
                  <item>
                   <widget class="QLabel" name="lblRevenue">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+    color: #111827;         /* chữ đen xám đậm */
+    font: 10pt &quot;Segoe UI&quot;;
+    padding: 2px;
+}
+
+QLabel#titleLabel {
+    font: bold 12pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;         /* xanh đậm cho tiêu đề */
+}
+</string>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
@@ -384,12 +901,42 @@
               </item>
               <item>
                <widget class="QGroupBox" name="groupBox_5">
+                <property name="styleSheet">
+                 <string notr="true">QGroupBox {
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    margin-top: 20px;       /* khoảng cách cho tiêu đề */
+    padding: 8px;
+    font: bold 10pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px;
+    color: #1e3a8a;
+}
+</string>
+                </property>
                 <property name="title">
                  <string>Lợi nhuận</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_8">
                  <item>
                   <widget class="QLabel" name="lblProfit">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+    color: #111827;         /* chữ đen xám đậm */
+    font: 10pt &quot;Segoe UI&quot;;
+    padding: 2px;
+}
+
+QLabel#titleLabel {
+    font: bold 12pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;         /* xanh đậm cho tiêu đề */
+}</string>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
@@ -400,12 +947,42 @@
               </item>
               <item>
                <widget class="QGroupBox" name="groupBox">
+                <property name="styleSheet">
+                 <string notr="true">QGroupBox {
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    margin-top: 20px;       /* khoảng cách cho tiêu đề */
+    padding: 8px;
+    font: bold 10pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px;
+    color: #1e3a8a;
+}
+</string>
+                </property>
                 <property name="title">
                  <string>Số hóa đơn</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_5">
                  <item>
                   <widget class="QLabel" name="lblInvoices">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+    color: #111827;         /* chữ đen xám đậm */
+    font: 10pt &quot;Segoe UI&quot;;
+    padding: 2px;
+}
+
+QLabel#titleLabel {
+    font: bold 12pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;         /* xanh đậm cho tiêu đề */
+}</string>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
@@ -416,12 +993,42 @@
               </item>
               <item>
                <widget class="QGroupBox" name="groupBox_3">
+                <property name="styleSheet">
+                 <string notr="true">QGroupBox {
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    margin-top: 20px;       /* khoảng cách cho tiêu đề */
+    padding: 8px;
+    font: bold 10pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px;
+    color: #1e3a8a;
+}
+</string>
+                </property>
                 <property name="title">
                  <string>Số lượng bán ra</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_6">
                  <item>
                   <widget class="QLabel" name="lblQuantity">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+    color: #111827;         /* chữ đen xám đậm */
+    font: 10pt &quot;Segoe UI&quot;;
+    padding: 2px;
+}
+
+QLabel#titleLabel {
+    font: bold 12pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;         /* xanh đậm cho tiêu đề */
+}</string>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
@@ -432,12 +1039,42 @@
               </item>
               <item>
                <widget class="QGroupBox" name="groupBox_4">
+                <property name="styleSheet">
+                 <string notr="true">QGroupBox {
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    margin-top: 20px;       /* khoảng cách cho tiêu đề */
+    padding: 8px;
+    font: bold 10pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px;
+    color: #1e3a8a;
+}
+</string>
+                </property>
                 <property name="title">
                  <string>Best selling</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_7">
                  <item>
                   <widget class="QLabel" name="lblBestSeller">
+                   <property name="styleSheet">
+                    <string notr="true">QLabel {
+    color: #111827;         /* chữ đen xám đậm */
+    font: 10pt &quot;Segoe UI&quot;;
+    padding: 2px;
+}
+
+QLabel#titleLabel {
+    font: bold 12pt &quot;Segoe UI&quot;;
+    color: #1e3a8a;         /* xanh đậm cho tiêu đề */
+}</string>
+                   </property>
                    <property name="text">
                     <string>TextLabel</string>
                    </property>
@@ -462,11 +1099,7 @@
              </layout>
             </item>
             <item>
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-             </widget>
+            <layout class="QVBoxLayout" name="chartLayout"/>
             </item>
            </layout>
           </item>
@@ -487,48 +1120,101 @@
      <height>25</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuUndo">
-    <property name="title">
-     <string>Undo</string>
-    </property>
-   </widget>
-   <widget class="QMenu" name="menuRedo">
-    <property name="title">
-     <string>Redo</string>
-    </property>
-   </widget>
+   <property name="styleSheet">
+    <string notr="true">QMenuBar {
+    background-color: #1e3a8a;
+    color: white;
+}
+QMenuBar::item:selected {
+    background: #2563eb;
+}</string>
+   </property>
    <widget class="QMenu" name="menuProduct">
+    <property name="styleSheet">
+     <string notr="true">QMenu {
+    background-color: rgb(0, 98, 255);
+    border: 1px solid #1e3a8a;
+}
+QMenu::item {
+    padding: 5px 20px;
+}
+QMenu::item:selected {
+    background-color: #2563eb;
+    color: white;
+}</string>
+    </property>
     <property name="title">
      <string>Product</string>
     </property>
     <addaction name="actionAdd_product"/>
     <addaction name="actionDelete_product"/>
     <addaction name="actionModify_product"/>
+    <addaction name="actionImport_product"/>
    </widget>
    <widget class="QMenu" name="menuInvoice">
+    <property name="styleSheet">
+     <string notr="true">QMenu {
+    background-color: rgb(0, 98, 255);
+    border: 1px solid #1e3a8a;
+}
+QMenu::item {
+    padding: 5px 20px;
+}
+QMenu::item:selected {
+    background-color: #2563eb;
+    color: white;
+}</string>
+    </property>
     <property name="title">
      <string>Invoice</string>
     </property>
     <addaction name="actionNew_invoice"/>
     <addaction name="actionView_invoices"/>
    </widget>
-   <widget class="QMenu" name="menuReport">
-    <property name="title">
-     <string>Report</string>
+   <widget class="QMenu" name="menuEdit">
+    <property name="styleSheet">
+     <string notr="true">QMenu {
+    background-color: rgb(0, 98, 255);
+    border: 1px solid #1e3a8a;
+}
+QMenu::item {
+    padding: 5px 20px;
+}
+QMenu::item:selected {
+    background-color: #2563eb;
+    color: white;
+}</string>
     </property>
-    <addaction name="actionRevenue"/>
-    <addaction name="actionBest_selling_product"/>
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionUndo"/>
+    <addaction name="actionRedo"/>
    </widget>
-   <addaction name="menuUndo"/>
-   <addaction name="menuRedo"/>
+   <addaction name="menuEdit"/>
    <addaction name="menuProduct"/>
    <addaction name="menuInvoice"/>
-   <addaction name="menuReport"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="styleSheet">
+    <string notr="true">QStatusBar {
+    background: #1e3a8a;
+    color: white;
+}</string>
+   </property>
+  </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="windowTitle">
     <string>toolBar</string>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QToolBar {
+    background-color: rgb(0, 98, 255);
+    color: white;
+}
+QToolBar::item:selected {
+    background: #2563eb;
+}</string>
    </property>
    <property name="iconSize">
     <size>
@@ -551,6 +1237,26 @@
    <addaction name="actionReport"/>
   </widget>
   <widget class="QDockWidget" name="sidebarDock_2">
+   <property name="styleSheet">
+    <string notr="true">QDockWidget {
+    background: #ffffff;
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    titlebar-close-icon: url(close.png);  /* nếu muốn custom icon */
+    titlebar-normal-icon: url(undock.png);
+}
+
+/* Thanh tiêu đề của DockWidget */
+QDockWidget::title {
+    background: #1e3a8a;     /* xanh đậm */
+    color: white;
+    padding: 4px;
+    font-weight: bold;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+</string>
+   </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
@@ -561,6 +1267,35 @@
     <layout class="QGridLayout" name="gridLayout_2">
      <item row="0" column="0">
       <widget class="QListWidget" name="listWidget">
+       <property name="styleSheet">
+        <string notr="true">QListWidget {
+    background: #ffffff;
+    border: 1px solid #1e3a8a;
+    border-radius: 6px;
+    padding: 4px;
+    font: 10pt &quot;Segoe UI&quot;;
+    color: #111827;     /* chữ đen */
+}
+
+/* Item bình thường */
+QListWidget::item {
+    padding: 6px;
+    border-radius: 4px;
+}
+
+/* Item khi hover */
+QListWidget::item:hover {
+    background: #e0e7ff;   /* xanh nhạt */
+    color: #1e3a8a;
+}
+
+/* Item được chọn */
+QListWidget::item:selected {
+    background: #2563eb;   /* xanh tươi */
+    color: #ffffff;
+}
+</string>
+       </property>
        <property name="spacing">
         <number>5</number>
        </property>
@@ -649,6 +1384,31 @@
    </property>
    <property name="text">
     <string>Report</string>
+   </property>
+  </action>
+  <action name="actionImport_product">
+   <property name="text">
+    <string>Import product</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="text">
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="text">
+    <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionLight_mode">
+   <property name="text">
+    <string>Light mode</string>
+   </property>
+  </action>
+  <action name="actionDark_mode">
+   <property name="text">
+    <string>Dark mode</string>
    </property>
   </action>
  </widget>

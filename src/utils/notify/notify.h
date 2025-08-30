@@ -4,6 +4,9 @@
 #include <QString>
 #include <QMessageBox>
 #include <QWidget>
+#include <map>
+#include <memory>
+#include "product.h"
 
 class Notify
 {
@@ -21,7 +24,7 @@ public:
     static bool Confirm(QWidget* parent, const QString& message, const QString& title = "Xác nhận");
 
     // Thông báo tồn kho thấp
-    static void LowStockAlert(QWidget* parent, const QString& productName, int quantity, int threshold = 5);
+    static void LowStockAlert(QWidget* parent, const std::map<std::string, std::shared_ptr<Product>>& products, int threshold);
 };
 
 #endif // NOTIFY_H

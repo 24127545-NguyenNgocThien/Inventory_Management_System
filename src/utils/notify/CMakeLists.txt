@@ -6,8 +6,10 @@ add_library(notifyLib STATIC
 target_link_libraries(notifyLib PUBLIC
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::Core
+    productLib
 )
 
 target_include_directories(notifyLib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../productLib
 )
