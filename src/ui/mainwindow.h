@@ -36,6 +36,7 @@ private slots:
     void on_btnSave_2_clicked();
 
     void on_tblListInvoice_cellDoubleClicked(int row, int column);
+    void showLogWindow();
 private:
     Ui::MainWindow *ui;
     Database* db;

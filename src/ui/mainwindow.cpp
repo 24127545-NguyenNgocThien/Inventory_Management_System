@@ -25,6 +25,11 @@
 #include <QtCharts/QLineSeries>
 #include <QLegendMarker>
 #include <QPen>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QPlainTextEdit>
+#include <QFile>
+#include <QTextStream>
 
 MainWindow::MainWindow(Database& data, QWidget *parent)
     : QMainWindow(parent)
@@ -104,6 +109,13 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
         ui->sidebarDock_2->setVisible(!ui->sidebarDock_2->isVisible());
     });
     ui->toolBar->addAction(toggleAction);
+
+    // ==== THÊM NÚT LOG ====
+    QAction *logAction = new QAction("📄 Log", this);
+    connect(logAction, &QAction::triggered, [this]() {
+        showLogWindow();
+    });
+    ui->toolBar->addAction(logAction);
 
     // Khi chọn item trong sidebar → đổi trang
     connect(ui->listWidget, &QListWidget::currentRowChanged,
@@ -759,5 +771,30 @@ void MainWindow::on_tblListInvoice_cellDoubleClicked(int row, int column)
     connect(dlg, &InvoiceDialog::invoiceReturned, this, &MainWindow::refreshTables);
 
     dlg->setAttribute(Qt::WA_DeleteOnClose);
+    dlg->exec();
+}
+
+void MainWindow::showLogWindow()
+{
+    QDialog *dlg = new QDialog(this);
+    dlg->setWindowTitle("Application Log");
+    dlg->resize(600, 400);
+
+    QVBoxLayout *layout = new QVBoxLayout(dlg);
+    QPlainTextEdit *editor = new QPlainTextEdit(dlg);
+    editor->setReadOnly(true);
+    layout->addWidget(editor);
+
+    // Đọc nội dung file log
+    QFile file("app.log");
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        editor->setPlainText(in.readAll());
+        file.close();
+    } else {
+        editor->setPlainText("Không thể đọc file log!");
+    }
+
+    dlg->setLayout(layout);
     dlg->exec();
 }
