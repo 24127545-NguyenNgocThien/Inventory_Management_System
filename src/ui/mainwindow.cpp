@@ -169,7 +169,7 @@ void MainWindow::fillOutInvoiceTable()
         QList<QString> data = {
             QString::fromStdString(invoice->GetId()),
             invoice->GetCreatedAt().toString("dd/MM/yyyy"),
-            QString::number(invoice->Total()),
+            QString::number(invoice->Total(), 'f', 2)
         };
         addRow(ui->tblListInvoice, data);
     }
@@ -186,8 +186,8 @@ void MainWindow::fillOutProductTable()
             QString::fromStdString(pair.second->GetId()),
             pair.second->GetName(),
             pair.second->GetBrand(),
-            QString::number(pair.second->GetImportPrice()),
-            QString::number(pair.second->GetSalePrice()),
+            QString::number(pair.second->GetImportPrice(), 'f', 2),
+            QString::number(pair.second->GetSalePrice(), 'f', 2),
             QString::number(pair.second->GetQuantity())
         };
         addRow(ui->tblProducts, data);
@@ -645,7 +645,7 @@ void MainWindow::on_btnView_clicked()
     ui->lblRevenue->setText(vi.toString(totalRevenue, 'f', 0) + " đ");
     ui->lblProfit->setText(vi.toString(totalProfit,  'f', 0) + " đ");
     ui->lblInvoices->setText(QString::number(invoiceCount));
-    ui->lblQuantity->setText(QString::number(totalQty));
+    ui->lblQuantity->setText(QString::number(totalQty, 'f', 2));
 
     std::map<std::string,int> sold;
     for (auto inv : invoices)
@@ -673,7 +673,7 @@ void calculateTotal(QTableWidget* table, QLabel* lbl)
         QTableWidgetItem *item = table->item(row, 3); // Cột thành tiền
         total += item->text().toDouble();
     }
-    QString content = "Total: " + QString::number(total);
+    QString content = "Total: " + QString::number(total, 'f', 2);
     lbl->setText(content);
 }
 
@@ -688,9 +688,9 @@ void MainWindow::on_btnExport_2_clicked()
             qDebug() << "Selected:" << p.id << p.name << "qty=" << p.quantity;
             QList<QString> data = {
                 p.id,
-                QString::number(p.salePrice),
+                QString::number(p.salePrice, 'f', 2),
                 QString::number(p.quantity),
-                QString::number(p.salePrice * p.quantity)
+                QString::number(p.salePrice * p.quantity, 'f', 2)
             };
             addRow(ui->tblFormInvoice, data);
         }
