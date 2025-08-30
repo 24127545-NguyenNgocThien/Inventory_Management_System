@@ -2,6 +2,8 @@
 #include <QJsonArray>
 #include "productfactory.h"
 #include <QFileInfo>
+#include "log.h"
+#include "notify.h"
 
 std::unique_ptr<Database> Database::instance;
 std::mutex Database::mtx;
@@ -265,15 +267,36 @@ bool Database::ReturnInvoice(const std::string& invoiceId)
     if(it == invoices.end()) return false; // Không tìm thấy
 
     Invoice* inv = *it;
+
+    QStringList missingProducts; // Danh sách sản phẩm không còn trong kho
+
     // Hoàn trả từng sản phẩm
     for(const auto& item : inv->GetItems())
     {
         auto prodMap = GetProduct(item.productId);
         if(!prodMap.empty())
         {
-            auto prod = prodMap[item.productId];
+            auto prod = prodMap.at(item.productId);
             prod->SetQuantity(prod->GetQuantity() + item.quantity);
+
+            Log::Info(QString("Hoàn trả: ID=%1, +%2 vào kho")
+                          .arg(QString::fromStdString(item.productId))
+                          .arg(item.quantity));
         }
+        else
+        {
+            missingProducts << QString::fromStdString(item.productId);
+
+            Log::Warning(QString("Không thể hoàn trả sản phẩm ID=%1 vì đã bị xóa khỏi kho")
+                             .arg(QString::fromStdString(item.productId)));
+        }
+    }
+
+    if (!missingProducts.isEmpty()) {
+        QString msg = "Các sản phẩm sau đã bị xóa khỏi kho, không thể hoàn trả:\n- "
+                      + missingProducts.join("\n- ");
+
+        Notify::Warning(nullptr, msg, "Cảnh báo");
     }
 
     // Xóa hóa đơn khỏi danh sách
@@ -286,6 +309,8 @@ bool Database::ReturnInvoice(const std::string& invoiceId)
 
     return true;
 }
+
+
 
 const std::vector<Invoice*> Database::GetInvoicesInRange(const QDate& from, const QDate& to) const
 {

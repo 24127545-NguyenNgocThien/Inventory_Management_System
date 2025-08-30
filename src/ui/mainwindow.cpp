@@ -49,12 +49,6 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
     ui->dateFrom->setDate(sixMonthsAgo);
     ui->dateTo->setDate(today);
 
-    ui->lblRevenue->setText("0 VNĐ");
-    ui->lblProfit->setText("0 VNĐ");
-    ui->lblInvoices->setText("0");
-    ui->lblQuantity->setText("0");
-    ui->lblBestSeller->setText("Không có dữ liệu");
-
     // Gọi ngay để vẽ chart ban đầu
     on_btnView_clicked();
 
@@ -471,8 +465,8 @@ void MainWindow::on_btnView_clicked()
             delete item;
         }
 
-        ui->lblRevenue->setText("0 đ");
-        ui->lblProfit->setText("0 đ");
+        ui->lblRevenue->setText("0 VNĐ");
+        ui->lblProfit->setText("0 VNĐ");
         ui->lblInvoices->setText("0");
         ui->lblQuantity->setText("0");
         ui->lblBestSeller->setText("Không có dữ liệu");
