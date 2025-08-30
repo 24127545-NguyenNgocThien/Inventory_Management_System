@@ -155,8 +155,6 @@ void Database::DeleteProduct(const std::string& id)
     }
 
     productsList.erase(target);
-
-    return;
 }
 
 void Database::EditProduct(std::shared_ptr<Product> oldProduct, const ProductParam& newInfo)

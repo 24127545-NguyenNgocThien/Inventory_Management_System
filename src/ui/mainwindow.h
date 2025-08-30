@@ -5,6 +5,7 @@
 #include "commandmanager.h"
 #include "data.h"
 #include <QTableWidgetItem>
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -39,6 +40,8 @@ private:
     Ui::MainWindow *ui;
     Database* db;
     CommandManager* cmdManager;
+
+    QLabel *lblCount;
 
     void addRow(QTableWidget* table, QList<QString> data);
     void fillOutInvoiceTable();

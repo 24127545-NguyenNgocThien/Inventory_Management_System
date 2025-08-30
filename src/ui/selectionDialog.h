@@ -26,7 +26,7 @@ struct SelectedProduct {
 class SelectionDialog : public QDialog {
     Q_OBJECT
 public:
-    explicit SelectionDialog(QWidget *parent = nullptr);
+    explicit SelectionDialog(QWidget *parent = nullptr, bool flag = false);
     ~SelectionDialog() override = default;
 
     // Nạp dữ liệu (chuyển từ DB sang danh sách này trước khi gọi)
@@ -42,6 +42,9 @@ private slots:
     void onSearchTextChanged(const QString &txt);
 
 private:
+    // Phân biệt lệnh import(false) hay export(true)
+    bool _flag;
+
     // Widgets
     QComboBox *comboType;
     QComboBox *comboName;

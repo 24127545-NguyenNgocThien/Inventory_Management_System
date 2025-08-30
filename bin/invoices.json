@@ -1,20 +1,4 @@
 {
     "invoice list": [
-        {
-            "createdAt": "2025-08-30T14:31:04",
-            "id": "INV-20250830-143104183",
-            "items": [
-                {
-                    "productId": "E111",
-                    "quantity": 3,
-                    "salePrice": 1
-                },
-                {
-                    "productId": "O331",
-                    "quantity": 4,
-                    "salePrice": 30
-                }
-            ]
-        }
     ]
 }

@@ -31,10 +31,12 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
     , ui(new Ui::MainWindow)
     , cmdManager(new CommandManager())
     , db(&data)
+    , lblCount(new QLabel(this))
 {
     db->Load();
     db->LoadInvoices();
     ui->setupUi(this);
+    ui->statusBar->addPermanentWidget(lblCount);
 
     // Đặt ngày mặc định = 6 tháng gần nhất
     QDate today = QDate::currentDate();
@@ -42,8 +44,8 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
     ui->dateFrom->setDate(sixMonthsAgo);
     ui->dateTo->setDate(today);
 
-    ui->lblRevenue->setText("0 đ");
-    ui->lblProfit->setText("0 đ");
+    ui->lblRevenue->setText("0 VNĐ");
+    ui->lblProfit->setText("0 VNĐ");
     ui->lblInvoices->setText("0");
     ui->lblQuantity->setText("0");
     ui->lblBestSeller->setText("Không có dữ liệu");
@@ -60,10 +62,12 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
     // Liên kết các acion trên menubar
     connect(ui->actionUndo, &QAction::triggered, [this]() {
         cmdManager->Undo();
+        refreshTables();
     });
     ui->actionUndo->setShortcut(QKeySequence::Undo);
     connect(ui->actionRedo, &QAction::triggered, [this]() {
         cmdManager->Redo();
+        refreshTables();
     });
     ui->actionRedo->setShortcut(QKeySequence::Redo);
     connect(ui->actionAdd_product, &QAction::triggered, [this]() {
@@ -95,7 +99,7 @@ MainWindow::MainWindow(Database& data, QWidget *parent)
     ui->statusBar->addWidget(statusLabel);
 
     // Tạo action thường
-    QAction *toggleAction = new QAction("☰ Toggle Sidebar", this);
+    QAction *toggleAction = new QAction("☰ Sidebar", this);
     connect(toggleAction, &QAction::triggered, [this]() {
         ui->sidebarDock_2->setVisible(!ui->sidebarDock_2->isVisible());
     });
@@ -169,10 +173,6 @@ void MainWindow::fillOutInvoiceTable()
         };
         addRow(ui->tblListInvoice, data);
     }
-
-    QLabel *lblCount = new QLabel(this);
-    lblCount->setText(QString("Có %1 loại sản phẩm trong kho").arg(db->GetNumberProduct()));
-    ui->statusBar->addPermanentWidget(lblCount);
 }
 
 void MainWindow::fillOutProductTable()
@@ -192,6 +192,8 @@ void MainWindow::fillOutProductTable()
         };
         addRow(ui->tblProducts, data);
     }
+
+    lblCount->setText(QString("Có %1 loại sản phẩm trong kho").arg(db->GetNumberProduct()));
 }
 
 
@@ -299,8 +301,9 @@ void MainWindow::on_btnDelete_clicked()
     // Xoá sản phẩm
     Command* cmd = new DeleteCommand(id);
     if (cmdManager->ExecuteCommand(cmd)) {
-        ui->tblProducts->removeRow(selected);
         Notify::Info(this, "Xóa sản phẩm thành công!", "Thành công");
+        ui->tblProducts->removeRow(selected);
+        lblCount->setText(QString("Có %1 loại sản phẩm trong kho").arg(db->GetNumberProduct()));
         setWindowModified(true);
     } else {
         Notify::Error(this, "Không thể xóa sản phẩm!", "Lỗi");
@@ -676,7 +679,7 @@ void calculateTotal(QTableWidget* table, QLabel* lbl)
 
 void MainWindow::on_btnExport_2_clicked()
 {
-    SelectionDialog dlg(this);
+    SelectionDialog dlg(this, true);
     QList<SelectedProduct> all = buildProductListFromDb(db);
     dlg.loadData(all);
     if (dlg.exec() == QDialog::Accepted) {
@@ -692,6 +695,7 @@ void MainWindow::on_btnExport_2_clicked()
             addRow(ui->tblFormInvoice, data);
         }
 
+        fillOutProductTable();
         setWindowModified(true); // NEW: Đánh dấu cửa sổ đã thay đổi
         //updateStatusBar(); // NEW: Cập nhật trạng thái thanh trạng thái
     }
@@ -711,6 +715,8 @@ void MainWindow::on_btnDelete_2_clicked()
 
 void MainWindow::on_btnSave_2_clicked()
 {
+    if (ui->tblFormInvoice->rowCount() == 0) return;
+
     std::vector<InvoiceItem> items;
     for(int row = 0; row < ui->tblFormInvoice->rowCount(); ++row)
     {

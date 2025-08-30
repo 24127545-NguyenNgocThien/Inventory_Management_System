@@ -6,8 +6,8 @@
 #include <QSpinBox>
 #include <QSet>
 
-SelectionDialog::SelectionDialog(QWidget *parent)
-    : QDialog(parent)
+SelectionDialog::SelectionDialog(QWidget *parent, bool flag)
+    : QDialog(parent), _flag(flag)
 {
     setWindowTitle("Chọn sản phẩm");
     resize(900, 520);
@@ -213,7 +213,11 @@ void SelectionDialog::populateTable()
 
         // Quantity - use QSpinBox (0..stock)
         QSpinBox *spin = new QSpinBox(this);
-        spin->setRange(0, qMax(0, p.stock));
+        if (_flag) {
+            spin->setRange(0, qMax(0, p.stock));
+        } else {
+            spin->setRange(0, 1000000000);
+        }
         spin->setValue(p.quantity); // if had previous selection
         spin->setMinimumWidth(80);
         table->setCellWidget(i, 6, spin);

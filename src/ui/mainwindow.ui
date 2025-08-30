@@ -27,7 +27,7 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="productsPage">
        <layout class="QGridLayout" name="gridLayout_3">
@@ -240,7 +240,7 @@ QScrollBar::handle:horizontal:hover {
             </column>
             <column>
              <property name="text">
-              <string>Hãng</string>
+              <string>Thương hiệu</string>
              </property>
             </column>
             <column>
@@ -1099,7 +1099,7 @@ QLabel#titleLabel {
              </layout>
             </item>
             <item>
-            <layout class="QVBoxLayout" name="chartLayout"/>
+             <layout class="QVBoxLayout" name="chartLayout"/>
             </item>
            </layout>
           </item>
@@ -1231,10 +1231,6 @@ QToolBar::item:selected {
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionAdd"/>
-   <addaction name="actionDelete"/>
-   <addaction name="actionInvoice"/>
-   <addaction name="actionReport"/>
   </widget>
   <widget class="QDockWidget" name="sidebarDock_2">
    <property name="styleSheet">
