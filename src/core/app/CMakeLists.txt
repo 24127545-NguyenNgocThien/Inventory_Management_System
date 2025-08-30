@@ -13,7 +13,6 @@ target_link_libraries(appLib PUBLIC
 
 target_include_directories(appLib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
-    ${CMAKE_CURRENT_SOURCE_DIR}/../modules
+    ${CMAKE_CURRENT_SOURCE_DIR}/../data
     ${CMAKE_CURRENT_SOURCE_DIR}/../../ui
 )

@@ -31,5 +31,4 @@ target_include_directories(uiLib PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/../modules/report
     ${CMAKE_CURRENT_SOURCE_DIR}/../utils/other
     ${CMAKE_CURRENT_SOURCE_DIR}/../utils/notifyLib
-    ${CMAKE_CURRENT_SOURCE_DIR}/../modules/command/types
 )

@@ -1,0 +1,272 @@
+[2025-08-30 16:13:33] [INFO] Khởi tạo AddCommand cho sản phẩm: Bóng đèn LED (brand: Philips)
+[2025-08-30 16:13:33] [INFO] Đã thêm sản phẩm thành công: EBDLP1 (số lượng: 120, giá bán: 45000)
+[2025-08-30 16:14:41] [INFO] Khởi tạo AddCommand cho sản phẩm: Công tắc đôi (brand: Sino)
+[2025-08-30 16:14:41] [INFO] Đã thêm sản phẩm thành công: ECTDS1 (số lượng: 80, giá bán: 25000)
+[2025-08-30 16:15:34] [INFO] Khởi tạo AddCommand cho sản phẩm: Ống nước PVC 21mm (brand: Tiền Phong)
+[2025-08-30 16:15:34] [INFO] Đã thêm sản phẩm thành công: WONP2TP1 (số lượng: 202, giá bán: 18000)
+[2025-08-30 16:16:19] [INFO] Khởi tạo AddCommand cho sản phẩm: Van khóa 27mm (brand: Vina)
+[2025-08-30 16:16:19] [INFO] Đã thêm sản phẩm thành công: WVK2V1 (số lượng: 50, giá bán: 35000)
+[2025-08-30 16:17:07] [INFO] Khởi tạo AddCommand cho sản phẩm: Búa 500g (brand: Tolsen)
+[2025-08-30 16:17:07] [INFO] Đã thêm sản phẩm thành công: OB5T1 (số lượng: 30, giá bán: 65000)
+[2025-08-30 16:32:37] [INFO] Khởi tạo AddCommand cho sản phẩm: Bóng đèn compact 18W (brand: Rạng Đông)
+[2025-08-30 16:32:37] [INFO] Đã thêm sản phẩm thành công: EBDC1RD1 (số lượng: 100, giá bán: 38000)
+[2025-08-30 16:33:28] [INFO] Khởi tạo AddCommand cho sản phẩm: Công tắc đôi (brand: Schneider)
+[2025-08-30 16:33:28] [INFO] Đã thêm sản phẩm thành công: ECTDS2 (số lượng: 90, giá bán: 50000)
+[2025-08-30 16:34:26] [INFO] Khởi tạo AddCommand cho sản phẩm: Cầu dao MCB 2P 20A (brand: Schneider)
+[2025-08-30 16:34:26] [INFO] Đã thêm sản phẩm thành công: ECDM22S1 (số lượng: 25, giá bán: 110000)
+[2025-08-30 16:35:05] [INFO] Khởi tạo AddCommand cho sản phẩm: Quạt treo tường 55W (brand: Asia)
+[2025-08-30 16:35:05] [INFO] Đã thêm sản phẩm thành công: EQTT5A1 (số lượng: 40, giá bán: 350000)
+[2025-08-30 16:35:53] [INFO] Khởi tạo AddCommand cho sản phẩm: Cầu chì 10A (brand: LS)
+[2025-08-30 16:35:53] [INFO] Đã thêm sản phẩm thành công: ECC1L1 (số lượng: 150, giá bán: 12000)
+[2025-08-30 16:36:39] [INFO] Khởi tạo AddCommand cho sản phẩm: Đèn tuýp LED 1m2 (brand: Điện Quang)
+[2025-08-30 16:36:39] [INFO] Đã thêm sản phẩm thành công: EDTL1DQ1 (số lượng: 70, giá bán: 110000)
+[2025-08-30 16:37:19] [INFO] Khởi tạo AddCommand cho sản phẩm: Ổn áp 1KVA (brand: Lioa)
+[2025-08-30 16:37:19] [INFO] Đã thêm sản phẩm thành công: EOA1L1 (số lượng: 10, giá bán: 1.3e+06)
+[2025-08-30 16:38:09] [INFO] Khởi tạo AddCommand cho sản phẩm: Bóng đèn LED Bulb 12W (brand: Osram)
+[2025-08-30 16:38:09] [INFO] Đã thêm sản phẩm thành công: EBDLB1O1 (số lượng: 85, giá bán: 70000)
+[2025-08-30 16:38:57] [INFO] Khởi tạo AddCommand cho sản phẩm: Bình nóng lạnh 30L (brand: Ariston)
+[2025-08-30 16:38:57] [INFO] Đã thêm sản phẩm thành công: WBNL3A1 (số lượng: 50, giá bán: 2.5e+06)
+[2025-08-30 16:39:34] [INFO] Khởi tạo AddCommand cho sản phẩm: Sen tắm Inox (brand: Inax)
+[2025-08-30 16:39:34] [INFO] Đã thêm sản phẩm thành công: WSTII1 (số lượng: 25, giá bán: 950000)
+[2025-08-30 16:40:23] [INFO] Khởi tạo AddCommand cho sản phẩm: Bồn nước 1000L (brand: Tân Á)
+[2025-08-30 16:40:23] [INFO] Đã thêm sản phẩm thành công: WBN1TA1 (số lượng: 7, giá bán: 3.9e+06)
+[2025-08-30 16:41:12] [INFO] Khởi tạo AddCommand cho sản phẩm: Vòi nước đồng (brand: Toto)
+[2025-08-30 16:41:12] [INFO] Đã thêm sản phẩm thành công: WVNDT1 (số lượng: 60, giá bán: 250000)
+[2025-08-30 16:41:58] [INFO] Khởi tạo AddCommand cho sản phẩm: Co ren ngoài 27mm (brand: Bình Minh)
+[2025-08-30 16:41:58] [INFO] Đã thêm sản phẩm thành công: WCRN2BM1 (số lượng: 130, giá bán: 6500)
+[2025-08-30 16:42:36] [INFO] Khởi tạo AddCommand cho sản phẩm: Máy bơm nước 1/2HP (brand: Pentax)
+[2025-08-30 16:42:36] [INFO] Đã thêm sản phẩm thành công: WMBN1P1 (số lượng: 15, giá bán: 1.7e+06)
+[2025-08-30 16:43:14] [INFO] Khởi tạo AddCommand cho sản phẩm: Máy khoan cầm tay (brand: Bosch)
+[2025-08-30 16:43:14] [INFO] Đã thêm sản phẩm thành công: OMKCTB1 (số lượng: 18, giá bán: 1.2e+06)
+[2025-08-30 16:43:38] [INFO] Khởi tạo AddCommand cho sản phẩm: Thang nhôm 5 bậc (brand: Nikawa)
+[2025-08-30 16:43:38] [INFO] Đã thêm sản phẩm thành công: OTN5BN1 (số lượng: 12, giá bán: 820000)
+[2025-08-30 16:44:01] [INFO] Khởi tạo AddCommand cho sản phẩm: Dao cắt ống nhựa (brand: Stanley)
+[2025-08-30 16:44:01] [INFO] Đã thêm sản phẩm thành công: ODCONS1 (số lượng: 28, giá bán: 110000)
+[2025-08-30 16:44:30] [INFO] Khởi tạo AddCommand cho sản phẩm: Máy hàn que 200A (brand: Hồng Ký)
+[2025-08-30 16:44:30] [INFO] Đã thêm sản phẩm thành công: OMHQ2HK1 (số lượng: 7, giá bán: 2.3e+06)
+[2025-08-30 16:45:00] [INFO] Khởi tạo AddCommand cho sản phẩm: Bộ lục giác 9 cây (brand: Ingco)
+[2025-08-30 16:45:00] [INFO] Đã thêm sản phẩm thành công: OBLG9CI1 (số lượng: 22, giá bán: 160000)
+[2025-08-30 16:46:50] [INFO] Khởi tạo ExportCommand: id=EBDC1RD1, amount=20
+[2025-08-30 16:46:50] [INFO] Xuất kho thành công: id=EBDC1RD1, trừ=20, còn lại=80
+[2025-08-30 16:46:50] [INFO] Khởi tạo ExportCommand: id=EBDLB1O1, amount=10
+[2025-08-30 16:46:50] [INFO] Xuất kho thành công: id=EBDLB1O1, trừ=10, còn lại=75
+[2025-08-30 16:46:50] [INFO] Khởi tạo ExportCommand: id=EDTL1DQ1, amount=7
+[2025-08-30 16:46:50] [INFO] Xuất kho thành công: id=EDTL1DQ1, trừ=7, còn lại=63
+[2025-08-30 16:46:50] [INFO] Khởi tạo ExportCommand: id=EOA1L1, amount=1
+[2025-08-30 16:46:50] [INFO] Xuất kho thành công: id=EOA1L1, trừ=1, còn lại=9
+[2025-08-30 16:47:27] [INFO] Khởi tạo ExportCommand: id=EBDC1RD1, amount=10
+[2025-08-30 16:47:27] [INFO] Xuất kho thành công: id=EBDC1RD1, trừ=10, còn lại=70
+[2025-08-30 16:47:27] [INFO] Khởi tạo ExportCommand: id=ECTDS2, amount=10
+[2025-08-30 16:47:27] [INFO] Xuất kho thành công: id=ECTDS2, trừ=10, còn lại=80
+[2025-08-30 16:47:27] [INFO] Khởi tạo ExportCommand: id=OB5T1, amount=6
+[2025-08-30 16:47:27] [INFO] Xuất kho thành công: id=OB5T1, trừ=6, còn lại=24
+[2025-08-30 16:47:27] [INFO] Khởi tạo ExportCommand: id=WCN21, amount=17
+[2025-08-30 16:47:27] [INFO] Xuất kho thành công: id=WCN21, trừ=17, còn lại=133
+[2025-08-30 16:49:07] [INFO] Khởi tạo ExportCommand: id=EBDLP1, amount=33
+[2025-08-30 16:49:07] [INFO] Xuất kho thành công: id=EBDLP1, trừ=33, còn lại=87
+[2025-08-30 16:49:07] [INFO] Khởi tạo ExportCommand: id=EBDLP1, amount=31
+[2025-08-30 16:49:07] [INFO] Xuất kho thành công: id=EBDLP1, trừ=31, còn lại=56
+[2025-08-30 16:50:00] [INFO] Khởi tạo ExportCommand: id=ECC1L1, amount=41
+[2025-08-30 16:50:00] [INFO] Xuất kho thành công: id=ECC1L1, trừ=41, còn lại=109
+[2025-08-30 16:50:00] [INFO] Khởi tạo ExportCommand: id=ECTDS1, amount=45
+[2025-08-30 16:50:00] [INFO] Xuất kho thành công: id=ECTDS1, trừ=45, còn lại=35
+[2025-08-30 16:50:00] [INFO] Khởi tạo ExportCommand: id=ECTDS2, amount=60
+[2025-08-30 16:50:00] [INFO] Xuất kho thành công: id=ECTDS2, trừ=60, còn lại=20
+[2025-08-30 16:50:00] [INFO] Khởi tạo ExportCommand: id=EDCD121, amount=2
+[2025-08-30 16:50:00] [INFO] Xuất kho thành công: id=EDCD121, trừ=2, còn lại=28
+[2025-08-30 16:50:23] [INFO] Khởi tạo ExportCommand: id=EBDLB1O1, amount=3
+[2025-08-30 16:50:23] [INFO] Xuất kho thành công: id=EBDLB1O1, trừ=3, còn lại=72
+[2025-08-30 16:50:23] [INFO] Khởi tạo ExportCommand: id=EBDLP1, amount=3
+[2025-08-30 16:50:23] [INFO] Xuất kho thành công: id=EBDLP1, trừ=3, còn lại=53
+[2025-08-30 16:50:23] [INFO] Khởi tạo ExportCommand: id=ECTDS1, amount=3
+[2025-08-30 16:50:23] [INFO] Xuất kho thành công: id=ECTDS1, trừ=3, còn lại=32
+[2025-08-30 16:50:23] [INFO] Khởi tạo ExportCommand: id=ECTDS2, amount=3
+[2025-08-30 16:50:23] [INFO] Xuất kho thành công: id=ECTDS2, trừ=3, còn lại=17
+[2025-08-30 16:50:23] [INFO] Khởi tạo ExportCommand: id=EQTT5A1, amount=4
+[2025-08-30 16:50:23] [INFO] Xuất kho thành công: id=EQTT5A1, trừ=4, còn lại=36
+[2025-08-30 16:50:23] [INFO] Khởi tạo ExportCommand: id=OMKCTB1, amount=2
+[2025-08-30 16:50:23] [INFO] Xuất kho thành công: id=OMKCTB1, trừ=2, còn lại=16
+[2025-08-30 16:50:23] [INFO] Khởi tạo ExportCommand: id=WBN1TA1, amount=2
+[2025-08-30 16:50:23] [INFO] Xuất kho thành công: id=WBN1TA1, trừ=2, còn lại=5
+[2025-08-30 16:50:23] [INFO] Khởi tạo ExportCommand: id=WCN21, amount=3
+[2025-08-30 16:50:23] [INFO] Xuất kho thành công: id=WCN21, trừ=3, còn lại=130
+[2025-08-30 16:50:23] [INFO] Khởi tạo ExportCommand: id=WCRN2BM1, amount=3
+[2025-08-30 16:50:23] [INFO] Xuất kho thành công: id=WCRN2BM1, trừ=3, còn lại=127
+[2025-08-30 16:50:23] [INFO] Khởi tạo ExportCommand: id=WSTII1, amount=2
+[2025-08-30 16:50:23] [INFO] Xuất kho thành công: id=WSTII1, trừ=2, còn lại=23
+[2025-08-30 16:50:23] [INFO] Khởi tạo ExportCommand: id=WVNDT1, amount=3
+[2025-08-30 16:50:23] [INFO] Xuất kho thành công: id=WVNDT1, trừ=3, còn lại=57
+[2025-08-30 16:50:51] [INFO] Khởi tạo ExportCommand: id=EBDC1RD1, amount=2
+[2025-08-30 16:50:51] [INFO] Xuất kho thành công: id=EBDC1RD1, trừ=2, còn lại=68
+[2025-08-30 16:50:51] [INFO] Khởi tạo ExportCommand: id=EBDLP1, amount=2
+[2025-08-30 16:50:51] [INFO] Xuất kho thành công: id=EBDLP1, trừ=2, còn lại=51
+[2025-08-30 16:50:51] [INFO] Khởi tạo ExportCommand: id=ECDM22S1, amount=3
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=ECDM22S1, trừ=3, còn lại=22
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=EDCD121, amount=2
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=EDCD121, trừ=2, còn lại=26
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=EDTL1DQ1, amount=2
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=EDTL1DQ1, trừ=2, còn lại=61
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=EOC3C1, amount=2
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=EOC3C1, trừ=2, còn lại=58
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=OB5T1, amount=2
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=OB5T1, trừ=2, còn lại=22
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=OBLG9CI1, amount=6
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=OBLG9CI1, trừ=6, còn lại=16
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=OCLVM14mm, amount=4
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=OCLVM14mm, trừ=4, còn lại=36
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=ODCONS1, amount=2
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=ODCONS1, trừ=2, còn lại=26
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=OKDO11, amount=4
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=OKDO11, trừ=4, còn lại=86
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=OTVB, amount=20
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=OTVB, trừ=20, còn lại=50
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=WBNL3A1, amount=11
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=WBNL3A1, trừ=11, còn lại=39
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=WONP2TP1, amount=26
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=WONP2TP1, trừ=26, còn lại=176
+[2025-08-30 16:50:52] [INFO] Khởi tạo ExportCommand: id=WVNDT1, amount=13
+[2025-08-30 16:50:52] [INFO] Xuất kho thành công: id=WVNDT1, trừ=13, còn lại=44
+[2025-08-30 16:51:09] [INFO] Khởi tạo ExportCommand: id=EBDLB1O1, amount=16
+[2025-08-30 16:51:09] [INFO] Xuất kho thành công: id=EBDLB1O1, trừ=16, còn lại=56
+[2025-08-30 16:51:09] [INFO] Khởi tạo ExportCommand: id=ECC1L1, amount=12
+[2025-08-30 16:51:09] [INFO] Xuất kho thành công: id=ECC1L1, trừ=12, còn lại=97
+[2025-08-30 16:51:09] [INFO] Khởi tạo ExportCommand: id=ECTDS2, amount=10
+[2025-08-30 16:51:09] [INFO] Xuất kho thành công: id=ECTDS2, trừ=10, còn lại=7
+[2025-08-30 16:51:09] [INFO] Khởi tạo ExportCommand: id=EOC3C1, amount=10
+[2025-08-30 16:51:09] [INFO] Xuất kho thành công: id=EOC3C1, trừ=10, còn lại=48
+[2025-08-30 16:51:09] [INFO] Khởi tạo ExportCommand: id=OB5T1, amount=15
+[2025-08-30 16:51:09] [INFO] Xuất kho thành công: id=OB5T1, trừ=15, còn lại=7
+[2025-08-30 16:51:09] [INFO] Khởi tạo ExportCommand: id=OCLVM14mm, amount=6
+[2025-08-30 16:51:09] [INFO] Xuất kho thành công: id=OCLVM14mm, trừ=6, còn lại=30
+[2025-08-30 16:51:09] [INFO] Khởi tạo ExportCommand: id=ODCONS1, amount=6
+[2025-08-30 16:51:09] [INFO] Xuất kho thành công: id=ODCONS1, trừ=6, còn lại=20
+[2025-08-30 16:51:09] [INFO] Khởi tạo ExportCommand: id=OKDO11, amount=6
+[2025-08-30 16:51:09] [INFO] Xuất kho thành công: id=OKDO11, trừ=6, còn lại=80
+[2025-08-30 16:51:32] [INFO] Khởi tạo ExportCommand: id=OKDO11, amount=4
+[2025-08-30 16:51:32] [INFO] Xuất kho thành công: id=OKDO11, trừ=4, còn lại=76
+[2025-08-30 16:51:32] [INFO] Khởi tạo ExportCommand: id=OTVB, amount=4
+[2025-08-30 16:51:32] [INFO] Xuất kho thành công: id=OTVB, trừ=4, còn lại=46
+[2025-08-30 16:51:32] [INFO] Khởi tạo ExportCommand: id=WMBN1P1, amount=1
+[2025-08-30 16:51:32] [INFO] Xuất kho thành công: id=WMBN1P1, trừ=1, còn lại=14
+[2025-08-30 16:51:32] [INFO] Khởi tạo ExportCommand: id=WONP2TP1, amount=2
+[2025-08-30 16:51:32] [INFO] Xuất kho thành công: id=WONP2TP1, trừ=2, còn lại=174
+[2025-08-30 16:51:32] [INFO] Khởi tạo ExportCommand: id=WSTII1, amount=2
+[2025-08-30 16:51:32] [INFO] Xuất kho thành công: id=WSTII1, trừ=2, còn lại=21
+[2025-08-30 16:51:32] [INFO] Khởi tạo ExportCommand: id=WVK2V1, amount=3
+[2025-08-30 16:51:32] [INFO] Xuất kho thành công: id=WVK2V1, trừ=3, còn lại=47
+[2025-08-30 16:51:32] [INFO] Khởi tạo ExportCommand: id=WVNDT1, amount=3
+[2025-08-30 16:51:32] [INFO] Xuất kho thành công: id=WVNDT1, trừ=3, còn lại=41
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=EBDC1RD1, amount=10
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=EBDC1RD1, trừ=10, còn lại=58
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=EBDLB1O1, amount=9
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=EBDLB1O1, trừ=9, còn lại=47
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=EBDLP1, amount=3
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=EBDLP1, trừ=3, còn lại=48
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=ECDM22S1, amount=1
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=ECDM22S1, trừ=1, còn lại=21
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=EDCD121, amount=1
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=EDCD121, trừ=1, còn lại=25
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=EDTL1DQ1, amount=6
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=EDTL1DQ1, trừ=6, còn lại=55
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=EOC3C1, amount=7
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=EOC3C1, trừ=7, còn lại=41
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=EQTT5A1, amount=3
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=EQTT5A1, trừ=3, còn lại=33
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=OBLG9CI1, amount=1
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=OBLG9CI1, trừ=1, còn lại=15
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=OCLVM14mm, amount=3
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=OCLVM14mm, trừ=3, còn lại=27
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=ODCONS1, amount=2
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=ODCONS1, trừ=2, còn lại=18
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=OKDO11, amount=1
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=OKDO11, trừ=1, còn lại=75
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=OMKCTB1, amount=1
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=OMKCTB1, trừ=1, còn lại=15
+[2025-08-30 16:51:51] [INFO] Khởi tạo ExportCommand: id=OTN5BN1, amount=1
+[2025-08-30 16:51:51] [INFO] Xuất kho thành công: id=OTN5BN1, trừ=1, còn lại=11
+[2025-08-30 16:52:10] [INFO] Khởi tạo ExportCommand: id=OBLG9CI1, amount=1
+[2025-08-30 16:52:10] [INFO] Xuất kho thành công: id=OBLG9CI1, trừ=1, còn lại=14
+[2025-08-30 16:52:10] [INFO] Khởi tạo ExportCommand: id=OCLVM14mm, amount=2
+[2025-08-30 16:52:10] [INFO] Xuất kho thành công: id=OCLVM14mm, trừ=2, còn lại=25
+[2025-08-30 16:52:10] [INFO] Khởi tạo ExportCommand: id=ODCONS1, amount=3
+[2025-08-30 16:52:10] [INFO] Xuất kho thành công: id=ODCONS1, trừ=3, còn lại=15
+[2025-08-30 16:52:10] [INFO] Khởi tạo ExportCommand: id=OKDO11, amount=3
+[2025-08-30 16:52:10] [INFO] Xuất kho thành công: id=OKDO11, trừ=3, còn lại=72
+[2025-08-30 16:52:10] [INFO] Khởi tạo ExportCommand: id=OMHQ2HK1, amount=2
+[2025-08-30 16:52:10] [INFO] Xuất kho thành công: id=OMHQ2HK1, trừ=2, còn lại=5
+[2025-08-30 16:52:10] [INFO] Khởi tạo ExportCommand: id=OMKCTB1, amount=3
+[2025-08-30 16:52:10] [INFO] Xuất kho thành công: id=OMKCTB1, trừ=3, còn lại=12
+[2025-08-30 16:52:10] [INFO] Khởi tạo ExportCommand: id=OTN5BN1, amount=2
+[2025-08-30 16:52:10] [INFO] Xuất kho thành công: id=OTN5BN1, trừ=2, còn lại=9
+[2025-08-30 16:52:10] [INFO] Khởi tạo ExportCommand: id=OTVB, amount=17
+[2025-08-30 16:52:10] [INFO] Xuất kho thành công: id=OTVB, trừ=17, còn lại=29
+[2025-08-30 16:52:10] [INFO] Khởi tạo ExportCommand: id=WBNL3A1, amount=10
+[2025-08-30 16:52:10] [INFO] Xuất kho thành công: id=WBNL3A1, trừ=10, còn lại=29
+[2025-08-30 16:52:10] [INFO] Khởi tạo ExportCommand: id=WCN21, amount=12
+[2025-08-30 16:52:10] [INFO] Xuất kho thành công: id=WCN21, trừ=12, còn lại=118
+[2025-08-30 16:52:10] [INFO] Khởi tạo ExportCommand: id=WCRN2BM1, amount=18
+[2025-08-30 16:52:10] [INFO] Xuất kho thành công: id=WCRN2BM1, trừ=18, còn lại=109
+[2025-08-30 16:52:29] [INFO] Khởi tạo ExportCommand: id=ECC1L1, amount=6
+[2025-08-30 16:52:29] [INFO] Xuất kho thành công: id=ECC1L1, trừ=6, còn lại=91
+[2025-08-30 16:52:29] [INFO] Khởi tạo ExportCommand: id=ECDM22S1, amount=1
+[2025-08-30 16:52:29] [INFO] Xuất kho thành công: id=ECDM22S1, trừ=1, còn lại=20
+[2025-08-30 16:52:29] [INFO] Khởi tạo ExportCommand: id=ECTDS1, amount=4
+[2025-08-30 16:52:29] [INFO] Xuất kho thành công: id=ECTDS1, trừ=4, còn lại=28
+[2025-08-30 16:52:29] [INFO] Khởi tạo ExportCommand: id=ECTDS2, amount=1
+[2025-08-30 16:52:29] [INFO] Xuất kho thành công: id=ECTDS2, trừ=1, còn lại=6
+[2025-08-30 16:52:29] [INFO] Khởi tạo ExportCommand: id=ODCONS1, amount=2
+[2025-08-30 16:52:29] [INFO] Xuất kho thành công: id=ODCONS1, trừ=2, còn lại=13
+[2025-08-30 16:52:29] [INFO] Khởi tạo ExportCommand: id=OKDO11, amount=3
+[2025-08-30 16:52:29] [INFO] Xuất kho thành công: id=OKDO11, trừ=3, còn lại=69
+[2025-08-30 16:52:29] [INFO] Khởi tạo ExportCommand: id=WBNL3A1, amount=3
+[2025-08-30 16:52:29] [INFO] Xuất kho thành công: id=WBNL3A1, trừ=3, còn lại=26
+[2025-08-30 16:52:29] [INFO] Khởi tạo ExportCommand: id=WCN21, amount=9
+[2025-08-30 16:52:29] [INFO] Xuất kho thành công: id=WCN21, trừ=9, còn lại=109
+[2025-08-30 16:52:29] [INFO] Khởi tạo ExportCommand: id=WCRN2BM1, amount=10
+[2025-08-30 16:52:29] [INFO] Xuất kho thành công: id=WCRN2BM1, trừ=10, còn lại=99
+[2025-08-30 16:52:29] [INFO] Khởi tạo ExportCommand: id=WVK2V1, amount=4
+[2025-08-30 16:52:29] [INFO] Xuất kho thành công: id=WVK2V1, trừ=4, còn lại=43
+[2025-08-30 16:52:29] [INFO] Khởi tạo ExportCommand: id=WVNDT1, amount=5
+[2025-08-30 16:52:29] [INFO] Xuất kho thành công: id=WVNDT1, trừ=5, còn lại=36
+[2025-08-30 16:52:42] [INFO] Khởi tạo ExportCommand: id=EBDLP1, amount=4
+[2025-08-30 16:52:42] [INFO] Xuất kho thành công: id=EBDLP1, trừ=4, còn lại=44
+[2025-08-30 16:52:42] [INFO] Khởi tạo ExportCommand: id=ECC1L1, amount=10
+[2025-08-30 16:52:42] [INFO] Xuất kho thành công: id=ECC1L1, trừ=10, còn lại=81
+[2025-08-30 16:52:42] [INFO] Khởi tạo ExportCommand: id=ECTDS1, amount=3
+[2025-08-30 16:52:42] [INFO] Xuất kho thành công: id=ECTDS1, trừ=3, còn lại=25
+[2025-08-30 16:52:42] [INFO] Khởi tạo ExportCommand: id=EDCD121, amount=3
+[2025-08-30 16:52:42] [INFO] Xuất kho thành công: id=EDCD121, trừ=3, còn lại=22
+[2025-08-30 16:52:42] [INFO] Khởi tạo ExportCommand: id=EDTL1DQ1, amount=4
+[2025-08-30 16:52:42] [INFO] Xuất kho thành công: id=EDTL1DQ1, trừ=4, còn lại=51
+[2025-08-30 16:52:42] [INFO] Khởi tạo ExportCommand: id=EOC3C1, amount=3
+[2025-08-30 16:52:42] [INFO] Xuất kho thành công: id=EOC3C1, trừ=3, còn lại=38
+[2025-08-30 16:52:42] [INFO] Khởi tạo ExportCommand: id=EQTT5A1, amount=2
+[2025-08-30 16:52:42] [INFO] Xuất kho thành công: id=EQTT5A1, trừ=2, còn lại=31
+[2025-08-30 16:52:55] [INFO] Khởi tạo ExportCommand: id=OTVB, amount=7
+[2025-08-30 16:52:55] [INFO] Xuất kho thành công: id=OTVB, trừ=7, còn lại=22
+[2025-08-30 16:52:55] [INFO] Khởi tạo ExportCommand: id=WBNL3A1, amount=3
+[2025-08-30 16:52:55] [INFO] Xuất kho thành công: id=WBNL3A1, trừ=3, còn lại=23
+[2025-08-30 16:52:55] [INFO] Khởi tạo ExportCommand: id=WCN21, amount=2
+[2025-08-30 16:52:55] [INFO] Xuất kho thành công: id=WCN21, trừ=2, còn lại=107
+[2025-08-30 16:52:55] [INFO] Khởi tạo ExportCommand: id=WCRN2BM1, amount=3
+[2025-08-30 16:52:55] [INFO] Xuất kho thành công: id=WCRN2BM1, trừ=3, còn lại=96
+[2025-08-30 16:52:55] [INFO] Khởi tạo ExportCommand: id=WMBN1P1, amount=3
+[2025-08-30 16:52:55] [INFO] Xuất kho thành công: id=WMBN1P1, trừ=3, còn lại=11
+[2025-08-30 16:52:55] [INFO] Khởi tạo ExportCommand: id=WONP2TP1, amount=3
+[2025-08-30 16:52:55] [INFO] Xuất kho thành công: id=WONP2TP1, trừ=3, còn lại=171
+[2025-08-30 16:53:08] [INFO] Khởi tạo ExportCommand: id=ODCONS1, amount=3
+[2025-08-30 16:53:08] [INFO] Xuất kho thành công: id=ODCONS1, trừ=3, còn lại=10
+[2025-08-30 16:53:08] [INFO] Khởi tạo ExportCommand: id=OMHQ2HK1, amount=3
+[2025-08-30 16:53:08] [INFO] Xuất kho thành công: id=OMHQ2HK1, trừ=3, còn lại=2
+[2025-08-30 16:53:08] [INFO] Khởi tạo ExportCommand: id=OTN5BN1, amount=2
+[2025-08-30 16:53:08] [INFO] Xuất kho thành công: id=OTN5BN1, trừ=2, còn lại=7
+[2025-08-30 16:53:08] [INFO] Khởi tạo ExportCommand: id=WCN21, amount=3
+[2025-08-30 16:53:08] [INFO] Xuất kho thành công: id=WCN21, trừ=3, còn lại=104
+[2025-08-30 16:53:08] [INFO] Khởi tạo ExportCommand: id=WCRN2BM1, amount=3
+[2025-08-30 16:53:08] [INFO] Xuất kho thành công: id=WCRN2BM1, trừ=3, còn lại=93
+[2025-08-30 16:53:16] [INFO] Khởi tạo ExportCommand: id=EBDLB1O1, amount=4
+[2025-08-30 16:53:16] [INFO] Xuất kho thành công: id=EBDLB1O1, trừ=4, còn lại=43
+[2025-08-30 16:53:16] [INFO] Khởi tạo ExportCommand: id=EBDLP1, amount=3
+[2025-08-30 16:53:16] [INFO] Xuất kho thành công: id=EBDLP1, trừ=3, còn lại=41
+[2025-08-30 16:53:16] [INFO] Khởi tạo ExportCommand: id=ECC1L1, amount=5
+[2025-08-30 16:53:16] [INFO] Xuất kho thành công: id=ECC1L1, trừ=5, còn lại=76
