@@ -114,3 +114,19 @@
 [2025-08-30 14:18:11] [INFO] Xuất kho thành công: id=W221, trừ=5, còn lại=20
 [2025-08-30 14:18:11] [INFO] Khởi tạo ExportCommand: id=W41, amount=5
 [2025-08-30 14:18:11] [INFO] Xuất kho thành công: id=W41, trừ=5, còn lại=40
+[2025-08-30 14:30:43] [INFO] Khởi tạo ImportCommand: id=E111, amount=4
+[2025-08-30 14:30:43] [INFO] Nhập kho thành công: id=E111, thêm=4, tổng=19
+[2025-08-30 14:30:43] [INFO] Khởi tạo ImportCommand: id=O331, amount=2
+[2025-08-30 14:30:43] [INFO] Nhập kho thành công: id=O331, thêm=2, tổng=37
+[2025-08-30 14:30:43] [INFO] Khởi tạo ImportCommand: id=W221, amount=2
+[2025-08-30 14:30:43] [INFO] Nhập kho thành công: id=W221, thêm=2, tổng=27
+[2025-08-30 14:30:43] [INFO] Khởi tạo ImportCommand: id=W41, amount=2
+[2025-08-30 14:30:43] [INFO] Nhập kho thành công: id=W41, thêm=2, tổng=47
+[2025-08-30 14:30:49] [INFO] Khởi tạo DeleteCommand cho sản phẩm id=W41
+[2025-08-30 14:30:49] [INFO] Đã xóa sản phẩm thành công: W41 (name=4, brand=)
+[2025-08-30 14:30:52] [INFO] Khởi tạo DeleteCommand cho sản phẩm id=W221
+[2025-08-30 14:30:52] [INFO] Đã xóa sản phẩm thành công: W221 (name=2, brand=2)
+[2025-08-30 14:31:04] [INFO] Khởi tạo ExportCommand: id=E111, amount=3
+[2025-08-30 14:31:04] [INFO] Xuất kho thành công: id=E111, trừ=3, còn lại=16
+[2025-08-30 14:31:04] [INFO] Khởi tạo ExportCommand: id=O331, amount=4
+[2025-08-30 14:31:04] [INFO] Xuất kho thành công: id=O331, trừ=4, còn lại=33
