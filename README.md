@@ -178,6 +178,11 @@ INVENTORY_MANAGERMENT_SYSTEM
 
 ---
 
+## Class diagram
+[![App-UML.png](https://i.postimg.cc/g0hgXgyb/App-UML.png)](https://postimg.cc/yJVm2XrL)
+
+---
+
 ## 🛠️ Build & Run
 
 ### Yêu cầu
